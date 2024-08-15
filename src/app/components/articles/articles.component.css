@@ -1,0 +1,39 @@
+.sidebar {
+  background-color: #f8f9fa;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+.sidebar .btn {
+  background-color: #f3e8ff;
+  color: #000;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+.sidebar .btn:hover {
+  background-color: #e0cfff;
+}
+.card {
+  margin-bottom: 1rem;
+}
+.card img {
+  height: 200px;
+  object-fit: cover;
+}
+.card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+.card-text {
+  font-size: 0.875rem;
+}
+.card-footer {
+  background-color: transparent;
+  border-top: none;
+}
+.card-footer .text-muted {
+  font-size: 0.875rem;
+}
+.card-footer .btn-link {
+  font-size: 0.875rem;
+  color: #000;
+}
