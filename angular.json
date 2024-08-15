@@ -27,7 +27,9 @@
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css",
-              "node_modules/bootstrap/dist/css/bootstrap.css"
+              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css",
+              "https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
             ],
             "scripts": ["node_modules/bootstrap/dist/js/bootstrap.min.js"]
           },
