@@ -50,28 +50,26 @@
   margin-top: 0.5rem;
   color: #6c757d;
 }
-.suggestions {
-  margin-top: 2rem;
-}
-.suggestions h3 {
+.suggestion-title {
   font-size: 1.5rem;
   font-weight: bold;
+  margin-bottom: 1rem;
 }
-.suggestion-item {
-  display: flex;
-  margin-top: 1rem;
-}
-.suggestion-item img {
-  width: 80px;
-  height: 80px;
-  border-radius: 0.5rem;
-  margin-right: 1rem;
-}
-.suggestion-item h4 {
-  font-size: 1rem;
+.card-title {
+  font-size: 1.25rem;
   font-weight: bold;
 }
-.suggestion-item p {
-  margin-top: 0.5rem;
-  color: #6c757d;
+.card-text {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+.card-author {
+  font-size: 0.875rem;
+  font-weight: bold;
+}
+.card {
+  margin-bottom: 1rem;
+}
+.card-body {
+  padding-left: 0.5rem;
 }
