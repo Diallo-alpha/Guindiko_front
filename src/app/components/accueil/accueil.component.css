@@ -1,0 +1,53 @@
+.custom-section {
+  background-color: #e1a7f2;
+  font-family: Arial, sans-serif;
+  padding: 50px 0;
+}
+.shapes {
+  position: relative;
+  width: 50%;
+  float: left;
+  height: 300px;
+}
+.shapes .oval {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 150px;
+  background-color: #4b006e;
+  border-radius: 50%;
+}
+.shapes .circle1 {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  width: 100px;
+  height: 100px;
+  background-color: #ffffe6;
+  border-radius: 50%;
+}
+.shapes .circle2 {
+  position: absolute;
+  top: 150px;
+  left: 100px;
+  width: 100px;
+  height: 100px;
+  background-color: #0a0011;
+  border-radius: 50%;
+}
+.text-content {
+  width: 50%;
+  float: left;
+  padding-left: 50px;
+}
+.text-content h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #000;
+  text-shadow: 2px 2px 4px #ffffff;
+}
+.text-content p {
+  font-size: 1rem;
+  color: #000;
+}
