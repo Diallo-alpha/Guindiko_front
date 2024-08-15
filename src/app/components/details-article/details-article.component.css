@@ -1,0 +1,77 @@
+.content {
+  padding: 2rem;
+}
+.content h1 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+.content h2 {
+  font-size: 1.25rem;
+  color: #6c757d;
+}
+.content img {
+  width: 100%;
+  border-radius: 0.5rem;
+}
+.content .likes {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+}
+.content .likes i {
+  color: #ff4500;
+  margin-right: 0.5rem;
+}
+.content .likes span {
+  font-size: 1rem;
+}
+.content p {
+  margin-top: 1rem;
+  line-height: 1.5;
+}
+.comments {
+  margin-top: 2rem;
+}
+.comments h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.comment {
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+}
+.comment h4 {
+  font-size: 1rem;
+  font-weight: bold;
+}
+.comment p {
+  margin-top: 0.5rem;
+  color: #6c757d;
+}
+.suggestions {
+  margin-top: 2rem;
+}
+.suggestions h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.suggestion-item {
+  display: flex;
+  margin-top: 1rem;
+}
+.suggestion-item img {
+  width: 80px;
+  height: 80px;
+  border-radius: 0.5rem;
+  margin-right: 1rem;
+}
+.suggestion-item h4 {
+  font-size: 1rem;
+  font-weight: bold;
+}
+.suggestion-item p {
+  margin-top: 0.5rem;
+  color: #6c757d;
+}
