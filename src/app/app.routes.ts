@@ -10,6 +10,7 @@ import { SessionMentorComponent } from './components/mentor/session-mentor/sessi
 import { ArticleMentorComponent } from './components/mentor/article-mentor/article-mentor.component';
 import { AbonnerMentorComponent } from './components/mentor/abonner-mentor/abonner-mentor.component';
 import { InscriptionComponent } from './components/inscription/inscription.component';
+import { ConnexionComponent } from './components/connexion/connexion.component';
 
 export const routes: Routes = [
   {path: 'navbar', component:NavbarComponent},
@@ -22,5 +23,6 @@ export const routes: Routes = [
   {path: 'session', component:SessionMentorComponent},
   {path: 'article/mentor', component:ArticleMentorComponent},
   {path: 'abonner/mentore', component:AbonnerMentorComponent},
-  {path: 'inscription', component:InscriptionComponent}
+  {path: 'inscription', component:InscriptionComponent},
+  {path: 'connexion', component:ConnexionComponent}
 ];
