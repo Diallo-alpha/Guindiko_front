@@ -1,0 +1,62 @@
+.container {
+  max-width: 500px;
+  margin-top: 100px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.logo {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.logo img {
+  max-width: 100px;
+}
+
+.logo h1 {
+  font-family: 'Arial Black', sans-serif;
+  font-size: 24px;
+  color: #3d0d3c;
+}
+
+.form-label {
+  font-weight: bold;
+}
+
+.form-control {
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.progress {
+  height: 5px;
+  margin: 20px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.progress-bar {
+  background-color: #3d0d3c;
+  width: 30%;
+  height: 5px;
+  border-radius: 5px;
+}
+
+.progress-bar-light {
+  background-color: #d3b1d2;
+  width: 30%;
+  height: 5px;
+  border-radius: 5px;
+}
+
+.btn-primary {
+  background-color: #3d0d3c;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  width: 100%;
+}

@@ -9,16 +9,18 @@ import { ProfilMentorComponent } from './components/mentor/profil-mentor/profil-
 import { SessionMentorComponent } from './components/mentor/session-mentor/session-mentor.component';
 import { ArticleMentorComponent } from './components/mentor/article-mentor/article-mentor.component';
 import { AbonnerMentorComponent } from './components/mentor/abonner-mentor/abonner-mentor.component';
+import { InscriptionComponent } from './components/inscription/inscription.component';
 
 export const routes: Routes = [
   {path: 'navbar', component:NavbarComponent},
   {path: '', component:AccueilComponent},
   {path: 'formations', component:FormationComponent},
   {path: 'article', component:ArticlesComponent},
-  {path: 'mentor', component:MenteurComponent}, 
+  {path: 'mentor', component:MenteurComponent},
   {path: 'details-article', component:DetailsArticleComponent},
   {path: 'profile', component:ProfilMentorComponent},
   {path: 'session', component:SessionMentorComponent},
   {path: 'article/mentor', component:ArticleMentorComponent},
-  {path: 'abonner/mentore', component:AbonnerMentorComponent}
+  {path: 'abonner/mentore', component:AbonnerMentorComponent},
+  {path: 'inscription', component:InscriptionComponent}
 ];
