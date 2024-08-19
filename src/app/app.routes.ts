@@ -11,6 +11,8 @@ import { ArticleMentorComponent } from './components/mentor/article-mentor/artic
 import { AbonnerMentorComponent } from './components/mentor/abonner-mentor/abonner-mentor.component';
 import { InscriptionComponent } from './components/inscription/inscription.component';
 import { ConnexionComponent } from './components/connexion/connexion.component';
+import { SidebarComponent } from './components/dashboard-mentor/sidebar/sidebar.component';
+import { SessionComponent } from './components/dashboard-mentor/session/session.component';
 
 export const routes: Routes = [
   {path: 'navbar', component:NavbarComponent},
@@ -24,5 +26,7 @@ export const routes: Routes = [
   {path: 'article/mentor', component:ArticleMentorComponent},
   {path: 'abonner/mentore', component:AbonnerMentorComponent},
   {path: 'inscription', component:InscriptionComponent},
-  {path: 'connexion', component:ConnexionComponent}
+  {path: 'connexion', component:ConnexionComponent},
+  {path: 'sidebar', component:SidebarComponent},
+  {path: 'session-mentor', component:SessionComponent}
 ];

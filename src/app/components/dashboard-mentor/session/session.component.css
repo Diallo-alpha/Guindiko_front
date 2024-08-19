@@ -1,0 +1,55 @@
+.content {
+  margin-left: 250px;
+  padding: 80px 40px 40px 40px;
+  box-sizing: border-box;
+}
+.content h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+.content .btn {
+  background-color: #5e2a84;
+  color: #fff;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+.sessions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.session-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: calc(33.333% - 20px);
+  box-sizing: border-box;
+}
+.session-card h3 {
+  font-size: 18px;
+  margin: 0 0 10px 0;
+}
+.session-card p {
+  margin: 0;
+  color: #666;
+}
+.session-card .resources {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+.session-card .resources i {
+  margin-right: 5px;
+}
+.session-card .resources .btn {
+  background-color: #5e2a84;
+  color: #fff;
+  padding: 5px 10px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 14px;
+}
