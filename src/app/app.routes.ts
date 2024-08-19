@@ -14,6 +14,10 @@ import { ConnexionComponent } from './components/connexion/connexion.component';
 import { SidebarComponent } from './components/dashboard-mentor/sidebar/sidebar.component';
 import { SessionComponent } from './components/dashboard-mentor/session/session.component';
 import { CreerSessionComponent } from './components/dashboard-mentor/creer-session/creer-session.component';
+import { CreerArticleComponent } from './components/dashboard-mentor/creer-article/creer-article.component';
+import { DashboardComponent } from './components/dashboard-mentor/dashboard/dashboard.component';
+import { AbonnerComponent } from './components/dashboard-mentor/abonner/abonner.component';
+import { DashArticleComponent } from './components/dashboard-mentor/dash-article/dash-article.component';
 
 export const routes: Routes = [
   {path: 'navbar', component:NavbarComponent},
@@ -30,5 +34,9 @@ export const routes: Routes = [
   {path: 'connexion', component:ConnexionComponent},
   {path: 'sidebar', component:SidebarComponent},
   {path: 'session-mentor', component:SessionComponent},
-  {path: 'creer-session', component:CreerSessionComponent}
+  {path: 'creer-session', component:CreerSessionComponent},
+  {path: 'creer-article', component:CreerArticleComponent},
+  {path:  'dashboard-mentor', component:DashboardComponent},
+  {path: 'abonner-mentor', component:AbonnerComponent},
+  {path: 'article-dashboard', component:DashArticleComponent}
 ];
