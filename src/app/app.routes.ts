@@ -18,6 +18,7 @@ import { CreerArticleComponent } from './components/dashboard-mentor/creer-artic
 import { DashboardComponent } from './components/dashboard-mentor/dashboard/dashboard.component';
 import { AbonnerComponent } from './components/dashboard-mentor/abonner/abonner.component';
 import { DashArticleComponent } from './components/dashboard-mentor/dash-article/dash-article.component';
+import { DetailFormationComponent } from './components/detail-formation/detail-formation.component';
 
 export const routes: Routes = [
   {path: 'navbar', component:NavbarComponent},
@@ -38,5 +39,6 @@ export const routes: Routes = [
   {path: 'creer-article', component:CreerArticleComponent},
   {path:  'dashboard-mentor', component:DashboardComponent},
   {path: 'abonner-mentor', component:AbonnerComponent},
-  {path: 'article-dashboard', component:DashArticleComponent}
+  {path: 'article-dashboard', component:DashArticleComponent},
+  {path: 'detail-formation', component:DetailFormationComponent}
 ];
