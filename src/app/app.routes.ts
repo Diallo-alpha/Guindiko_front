@@ -13,6 +13,7 @@ import { InscriptionComponent } from './components/inscription/inscription.compo
 import { ConnexionComponent } from './components/connexion/connexion.component';
 import { SidebarComponent } from './components/dashboard-mentor/sidebar/sidebar.component';
 import { SessionComponent } from './components/dashboard-mentor/session/session.component';
+import { CreerSessionComponent } from './components/dashboard-mentor/creer-session/creer-session.component';
 
 export const routes: Routes = [
   {path: 'navbar', component:NavbarComponent},
@@ -28,5 +29,6 @@ export const routes: Routes = [
   {path: 'inscription', component:InscriptionComponent},
   {path: 'connexion', component:ConnexionComponent},
   {path: 'sidebar', component:SidebarComponent},
-  {path: 'session-mentor', component:SessionComponent}
+  {path: 'session-mentor', component:SessionComponent},
+  {path: 'creer-session', component:CreerSessionComponent}
 ];

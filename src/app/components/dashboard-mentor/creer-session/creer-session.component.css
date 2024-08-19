@@ -1,0 +1,48 @@
+.content {
+  margin-top: 10vh;
+  margin-left: 250px;
+  padding: 20px;
+}
+.content h2 {
+  font-size: 24px;
+  color: #333;
+}
+.form-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.form-group {
+  flex: 1;
+  min-width: 350px;
+}
+.form-group label {
+  display: block;
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 5px;
+}
+.form-group input {
+  width: 100%;
+  padding: 15px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+.form-group button {
+  background-color: #5b0a6f;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.form-row {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+}
+button{
+  margin-top: 3vh;
+}
