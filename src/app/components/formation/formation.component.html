@@ -1,1 +1,31 @@
-<p>formation works!</p>
+<div class="sidebar">
+    <div class="logo">
+        <img src="./assets/logo.png" alt="Logo">
+    </div>
+    <nav>
+        <ul>
+            <li><a href="#"> <img src="./assets/uil_dashboard.svg" alt=""> Tableau de bord</a></li>
+            <li><a href="#" id="domaine"><img src="./assets/dashicons_category.svg" alt=""> Domaines</a></li>
+            <li><a href="#"><img src="./assets/healthicons_i-training-class.svg" alt="">Formations</a></li>
+            <li><a href="#"><img src="./assets/eos-icons_role-binding.svg" alt="">Rôles et permissions</a></li>
+        </ul>
+    </nav>
+</div>
+
+<div class="main-content">
+    <div class="header">
+        <h2>Nos Catégories</h2>
+        <button class="btn-add">Ajouter</button>
+    </div>
+
+    <div class="tags-container">
+        <button *ngFor="let tag of tags" class="category-tag">{{ tag }}</button>
+    </div>
+
+    <div class="categories">
+        <div *ngFor="let category of categories" class="category-card">
+            <img [src]="category.image" alt="{{ category.name }}">
+            <p>{{ category.name }}</p>
+        </div>
+    </div>
+</div>
