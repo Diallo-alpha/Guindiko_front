@@ -19,7 +19,7 @@ import { DashboardComponent } from './components/dashboard-mentor/dashboard/dash
 import { AbonnerComponent } from './components/dashboard-mentor/abonner/abonner.component';
 import { DashArticleComponent } from './components/dashboard-mentor/dash-article/dash-article.component';
 import { DetailFormationComponent } from './components/detail-formation/detail-formation.component';
-import { ProfilMentorComponents } from './components/dashboard-mentor/profil-mentor/profil-mentor.components';
+import { ProfilMentorComponents } from './components/dashboard-mentor/profil-mentore/profil-mentor.components';
 export const routes: Routes = [
   {path: 'navbar', component:NavbarComponent},
   {path: '', component:AccueilComponent},
@@ -37,7 +37,7 @@ export const routes: Routes = [
   {path: 'session-mentor', component:SessionComponent},
   {path: 'creer-session', component:CreerSessionComponent},
   {path: 'creer-article', component:CreerArticleComponent},
-  {path:  'dashboard-mentor', component:DashboardComponent},
+  {path: 'dashboard-mentor', component:DashboardComponent},
   {path: 'abonner-mentor', component:AbonnerComponent},
   {path: 'article-dashboard', component:DashArticleComponent},
   {path: 'detail-formation', component:DetailFormationComponent},
