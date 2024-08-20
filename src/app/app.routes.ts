@@ -23,6 +23,7 @@ import { DashArticleComponent } from './components/dashboard-mentor/dash-article
 import { DetailFormationComponent } from './components/detail-formation/detail-formation.component';
 import { ProfilMentorComponents } from './components/dashboard-mentor/profil-mentore/profil-mentor.components';
 import { RoleComponent } from './components/role/role.component';
+import { PermissionComponent } from './components/permission/permission.component';
 export const routes: Routes = [
   {path: 'navbar', component:NavbarComponent},
   {path: '', component:AccueilComponent},
@@ -50,5 +51,7 @@ export const routes: Routes = [
   { path: 'formations', component: FormationComponent },
   { path: 'formations-admin', component: FormationAdminComponent },
   { path: 'roles', component: RoleComponent },
+  { path: 'permissions', component: PermissionComponent },
+
 
 ]
