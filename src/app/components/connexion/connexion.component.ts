@@ -25,25 +25,16 @@ export class ConnexionComponent {
     console.log(this.userobject); // Log the user input for debugging
 
     if (this.userobject.email && this.userobject.password) {
-      console.log("cc"); // Log to confirm that the function is executing
+      console.log("slamm"); // Log to confirm that the function is executing
 
       this.authService.login(this.userobject).subscribe(
         (response: any) => {
-          console.log('Token:', response.access_token); // Log the access token
-          console.log('User:', response.user); // Log the user information
+          console.log('Token:', response.access_token);
 
           if (response.user) {
             // Store the token and user info in local storage
             localStorage.setItem('Token', JSON.stringify(response.access_token));
-            localStorage.setItem('User', JSON.stringify(response.user));
-
-            // Navigate based on user role
-            if (response.user.role === "membre") {
-              this.router.navigateByUrl('/accueil');
-            } else {
-              this.router.navigateByUrl('/livre');
-            }
-
+            this.router.navigateByUrl('/');
             console.log('Connexion réussie et redirection effectuée');
           }
         },
