@@ -1,12 +1,14 @@
 import { Routes } from '@angular/router';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { DashboardAdminComponent } from './components/dashboard-admin/dashboard-admin.component';
-import { FormationComponent } from './components/admin-formation/formation.component';
+import { FormationAdminComponent } from './components/admin-formation/formation/formation.component';
 
 export const routes: Routes = [
   { path: 'navbar', component: NavbarComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'formations', component: FormationComponent },
+  { path: 'formations-admin', component: FormationAdminComponent },]
+
 
 import { AccueilComponent } from './components/accueil/accueil.component';
 import { FormationComponent } from './components/formation/formation.component';
@@ -50,5 +52,4 @@ export const routes: Routes = [
   {path: 'article-dashboard', component:DashArticleComponent},
   {path: 'detail-formation', component:DetailFormationComponent},
   {path: 'modifier/profile-mentor', component:ProfilMentorComponents}
->>>>>>> ac9350c4876ac22157f891a8b15df4c42e42972a
 ];

@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   templateUrl: './formation.component.html',
   styleUrls: ['./formation.component.css']
 })
-export class FormationComponent {
+export class FormationAdminComponent {
   tags: string[] = ['Informatique', 'Marketing', 'Comptabilité', 'Transport Logistique'];
 
   categories = [
