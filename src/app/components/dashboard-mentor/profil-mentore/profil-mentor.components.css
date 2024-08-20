@@ -1,0 +1,86 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background-color: #FFFFF0; 
+  padding: 20px;
+}
+.content {
+  padding: 20px;
+  margin-top: 8vh;
+  margin-left: 35vh;
+  overflow-y: auto;
+  height: calc(100vh - 8vh);
+  background-color: #FFFFF0;
+}
+h3{
+  color: var(--Grays-Black, #000);
+  font-family: Montserrat;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.profile-photo {
+  display: flex;
+  text-align: left;
+  margin-bottom: 30px;
+}
+.btn-modifier{
+  margin: 9vh 2.5vh;
+}
+.profile-photo img {
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+}
+.profile-photo button {
+  margin: 10px 5px;
+}
+.form-control {
+  margin-bottom: 15px;
+  display: flex;
+  height: 50px;
+  align-items: center;
+  gap: 10px;
+  align-self: stretch;
+  border-radius: 6px;
+  border: 1px solid rgba(17, 0, 18, 0.25);
+  background: var(--blanc-ivoire-blanc, #FFFFF0);
+}
+.form-controle{
+  display: flex;
+  height: 25vh;
+  padding: 14px 27px;
+  align-items: flex-start;
+  border-radius: 6px;
+  width: 131vh;
+  border: 1px solid rgba(17, 0, 18, 0.25);
+  background: var(--blanc-ivoire-blanc, #FFFFF0);
+}
+.btn-primary {
+  background-color: #5e236d;
+  border: none;
+}
+.btn-secondary {
+  background-color: #e8e8e8;
+  color: #BF0202;
+  font-family: "Open Sans";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-left: 10px;
+}
+.btn-danger {
+  background-color: #e8e8e8;
+  border: none;
+  color: red;
+}
+.form-label{
+  color: var(--Grays-Black, #000);
+  font-family: Montserrat;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}

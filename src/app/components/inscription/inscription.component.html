@@ -1,0 +1,82 @@
+<div class="container">
+  <div class="logo">
+    <img src="assets/images/logo.svg"/>
+    <h1>Bienvenue chez guindiko</h1>
+  </div>
+
+  <!-- Étape 1 -->
+  <form *ngIf="currentStep === 1">
+    <div class="mb-3">
+      <label for="nom" class="form-label">Nom</label>
+      <input type="text" class="form-control" id="nom" placeholder="Entrez votre nom">
+    </div>
+    <div class="mb-3">
+      <label for="prenom" class="form-label">Prénom</label>
+      <input type="text" class="form-control" id="prenom" placeholder="Entrez votre prénom">
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" class="form-control" id="email" placeholder="exemple@exemple.com">
+    </div>
+    <div class="mb-3">
+      <label for="photo" class="form-label">Téléversez votre photo de profil</label>
+      <input type="file" class="form-control" id="photo">
+    </div>
+    <div class="progress">
+      <div class="progress">
+        <div [ngClass]="{ 'progress-bar': currentStep === 1, 'progress-bar-light': currentStep !== 1 }"></div>
+        <!-- <div [ngClass]="{ 'progress-bar': currentStep === 2, 'progress-bar-light': currentStep !== 2 }"></div>
+        <div [ngClass]="{ 'progress-bar': currentStep === 3, 'progress-bar-light': currentStep !== 3 }"></div> -->
+      </div>
+
+    </div>
+    <button type="button" class="btn btn-primary" (click)="nextStep()">Continuer</button>
+  </form>
+
+  <!-- Étape 2 --> 
+  <form *ngIf="currentStep === 2">
+    <div class="mb-3">
+      <label for="password" class="form-label">Mot de passe</label>
+      <input type="password" class="form-control" id="password" placeholder="Saisissez votre mot de passe">
+    </div>
+    <div class="mb-3">
+      <label for="confirmPassword" class="form-label">Confirmation du mot de passe</label>
+      <input type="password" class="form-control" id="confirmPassword" placeholder="Confirmez votre mot de passe">
+    </div>
+    <div class="progress">
+      <div class="progress">
+        <!-- <div [ngClass]="{ 'progress-bar': currentStep === 1, 'progress-bar-light': currentStep !== 1 }"></div> -->
+        <div [ngClass]="{ 'progress-bar': currentStep === 2, 'progress-bar-light': currentStep !== 2 }"></div>
+        <!-- <div [ngClass]="{ 'progress-bar': currentStep === 3, 'progress-bar-light': currentStep !== 3 }"></div> -->
+      </div>
+
+    </div>
+    <button type="button" class="btn btn-primary" (click)="nextStep()">Continuer</button> <br>
+    <button type="button" class="btn btn-secondary" (click)="prevStep()">Retour</button>
+  </form>
+
+  <!-- Étape 3 -->
+  <form *ngIf="currentStep === 3">
+    <div class="mb-3">
+      <label for="cv" class="form-label">Curriculum Vitae</label>
+      <input type="text" class="form-control" id="cv" placeholder="Entrez votre CV">
+    </div>
+    <div class="mb-3">
+      <label for="experience" class="form-label">Années d'expérience</label>
+      <input type="text" class="form-control" id="experience" placeholder="Entrez vos années d'expérience">
+    </div>
+    <div class="mb-3">
+      <label for="biography" class="form-label">Biographie</label>
+      <textarea class="form-control" id="biography" placeholder="Entrez votre biographie" rows="3"></textarea>
+    </div>
+        <div class="progress">
+          <div class="progress">
+            <!-- <div [ngClass]="{ 'progress-bar': currentStep === 1, 'progress-bar-light': currentStep !== 1 }"></div>
+            <div [ngClass]="{ 'progress-bar': currentStep === 2, 'progress-bar-light': currentStep !== 2 }"></div> -->
+            <div [ngClass]="{ 'progress-bar': currentStep === 3, 'progress-bar-light': currentStep !== 3 }"></div>
+          </div>
+        </div>
+    <button type="submit" class="btn btn-primary">Soumettre</button>
+    <button type="button" class="btn btn-secondary" (click)="prevStep()">Retour</button>
+  </form>
+</div>

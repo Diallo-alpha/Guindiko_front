@@ -1,0 +1,75 @@
+.content {
+  padding: 2rem;
+}
+.content h1 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+.content h2 {
+  font-size: 1.25rem;
+  color: #6c757d;
+}
+.content img {
+  width: 100%;
+  border-radius: 0.5rem;
+}
+.content .likes {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+}
+.content .likes i {
+  color: #ff4500;
+  margin-right: 0.5rem;
+}
+.content .likes span {
+  font-size: 1rem;
+}
+.content p {
+  margin-top: 1rem;
+  line-height: 1.5;
+}
+.comments {
+  margin-top: 2rem;
+}
+.comments h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.comment {
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+}
+.comment h4 {
+  font-size: 1rem;
+  font-weight: bold;
+}
+.comment p {
+  margin-top: 0.5rem;
+  color: #6c757d;
+}
+.suggestion-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+.card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+.card-text {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+.card-author {
+  font-size: 0.875rem;
+  font-weight: bold;
+}
+.card {
+  margin-bottom: 1rem;
+}
+.card-body {
+  padding-left: 0.5rem;
+}

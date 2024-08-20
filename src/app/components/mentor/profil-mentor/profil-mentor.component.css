@@ -1,0 +1,50 @@
+.profile-container {
+  display: flex;
+  align-items: left;
+  padding: 20px;
+  max-width: 1000px;
+  margin-left: -1vh;
+  margin-top: 2.8vh;
+}
+.profile-image {
+  border-radius: 50%;
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+}
+.profile-details {
+  margin-left: 50px;
+  flex: 1;
+}
+.profile-details h1 {
+  font-size: 2em;
+  font-weight: bold;
+}
+.profile-details p {
+  color: #6c757d;
+}
+.profile-details .experience {
+  color: #8a2be2;
+}
+.profile-details .members {
+  font-weight: bold;
+}
+.profile-details .request {
+  display: flex;
+  align-items: center;
+  color: #6c757d;
+  justify-content: space-between;
+}
+.profile-details .request i {
+  margin-right: 5px;
+}
+.buttons {
+  margin-top: 20px;
+}
+.buttons .btn {
+  margin-right: 10px;
+}
+.btn-articles {
+  background-color: #2c001e;
+  color: white;
+}

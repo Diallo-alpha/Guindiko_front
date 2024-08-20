@@ -1,0 +1,43 @@
+.container {
+  max-width: 546px;
+  margin-top: 80px;
+  text-align: center;
+  align-items: flex-start;
+  gap: 15px;
+}
+.logo {
+  margin-bottom: 20px;
+}
+.logo img {
+  max-width: 100%;
+}
+.form-control {
+  margin-bottom: 20px;
+}
+.btn-custom {
+  background-color: #4b004b;
+  color: white;
+  width: 100%;
+  width: 546px;
+  height: 59px;
+}
+.form-label {
+  text-align: left;
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+}
+input[type="email"], input[type="password"]{
+  display: flex;
+  width: 546px;
+  height: 50px;
+  padding: 14px 27px;
+  align-items: center;
+  gap: 10px;
+  align-self: stretch;
+}
+input[type="submit"] {
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: var(--Mauve-Profond, #5C0C69);
+  }

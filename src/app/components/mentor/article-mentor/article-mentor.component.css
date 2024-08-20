@@ -1,0 +1,23 @@
+.card {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.card-title {
+  font-weight: bold;
+}
+.card-text {
+  color: #555;
+}
+.card-link {
+  color: #000;
+  font-weight: bold;
+  text-decoration: none;
+}
+.card-link:hover {
+  text-decoration: underline;
+}
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+}
