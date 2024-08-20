@@ -47,7 +47,7 @@ body {
 .sidebar nav ul li a {
   color: #000;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 15px;
   display: flex;
   align-items: center;
 }
@@ -78,6 +78,11 @@ body {
   margin-right: 8px;
 }
 
+.stat-card h3{
+  font-size: medium;
+
+}
+
 #carte {
   background-color: #5C0C69;
   color: #FFFFF0;
@@ -99,6 +104,8 @@ body {
 .table-container h2 {
   margin-bottom: 20px;
   color: #5C0C69;
+  font-size: large;
+
 }
 
 table {
