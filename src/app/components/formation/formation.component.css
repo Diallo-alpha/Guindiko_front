@@ -1,6 +1,6 @@
 .content-form{
   background-color: #E6D4F0;
-  padding: 30px;
+  /* padding: 30px; */
 }
 .content-container {
   background-color: #ffff;
@@ -9,10 +9,13 @@
   margin: 20px;
   display: flex;
   align-items: center;
+  width: 50%;
+  height: 68vh;
 }
 .text-content {
   flex: 1;
   padding: 20px;
+
 }
 .image-content {
   flex: 1;
@@ -57,7 +60,7 @@
   color: #000;
   margin: 0 20px;
 }
-/*detail*/
+/* detail
 .card {
   border: none;
 }
@@ -76,4 +79,4 @@
 .page-item.active .page-link {
   background-color: #fdfde3;
   border-color: #fdfde3;
-}
+} */
