@@ -45,20 +45,17 @@ export class InscriptionComponent {
 
   // Handle form submission
 // Handle form submission
-  onSubmit() {
-    if (this.currentStep === 3) {
-      this.authService.register(this.userData).subscribe({
-        next: response => {
-          console.log('Utilisateur inscrit avec succes :', response);
-        },
-        error: error => {
-          if (error.status === 422) {
-            console.error('validation erreur :', error.error);
-          } else {
-            console.error('Error inscription:', error);
+    onSubmit() {
+      if (this.currentStep === 3) {
+        console.log('Submitting user data:', this.userData);
+        this.authService.register(this.userData).subscribe({
+          next: response => {
+            console.log('Utilisateur inscrit avec succes :', response);
+          },
+          error: error => {
+            console.error('Error during registration:', error); 
           }
-        }
-      });
+        });
+      }
     }
   }
-}
