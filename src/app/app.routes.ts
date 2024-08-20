@@ -22,6 +22,7 @@ import { AbonnerComponent } from './components/dashboard-mentor/abonner/abonner.
 import { DashArticleComponent } from './components/dashboard-mentor/dash-article/dash-article.component';
 import { DetailFormationComponent } from './components/detail-formation/detail-formation.component';
 import { ProfilMentorComponents } from './components/dashboard-mentor/profil-mentore/profil-mentor.components';
+import { RoleComponent } from './components/role/role.component';
 export const routes: Routes = [
   {path: 'navbar', component:NavbarComponent},
   {path: '', component:AccueilComponent},
@@ -47,4 +48,7 @@ export const routes: Routes = [
   { path: 'navbar', component: NavbarComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'formations', component: FormationComponent },
-  { path: 'formations-admin', component: FormationAdminComponent },]
+  { path: 'formations-admin', component: FormationAdminComponent },
+  { path: 'roles', component: RoleComponent },
+
+]
