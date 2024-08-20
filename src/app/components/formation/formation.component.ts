@@ -10,8 +10,8 @@ export class FormationComponent {
 
   categories = [
     { name: 'Informatique', image: './assets/informatique.png' },
-    { name: 'Marketing', image: './assets/marketing.png' },
-    { name: 'Comptabilité', image: './assets/comptabilite.png' },
-    { name: 'Transport Logistique', image: './assets/logistique.png' },
+    { name: 'Marketing', image: './assets/informatique.png' },
+    { name: 'Comptabilité', image: './assets/informatique.png' },
+    { name: 'Transport Logistique', image: './assets/informatique.png' },
   ];
 }
