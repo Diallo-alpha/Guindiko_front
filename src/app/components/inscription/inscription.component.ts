@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../service/auth-service.service';
 import { UserModel } from '../../models/userModel';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-inscription',
@@ -16,7 +17,8 @@ export class InscriptionComponent {
 
   // User data model with initial values
   userData: UserModel = {};
-  constructor(private authService: AuthService) {}
+
+  constructor(private authService: AuthService, private router: Router) {}
 
   nextStep() {
     if (this.currentStep < 3) {
@@ -44,18 +46,27 @@ export class InscriptionComponent {
   }
 
   // Handle form submission
-// Handle form submission
-    onSubmit() {
-      if (this.currentStep === 3) {
-        console.log('Submitting user data:', this.userData);
-        this.authService.register(this.userData).subscribe({
-          next: response => {
-            console.log('Utilisateur inscrit avec succes :', response);
-          },
-          error: error => {
-            console.error('Error during registration:', error); 
-          }
-        });
-      }
+  onSubmit() {
+    if (this.currentStep === 3) {
+      console.log('donner sommis:', this.userData); // Log user data submission
+
+      this.authService.register(this.userData).subscribe({
+        next: (response: any) => {
+          console.log('Utilisateur inscrit avec succes :', response);
+
+          // Store the token and user info in local storage
+          localStorage.setItem('Token', JSON.stringify(response.token));
+          localStorage.setItem('User', JSON.stringify(response.user));
+
+          // Navigate to a different route after successful registration
+          this.router.navigateByUrl('/');
+
+          console.log('Redirection effectuée après inscription réussie');
+        },
+        error: error => {
+          console.error('Error during registration:', error); // Log any errors
+        }
+      });
     }
   }
+}
