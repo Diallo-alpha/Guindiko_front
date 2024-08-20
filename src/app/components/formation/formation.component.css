@@ -50,7 +50,8 @@ body {
     font-size: 18px;
     display: flex;
     align-items: center;
-    padding: 20px;
+    padding-left: 10px;
+    margin-bottom: 1px;
 }
 
 .sidebar nav ul li a img {
