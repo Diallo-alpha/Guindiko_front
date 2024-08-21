@@ -1,7 +1,5 @@
 import { Routes } from '@angular/router';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { DashboardAdminComponent } from './components/dashboard-admin/dashboard-admin.component';
-import { FormationAdminComponent } from './components/admin-formation/formation/formation.component';
 import { AccueilComponent } from './components/accueil/accueil.component';
 import { FormationComponent } from './components/formation/formation.component';
 import { ArticlesComponent } from './components/articles/articles.component';
@@ -22,7 +20,6 @@ import { AbonnerComponent } from './components/dashboard-mentor/abonner/abonner.
 import { DashArticleComponent } from './components/dashboard-mentor/dash-article/dash-article.component';
 import { DetailFormationComponent } from './components/detail-formation/detail-formation.component';
 import { ProfilMentorComponents } from './components/dashboard-mentor/profil-mentore/profil-mentor.components';
-import { RoleComponent } from './components/role/role.component';
 export const routes: Routes = [
   {path: 'navbar', component:NavbarComponent},
   {path: '', component:AccueilComponent},
@@ -40,15 +37,9 @@ export const routes: Routes = [
   {path: 'session-mentor', component:SessionComponent},
   {path: 'creer-session', component:CreerSessionComponent},
   {path: 'creer-article', component:CreerArticleComponent},
-  {path: 'dashboard-mentor', component:DashboardComponent},
+  {path:  'dashboard-mentor', component:DashboardComponent},
   {path: 'abonner-mentor', component:AbonnerComponent},
   {path: 'article-dashboard', component:DashArticleComponent},
   {path: 'detail-formation', component:DetailFormationComponent},
-  {path: 'modifier/profile-mentor', component:ProfilMentorComponents},
-  { path: 'navbar', component: NavbarComponent },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'formations', component: FormationComponent },
-  { path: 'formations-admin', component: FormationAdminComponent },
-  { path: 'roles', component: RoleComponent },
-
-]
+  {path: 'modifier/profile-mentor', component:ProfilMentorComponents}
+];
