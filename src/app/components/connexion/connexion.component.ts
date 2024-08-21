@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../../service/auth-service.service'; // Adjust the import path if necessary
-import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from '../../service/auth-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-connexion',
@@ -12,7 +12,6 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./connexion.component.css']
 })
 export class ConnexionComponent {
-  // Define an object to hold the form data
   userobject = {
     email: '',
     password: ''
@@ -20,28 +19,33 @@ export class ConnexionComponent {
 
   constructor(private authService: AuthService, private router: Router) {}
 
-  // Method to handle the login process
   connexion() {
-    console.log(this.userobject); // Log the user input for debugging
-
     if (this.userobject.email && this.userobject.password) {
-      console.log("slamm"); // Log to confirm that the function is executing
-
-      this.authService.login(this.userobject).subscribe(
-        (response: any) => {
-          console.log('Token:', response.access_token);
+      this.authService.login(this.userobject).subscribe({
+        next: (response: any) => {
+          console.log('Login response:', response);
 
           if (response.user) {
-            // Store the token and user info in local storage
-            localStorage.setItem('Token', JSON.stringify(response.access_token));
-            this.router.navigateByUrl('/');
-            console.log('Connexion réussie et redirection effectuée');
+            this.authService.storeUserData(response.user, response.access_token);
+
+            const roles = response.user.roles;
+            console.log('User roles:', roles);
+
+            if (roles.includes('admin')) {
+              this.router.navigateByUrl('/admin-dashboard');
+            } else if (roles.includes('mentor')) {
+              this.router.navigateByUrl('/dashboard-mentor');
+            } else if (roles.includes('mentee')) {
+              this.router.navigateByUrl('/');
+            } else {
+              this.router.navigateByUrl('/inscription');
+            }
           }
         },
-        (error) => {
-          console.error('Erreur lors de la connexion:', error);
+        error: error => {
+          console.error('Error during login:', error);
         }
-      );
+      });
     }
   }
 }

@@ -20,9 +20,11 @@ import { AbonnerComponent } from './components/dashboard-mentor/abonner/abonner.
 import { DashArticleComponent } from './components/dashboard-mentor/dash-article/dash-article.component';
 import { DetailFormationComponent } from './components/detail-formation/detail-formation.component';
 import { ProfilMentorComponents } from './components/dashboard-mentor/profil-mentore/profil-mentor.components';
+import { DashboardAdminComponent } from './components/dashboard-admin/dashboard-admin.component';
 export const routes: Routes = [
+  {path: '', pathMatch: 'full', redirectTo: 'accueil'},
   {path: 'navbar', component:NavbarComponent},
-  {path: '', component:AccueilComponent},
+  {path: 'accueil', component:AccueilComponent},
   {path: 'formations', component:FormationComponent},
   {path: 'article', component:ArticlesComponent},
   {path: 'mentor', component:MenteurComponent},
@@ -37,9 +39,10 @@ export const routes: Routes = [
   {path: 'session-mentor', component:SessionComponent},
   {path: 'creer-session', component:CreerSessionComponent},
   {path: 'creer-article', component:CreerArticleComponent},
-  {path:  'dashboard-mentor', component:DashboardComponent},
+  {path: 'dashboard-mentor', component:DashboardComponent},
   {path: 'abonner-mentor', component:AbonnerComponent},
   {path: 'article-dashboard', component:DashArticleComponent},
   {path: 'detail-formation', component:DetailFormationComponent},
-  {path: 'modifier/profile-mentor', component:ProfilMentorComponents}
+  {path: 'modifier/profile-mentor', component:ProfilMentorComponents},
+  {path: 'admin-dashboard', component:DashboardAdminComponent}
 ];
