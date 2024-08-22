@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { NavbarComponent } from './components/navbar/navbar.component';
+<<<<<<< HEAD
 import { AccueilComponent } from './components/accueil/accueil.component';
 import { FormationComponent } from './components/formation/formation.component';
 import { ArticlesComponent } from './components/articles/articles.component';
@@ -42,4 +43,12 @@ export const routes: Routes = [
   {path: 'article-dashboard', component:DashArticleComponent},
   {path: 'detail-formation', component:DetailFormationComponent},
   {path: 'modifier/profile-mentor', component:ProfilMentorComponents}
+// import { DashboardComponent } from './components/dashboard/dashboard.component';
+// import { FormationComponent } from './components/formation/formation.component';
+
+// export const routes: Routes = [
+//   { path: 'navbar', component: NavbarComponent },
+//   { path: 'dashboard', component: DashboardComponent },
+//   { path: 'formations', component: FormationComponent },
+
 ];
