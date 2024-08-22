@@ -8,7 +8,7 @@ import { ProfilMentorComponent } from '../profil-mentor/profil-mentor.component'
   imports: [NavbarComponent, ProfilMentorComponent],
   templateUrl: './article-mentor.component.html',
   styleUrl: './article-mentor.component.css'
-})
+}) 
 export class ArticleMentorComponent {
 
 }
