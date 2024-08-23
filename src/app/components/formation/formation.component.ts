@@ -4,6 +4,7 @@ import { FooterComponent } from '../footer/footer.component';
 import { CommonModule } from '@angular/common';
 import { DonneePublicService } from '../../service/donnee-public.service';
 import { DomainModel } from '../../models/DomainModel';
+import { FormationModel } from '../../models/FormationModel';
 
 @Component({
   selector: 'app-formation',
@@ -14,12 +15,15 @@ import { DomainModel } from '../../models/DomainModel';
 })
 export class FormationComponent implements OnInit {
   domains: DomainModel[] = [];
-  startIndex: number = 0; 
+  formations: FormationModel[] = [];
+  selectedDomainId: number = 1;
+  startIndex: number = 0;
 
   constructor(private donneePublicService: DonneePublicService) {}
 
   ngOnInit(): void {
     this.loadDomains();
+    this.loadFormations(this.selectedDomainId);
   }
 
   // Charger les domaines via le service
@@ -37,6 +41,29 @@ export class FormationComponent implements OnInit {
         console.error('Erreur lors du chargement des domaines :', error);
       }
     });
+  }
+   // Charger les formations d'un domaine sélectionné
+   loadFormations(domainId: number): void {
+    this.donneePublicService.getFormationsByDomain(domainId).subscribe({
+      next: (response: any) => {
+        console.log('Formations récupérées:', response);
+        if (response && Array.isArray(response.data)) {
+          this.formations = response.data; // S'assurer que c'est bien un tableau
+        } else {
+          console.error('Les données de formation reçues ne sont pas un tableau');
+        }
+      },
+      error: (error) => {
+        console.error('Erreur lors du chargement des formations :', error);
+      }
+    });
+  }
+
+
+  //cliquer sur un domain
+  onDomainClick(domainId: number): void {
+    this.selectedDomainId = domainId;
+    this.loadFormations(domainId);
   }
   // Fonction pour passer aux 5 domaines précédents
   prev(): void {
