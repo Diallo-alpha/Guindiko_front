@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { NavbarComponent } from './components/navbar/navbar.component';
-<<<<<<< HEAD
+
+
 import { AccueilComponent } from './components/accueil/accueil.component';
 import { FormationComponent } from './components/formation/formation.component';
 import { ArticlesComponent } from './components/articles/articles.component';
@@ -21,9 +22,12 @@ import { AbonnerComponent } from './components/dashboard-mentor/abonner/abonner.
 import { DashArticleComponent } from './components/dashboard-mentor/dash-article/dash-article.component';
 import { DetailFormationComponent } from './components/detail-formation/detail-formation.component';
 import { ProfilMentorComponents } from './components/dashboard-mentor/profil-mentore/profil-mentor.components';
+import { DashboardAdminComponent } from './components/dashboard-admin/dashboard-admin.component';
+import { AdminGuard } from './Guard/admin-guard.guard';
 export const routes: Routes = [
+  {path: '', pathMatch: 'full', redirectTo: 'accueil'},
   {path: 'navbar', component:NavbarComponent},
-  {path: '', component:AccueilComponent},
+  {path: 'accueil', component:AccueilComponent},
   {path: 'formations', component:FormationComponent},
   {path: 'article', component:ArticlesComponent},
   {path: 'mentor', component:MenteurComponent},
@@ -42,7 +46,7 @@ export const routes: Routes = [
   {path: 'abonner-mentor', component:AbonnerComponent},
   {path: 'article-dashboard', component:DashArticleComponent},
   {path: 'detail-formation', component:DetailFormationComponent},
-  {path: 'modifier/profile-mentor', component:ProfilMentorComponents}
+  {path: 'modifier/profile-mentor', component:ProfilMentorComponents},
 // import { DashboardComponent } from './components/dashboard/dashboard.component';
 // import { FormationComponent } from './components/formation/formation.component';
 
@@ -51,4 +55,6 @@ export const routes: Routes = [
 //   { path: 'dashboard', component: DashboardComponent },
 //   { path: 'formations', component: FormationComponent },
 
+  {path: 'modifier/profile-mentor', component:ProfilMentorComponents},
+  {path: 'admin-dashboard', component:DashboardAdminComponent, canActivate:[AdminGuard]}
 ];
