@@ -23,14 +23,23 @@
 <!--nos formation -->
 <div class="container mt-5">
   <h1 class="title text-start">Nos Formations</h1>
-  <div class="d-flex justify-content-center align-items-center mt-4">
-      <button class="btn btn-custom">INFORMATIQUE</button>
-      <button class="btn btn-outline-custom">INFORMATIQUE</button>
-      <button class="btn btn-outline-custom">COMPTABILITE</button>
-      <button class="btn btn-outline-custom">INFORMATIQUE</button>
-      <button class="btn btn-outline-custom">FISCALITE</button>
+
+  <div class="d-flex justify-content-between align-items-center mt-4">
+    <!-- Bouton Précédent -->
+    <button class="btn btn-outline-primary" (click)="prev()">Précédent</button>
+
+    <!-- Boucle pour afficher chaque domaine (max 5 à la fois) -->
+    <div class="d-flex justify-content-center align-items-center">
+      <button *ngFor="let domain of domains.slice(startIndex, startIndex + 5)" class="btn btn-outline-custom mx-2">
+        {{ domain.nom }}
+      </button>
+    </div>
+
+    <!-- Bouton Suivant -->
+    <button class="btn btn-outline-primary" (click)="next()">Suivant</button>
   </div>
 </div>
+
 <!-- formation details -->
 <div class="container py-5">
   <div class="row row-cols-1 row-cols-md-4 g-2">
