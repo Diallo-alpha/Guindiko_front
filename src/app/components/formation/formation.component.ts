@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { FooterComponent } from '../footer/footer.component';
 import { CommonModule } from '@angular/common';
-import { DonneePublicService } from '../../service/donnee-public.service';
+import { DonneePublicService } from '../../services/donnee-public.service';
 import { DomainModel } from '../../models/DomainModel';
 import { FormationModel } from '../../models/FormationModel';
 
