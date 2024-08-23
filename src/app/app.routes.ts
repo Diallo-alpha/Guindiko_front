@@ -21,6 +21,7 @@ import { DashArticleComponent } from './components/dashboard-mentor/dash-article
 import { DetailFormationComponent } from './components/detail-formation/detail-formation.component';
 import { ProfilMentorComponents } from './components/dashboard-mentor/profil-mentore/profil-mentor.components';
 import { DashboardAdminComponent } from './components/dashboard-admin/dashboard-admin.component';
+import { AdminGuard } from './Guard/admin-guard.guard';
 export const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'accueil'},
   {path: 'navbar', component:NavbarComponent},
@@ -44,5 +45,5 @@ export const routes: Routes = [
   {path: 'article-dashboard', component:DashArticleComponent},
   {path: 'detail-formation', component:DetailFormationComponent},
   {path: 'modifier/profile-mentor', component:ProfilMentorComponents},
-  {path: 'admin-dashboard', component:DashboardAdminComponent}
+  {path: 'admin-dashboard', component:DashboardAdminComponent, canActivate:[AdminGuard]}
 ];

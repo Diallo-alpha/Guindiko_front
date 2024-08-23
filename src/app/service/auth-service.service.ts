@@ -32,13 +32,12 @@ export class AuthService {
       map((response: any) => {
         const user = response.user;
         if (user) {
-          const roleNames = user.roles.map((role: any) => role.name); 
-
+          const roleNames = user.roles?.map((role: any) => role.name) || [];
           return {
             ...response,
             user: {
               ...user,
-              role: roleNames[0] || null,
+              role: roleNames[0] || null, // Stockez le premier rôle ou null
             }
           };
         }
@@ -48,21 +47,36 @@ export class AuthService {
     );
   }
 
-  // Obtenir le rôle de l'utilisateur à partir des données utilisateur stockées
-  getUserRole(): string | null {
-    const storedUser = localStorage.getItem('User');
-    if (storedUser) {
+// Obtenir les rôles de l'utilisateur à partir des données utilisateur stockées
+getUserRole(): string[] | null {
+  const storedUser = localStorage.getItem('User');
+
+  if (storedUser) {
+    try {
       const user = JSON.parse(storedUser);
-      return user.role || null;
+      // Assurez-vous que roles est un tableau
+      return Array.isArray(user.roles) ? user.roles : null;
+    } catch (error) {
+      console.error('Erreur de parsing des données utilisateur depuis le localStorage:', error);
+      return null;
     }
-    return null;
   }
 
-  // Stocker les données utilisateur (y compris le token) dans le localStorage
-  storeUserData(user: any, token: string): void {
-    localStorage.setItem('User', JSON.stringify(user));
-    localStorage.setItem('Token', token);
-  }
+  console.warn('Aucun utilisateur stocké dans le localStorage');
+  return null;
+}
+
+// Stocker les données utilisateur (y compris le token) dans le localStorage
+storeUserData(user: any, token: string): void {
+  // Assurez-vous que le rôle est stocké correctement
+  const userData = {
+    ...user,
+    role: user.role || null // Assurez-vous que role est défini, même s'il est null
+  };
+
+  localStorage.setItem('User', JSON.stringify(userData));
+  localStorage.setItem('Token', token);
+}
 
   // Vérifier si l'utilisateur est authentifié
   isAuthenticated(): boolean {
