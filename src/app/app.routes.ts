@@ -24,6 +24,7 @@ import { DashboardAdminComponent } from './components/dashboard-admin/dashboard-
 import { AdminGuard } from './Guard/admin-guard.guard';
 import { FormationAdminComponent } from './components/admin-formation/formation/formation.component';
 import { MentorGuard } from './Guard/mentor-guard.guard';
+import { ModifierArticleComponent } from './components/dashboard-mentor/modifier-article/modifier-article.component';
 export const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'accueil'},
   {path: 'navbar', component:NavbarComponent},
@@ -43,6 +44,7 @@ export const routes: Routes = [
   {path: 'creer-session', component:CreerSessionComponent, canActivate:[MentorGuard]},
   {path: 'creer-article', component:CreerArticleComponent, canActivate:[MentorGuard]},
   {path: 'dashboard-mentor', component:DashboardComponent, canActivate:[MentorGuard]},
+  {path: 'modifier-article/:id', component:ModifierArticleComponent, canActivate:[MentorGuard]},
   {path: 'abonner-mentor', component:AbonnerComponent, canActivate:[MentorGuard]},
   {path: 'article-dashboard', component:DashArticleComponent, canActivate:[MentorGuard]},
   {path: 'detail-formation', component:DetailFormationComponent},

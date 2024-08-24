@@ -20,7 +20,7 @@ export class MentorService {
   }
 
   // Méthode pour obtenir les articles créés par le mentor connecté
-  getArticles(mentorId: number): Observable<ArticleModel[]> {
+  getArticlesMentore(mentorId: number): Observable<ArticleModel[]> {
     const headers = this.createHeaders();
     return this.http.get<ArticleModel[]>(`${apiUrl}/mentor/${mentorId}/articles`, { headers });
   }
@@ -36,6 +36,10 @@ export class MentorService {
     return this.http.patch(`${apiUrl}/modifier/article/${articleId}`, articleData, { headers });
   }
 
+  getArticleById(articleId: number): Observable<ArticleModel> {
+    const headers = this.createHeaders();
+    return this.http.get<ArticleModel>(`${apiUrl}/articles/${articleId}`, { headers });
+  }
   supprimerArticle(articleId: number): Observable<void> {
     const headers = this.createHeaders();
     return this.http.delete<void>(`${apiUrl}/supprimer/${articleId}/article`, { headers });
