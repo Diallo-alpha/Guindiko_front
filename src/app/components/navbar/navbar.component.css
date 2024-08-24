@@ -12,6 +12,7 @@
 .header h1 {
   margin: 0;
   font-size: 24px;
+  cursor: pointer;
 }
 .header nav a {
   color: white;
