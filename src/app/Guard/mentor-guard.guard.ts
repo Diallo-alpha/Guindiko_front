@@ -1,6 +1,6 @@
 import { inject } from "@angular/core";
 import { Router } from "@angular/router";
-import { AuthService } from "../service/auth-service.service";
+import { AuthService } from "../services/auth-service.service";
 
 export const MentorGuard = () => {
 
@@ -16,7 +16,7 @@ export const MentorGuard = () => {
     return true; // Si l'utilisateur a le rôle, on retourne `true`
   }else{
     console.log('L\'utilisateur n\'a pas le rôle de mentor ou les rôles sont null');
-    router.navigateByUrl('/'); 
+    router.navigateByUrl('/');
     return false;
   }
 }

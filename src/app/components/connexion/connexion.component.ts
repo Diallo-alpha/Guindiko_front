@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AuthService } from '../../service/auth-service.service';
+import { AuthService } from '../../services/auth-service.service';
 import { Router, RouterModule } from '@angular/router';
+
 
 @Component({
   selector: 'app-connexion',
