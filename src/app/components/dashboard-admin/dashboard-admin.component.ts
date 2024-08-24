@@ -1,40 +1,38 @@
 import { Component, OnInit } from '@angular/core';
-import { AdminstrateurService } from '../../adminstrateur.service';
+import { AdminService } from '../../services/admin.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard-admin.component.html',
-  styleUrls: ['./dashboard-admin.component.css']
+  styleUrls: ['./dashboard-admin.component.css'],
+  standalone: true,
+  imports: [CommonModule] 
+
 })
 export class DashboardAdminComponent implements OnInit {
   requests: any[] = [];
 
-  constructor(private adminService: AdminstrateurService) {}
+  constructor(private adminService: AdminService) {}
 
   ngOnInit() {
     this.fetchMentorRequests();
   }
 
-  fetchMentorRequests() {
-    this.adminService.getMentorRequests().subscribe(
-      (data: any[]) => {
-        this.requests = data;
-      },
-      (error) => {
-        console.error('Error fetching mentor requests:', error);
-      }
-    );
-  }
+// Supposons que l'API renvoie un objet avec les demandes sous la propriété `demandes`
+fetchMentorRequests() {
+  this.adminService.obtenirDemandesMentor().subscribe(
+    (data: any) => {
+      console.log('Response from API:', data);
+      // Utilisez `data.demandes` pour accéder aux données
+      this.requests = data.demandes || [];
+    },
+    (error) => {
+      console.error('Error fetching mentor requests:', error);
+    }
+  );
+}
 
-  viewDetails(request: any) {
-    // Logic for viewing details
-  }
 
-  editRequest(request: any) {
-    // Logic for editing the request
-  }
 
-  deleteRequest(request: any) {
-    // Logic for deleting the request
-  }
 }
