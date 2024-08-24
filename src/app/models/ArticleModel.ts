@@ -1,5 +1,6 @@
 import { CommentaireModel } from './CommentaireModel';
 export interface ArticleModel{
+  id: number;
   user_id?: number;
   titre?: string;
   description?: string;
