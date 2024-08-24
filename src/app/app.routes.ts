@@ -22,6 +22,8 @@ import { DetailFormationComponent } from './components/detail-formation/detail-f
 import { ProfilMentorComponents } from './components/dashboard-mentor/profil-mentore/profil-mentor.components';
 import { DashboardAdminComponent } from './components/dashboard-admin/dashboard-admin.component';
 import { AdminGuard } from './Guard/admin-guard.guard';
+import { FormationAdminComponent } from './components/admin-formation/formation/formation.component';
+import { MentorGuard } from './Guard/mentor-guard.guard';
 export const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'accueil'},
   {path: 'navbar', component:NavbarComponent},
@@ -38,12 +40,13 @@ export const routes: Routes = [
   {path: 'connexion', component:ConnexionComponent},
   {path: 'sidebar', component:SidebarComponent},
   {path: 'session-mentor', component:SessionComponent},
-  {path: 'creer-session', component:CreerSessionComponent},
+  {path: 'creer-session', component:CreerSessionComponent, canActivate:[MentorGuard]},
   {path: 'creer-article', component:CreerArticleComponent},
   {path: 'dashboard-mentor', component:DashboardComponent},
   {path: 'abonner-mentor', component:AbonnerComponent},
   {path: 'article-dashboard', component:DashArticleComponent},
   {path: 'detail-formation', component:DetailFormationComponent},
   {path: 'modifier/profile-mentor', component:ProfilMentorComponents},
-  {path: 'admin-dashboard', component:DashboardAdminComponent, canActivate:[AdminGuard]}
+  {path: 'admin-dashboard', component:DashboardAdminComponent, canActivate:[AdminGuard]},
+  {path: 'admin-formation', component:FormationAdminComponent}
 ];
