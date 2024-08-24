@@ -21,37 +21,34 @@ import { DashboardComponent } from './components/dashboard-mentor/dashboard/dash
 import { AbonnerComponent } from './components/dashboard-mentor/abonner/abonner.component';
 import { DashArticleComponent } from './components/dashboard-mentor/dash-article/dash-article.component';
 import { DetailFormationComponent } from './components/detail-formation/detail-formation.component';
-import { ProfilMentorComponents } from './components/dashboard-mentor/profil-mentore/profil-mentor.components';
+// import { ProfilMentorComponent as ProfilMentorComponent } from './components/dashboard-mentor/profil-mentore/profil-mentor.components';
 import { RoleComponent } from './components/role/role.component';
 import { PermissionComponent } from './components/permission/permission.component';
+
 export const routes: Routes = [
-  {path: 'navbar', component:NavbarComponent},
-  {path: '', component:AccueilComponent},
-  {path: 'formations', component:FormationComponent},
-  {path: 'article', component:ArticlesComponent},
-  {path: 'mentor', component:MenteurComponent},
-  {path: 'details-article', component:DetailsArticleComponent},
-  {path: 'profile', component:ProfilMentorComponent},
-  {path: 'session', component:SessionMentorComponent},
-  {path: 'article/mentor', component:ArticleMentorComponent},
-  {path: 'abonner/mentore', component:AbonnerMentorComponent},
-  {path: 'inscription', component:InscriptionComponent},
-  {path: 'connexion', component:ConnexionComponent},
-  {path: 'sidebar', component:SidebarComponent},
-  {path: 'session-mentor', component:SessionComponent},
-  {path: 'creer-session', component:CreerSessionComponent},
-  {path: 'creer-article', component:CreerArticleComponent},
-  {path: 'dashboard-mentor', component:DashboardComponent},
-  {path: 'abonner-mentor', component:AbonnerComponent},
-  {path: 'article-dashboard', component:DashArticleComponent},
-  {path: 'detail-formation', component:DetailFormationComponent},
-  {path: 'modifier/profile-mentor', component:ProfilMentorComponents},
   { path: 'navbar', component: NavbarComponent },
-  { path: 'dashboard', component: DashboardComponent },
+  { path: 'dashboard', component: DashboardAdminComponent },
   { path: 'formations', component: FormationComponent },
   { path: 'formations-admin', component: FormationAdminComponent },
+  { path: 'article', component: ArticlesComponent },
+  { path: 'mentor', component: MenteurComponent },
+  { path: 'details-article', component: DetailsArticleComponent },
+  { path: 'profile', component: ProfilMentorComponent },
+  { path: 'session', component: SessionMentorComponent },
+  { path: 'article/mentor', component: ArticleMentorComponent },
+  { path: 'abonner/mentore', component: AbonnerMentorComponent },
+  { path: 'inscription', component: InscriptionComponent },
+  { path: 'connexion', component: ConnexionComponent },
+  { path: 'sidebar', component: SidebarComponent },
+  { path: 'session-mentor', component: SessionComponent },
+  { path: 'creer-session', component: CreerSessionComponent },
+  { path: 'creer-article', component: CreerArticleComponent },
+  { path: 'dashboard-mentor', component: DashboardComponent },
+  { path: 'abonner-mentor', component: AbonnerComponent },
+  { path: 'article-dashboard', component: DashArticleComponent },
+  { path: 'detail-formation', component: DetailFormationComponent },
+  { path: 'modifier/profile-mentor', component: ProfilMentorComponent },
   { path: 'roles', component: RoleComponent },
   { path: 'permissions', component: PermissionComponent },
-
-
-]
+  { path: '', component: AccueilComponent },  // Mettre cette route à la fin
+];

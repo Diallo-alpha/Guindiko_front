@@ -1,15 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AdminstrateurService } from '../../adminstrateur.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard-admin.component.html',
   styleUrls: ['./dashboard-admin.component.css']
 })
-export class DashboardAdminComponent {
-  requests = [
-    { name: 'Adiaratou Oumy Fall', email: 'falladiaratouumy@gmail.com', phone: '+221 77 812 84 26', diploma: 'Ingénieur en informatique' },
-    // Ajoutez d'autres demandes ici
-  ];
+export class DashboardAdminComponent implements OnInit {
+  requests: any[] = [];
+
+  constructor(private adminService: AdminstrateurService) {}
+
+  ngOnInit() {
+    this.fetchMentorRequests();
+  }
+
+  fetchMentorRequests() {
+    this.adminService.getMentorRequests().subscribe(
+      (data: any[]) => {
+        this.requests = data;
+      },
+      (error) => {
+        console.error('Error fetching mentor requests:', error);
+      }
+    );
+  }
 
   viewDetails(request: any) {
     // Logic for viewing details

@@ -205,3 +205,70 @@ body {
   background-color: #fdfde3;
   border-color: #fdfde3;
 }
+
+.header1 h1 {
+  margin-bottom: 30px;
+  font-size: 24px;
+  color: #5A2961;
+}
+form{ 
+  height: auto;
+}
+
+form .infos {
+  display: flex;
+  flex-direction: column;
+}
+
+form .infos .row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+form .infos .libelle,
+form .infos .categorie {
+  flex: 1;
+  margin-right: 20px;
+}
+
+form .infos .libelle:last-child,
+form .infos .categorie:last-child {
+  margin-right: 0;
+}
+
+form .infos label {
+  font-size: 16px;
+  color: #5A2961;
+  margin-bottom: 5px;
+  display: block;
+}
+
+form .infos input[type="text"],
+form .infos select {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #CCC;
+  border-radius: 5px;
+  background-color: #F9F9F9;
+}
+
+form textarea {
+  resize: vertical;
+}
+
+form input[type="button"] {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #FFFFFF;
+  background-color: #5A2961;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+form input[type="button"]:hover {
+  background-color: #7B437A;
+}
