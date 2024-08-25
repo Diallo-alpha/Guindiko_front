@@ -53,3 +53,45 @@
   border-radius: 5px;
   font-size: 14px;
 }
+
+.content {
+  padding: 20px;
+}
+
+.btn {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+.sessions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.session-card {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 15px;
+  width: calc(33% - 20px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.session-card h3 {
+  margin-top: 0;
+}
+
+.resources {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.resources .btn {
+  margin-right: 10px;
+}

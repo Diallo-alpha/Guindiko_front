@@ -1,0 +1,44 @@
+<app-sidebar/>
+<div class="content">
+  <div class="profile-photo">
+    <img [src]="mentor.photoUrl" alt="Profile photo of a person" height="100" width="100" />
+    <div class="btn-modifier">
+      <button class="btn btn-primary" (click)="modifierPhoto()">Modifier la photo</button>
+      <button class="btn btn-secondary" (click)="supprimerPhoto()">Supprimer la photo</button>
+    </div>
+  </div>
+  <h3>Information profile</h3>
+  <form (ngSubmit)="enregistrerProfil()">
+    <div class="row">
+      <div class="col-md-6">
+        <label class="form-label" for="prenom">Prenom</label>
+        <input class="form-control" id="prenom" type="text" [(ngModel)]="mentor.prenom" name="prenom" />
+      </div>
+      <div class="col-md-6">
+        <label class="form-label" for="nom">Nom</label>
+        <input class="form-control" id="nom" type="text" [(ngModel)]="mentor.nom" name="nom" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <label class="form-label" for="email">Adresse email</label>
+        <input class="form-control" id="email" type="email" [(ngModel)]="mentor.email" name="email" />
+      </div>
+      <div class="col-md-6">
+        <label class="form-label" for="experience">Annee d'expérience</label>
+        <input class="form-control" id="experience" type="text" [(ngModel)]="mentor.experience" name="experience" />
+      </div>
+    </div>
+    <div class="mb-3">
+      <label class="form-label" for="biographie">Biographie</label>
+      <textarea class="form-control" id="biographie" rows="5" [(ngModel)]="mentor.biographie"
+        name="biographie"></textarea>
+    </div>
+    <div class="col-md-6">
+      <label class="form-label" for="password">Modifier mot de passe</label>
+      <input class="form-control" id="password" type="password" [(ngModel)]="mentor.password" name="password" />
+    </div>
+    <button class="btn btn-primary" type="submit">Enregistrer</button>
+    <button class="btn btn-secondary" type="button" (click)="annulerModification()">Annuler</button>
+  </form>
+</div>

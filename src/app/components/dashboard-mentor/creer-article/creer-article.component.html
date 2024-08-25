@@ -1,5 +1,5 @@
 <app-sidebar/>
-<div class="content">
+<!-- <div class="content">
   <h2>
    creer un articles
   </h2>
@@ -26,4 +26,26 @@
   <div class="form-group">
    <input type="submit" value="Publier"/>
   </div>
- </div>
+ </div> -->
+
+<app-sidebar></app-sidebar>
+<div class="content">
+  <h2>Creer un article</h2>
+  <div class="form-row">
+    <div class="form-group half-width">
+      <label for="titre">Titre</label>
+      <input id="titre" [(ngModel)]="titre" placeholder="Input description" type="text" />
+    </div>
+    <div class="form-group half-width">
+      <label for="image">Image</label>
+      <input id="image" type="file" (change)="onImageSelected($event)" />
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="description">Description</label>
+    <textarea id="description" [(ngModel)]="description" placeholder="Input description"></textarea>
+  </div>
+  <div class="form-group">
+    <input type="submit" (click)="publierArticle()" value="Publier" />
+  </div>
+</div>

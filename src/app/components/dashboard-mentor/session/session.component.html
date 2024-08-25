@@ -1,5 +1,5 @@
 <app-sidebar/>
-<div class="content">
+<!-- <div class="content">
   <a href="#" class="btn">Creer une nouvelle session</a>
   <h2>Mes Sessions</h2>
   <div class="sessions">
@@ -52,4 +52,20 @@
           </div>
       </div>
   </div>
+</div> -->
+
+<div class="content">
+  <a href="#" class="btn">Créer une nouvelle session</a>
+  <h2>Mes Sessions</h2>
+  <div class="sessions">
+    <div *ngFor="let session of sessions" class="session-card">
+      <h3>Thème: {{ session.theme }}</h3>
+      <p>{{ session.category }}</p>
+      <div class="resources">
+        <a [href]="session.resourcesLink" class="btn"><i class="fas fa-file-alt"></i> Ressources</a>
+        <span>Date: {{ session.date }} | {{ session.duration }}</span>
+      </div>
+    </div>
+  </div>
 </div>
+
