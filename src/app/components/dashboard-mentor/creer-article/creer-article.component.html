@@ -1,29 +1,42 @@
-<app-sidebar/>
+<app-sidebar></app-sidebar>
 <div class="content">
-  <h2>
-   creer un articles
-  </h2>
-  <div class="form-row">
-   <div class="form-group half-width">
-    <label for="titre">
-     Titre
-    </label>
-    <input id="titre" placeholder="Input description" type="text"/>
-   </div>
-   <div class="form-group half-width">
-    <label for="image">
-     Image
-    </label>
-    <input id="image" placeholder="Input description" type="text"/>
-   </div>
-  </div>
-  <div class="form-group">
-   <label for="description">
-    Description
-   </label>
-   <textarea id="description" placeholder="Input description"></textarea>
-  </div>
-  <div class="form-group">
-   <input type="submit" value="Publier"/>
-  </div>
- </div>
+  <h2>Créer un article</h2>
+  <form [formGroup]="articleForm" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+      <div class="form-group half-width">
+        <label for="titre">Titre</label>
+        <input id="titre" formControlName="titre" placeholder="Entrez le titre" type="text" class="form-control" />
+        <div *ngIf="articleForm.controls['titre'].invalid && articleForm.controls['titre'].touched" class="text-danger">
+          Le titre est requis.
+        </div>
+      </div>
+      <div class="form-group half-width">
+        <label for="image">Image</label>
+        <input id="image" formControlName="image" placeholder="URL de l'image" type="text" class="form-control" />
+        <div *ngIf="articleForm.controls['image'].invalid && articleForm.controls['image'].touched" class="text-danger">
+          L'image est requise.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="contenu">Description</label>
+      <textarea id="contenu" formControlName="description" placeholder="Entrez le contenu" class="form-control"></textarea>
+      <div *ngIf="articleForm.controls['description'].invalid && articleForm.controls['description'].touched" class="text-danger">
+        Le contenu est requis.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="formation_id">ID de la formation</label>
+      <input id="formation_id" formControlName="formation_id" placeholder="Entrez l'ID de la formation" type="text" class="form-control" />
+      <div *ngIf="articleForm.controls['formation_id'].invalid && articleForm.controls['formation_id'].touched" class="text-danger">
+        Veuillez entrer un ID de formation valide.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <input type="submit" value="Publier" class="btn btn-primary" [disabled]="articleForm.invalid" />
+    </div>
+  </form>
+</div>

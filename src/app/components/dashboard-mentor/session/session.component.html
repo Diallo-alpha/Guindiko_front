@@ -1,55 +1,42 @@
-<app-sidebar/>
+<app-sidebar></app-sidebar>
 <div class="content">
-  <a href="#" class="btn">Creer une nouvelle session</a>
+  <a href="#" class="btn">Créer une nouvelle session</a>
   <h2>Mes Sessions</h2>
   <div class="sessions">
-      <div class="session-card">
-          <h3>Thème: What is Lorem Ipsum</h3>
-          <p>Informatique</p>
-          <div class="resources">
-              <a href="#" class="btn"><i class="fas fa-file-alt"></i> Ressources</a>
-              <span>Date: 10/01/2024 | 3h</span>
-          </div>
+    <div *ngFor="let session of sessions" class="session-card">
+      <h3>Formation: {{ getFormationName(session.formation_id) }}</h3>
+      <p>Statut: {{ session.statut }}</p>
+      <p>Mentees: {{ session.mentees }}</p>
+      <div class="resources">
+        <a href="#" class="btn" (click)="openModal($event, session)"><i class="fas fa-file-alt"></i> Ressources</a>
+        <span>Date: {{ session.date | date:'dd/MM/yyyy' }} | Durée: {{ session.duree }}h</span>
       </div>
-      <div class="session-card">
-          <h3>Thème: What is Lorem Ipsum</h3>
-          <p>Informatique</p>
-          <div class="resources">
-              <a href="#" class="btn"><i class="fas fa-file-alt"></i> Ressources</a>
-              <span>Date: 10/01/2024 | 3h</span>
-          </div>
-      </div>
-      <div class="session-card">
-          <h3>Thème: What is Lorem Ipsum</h3>
-          <p>Informatique</p>
-          <div class="resources">
-              <a href="#" class="btn"><i class="fas fa-file-alt"></i> Ressources</a>
-              <span>Date: 10/01/2024 | 3h</span>
-          </div>
-      </div>
-      <div class="session-card">
-          <h3>Thème: What is Lorem Ipsum</h3>
-          <p>Informatique</p>
-          <div class="resources">
-              <a href="#" class="btn"><i class="fas fa-file-alt"></i> Ressources</a>
-              <span>Date: 10/01/2024 | 3h</span>
-          </div>
-      </div>
-      <div class="session-card">
-          <h3>Thème: What is Lorem Ipsum</h3>
-          <p>Informatique</p>
-          <div class="resources">
-              <a href="#" class="btn"><i class="fas fa-file-alt"></i> Ressources</a>
-              <span>Date: 10/01/2024 | 3h</span>
-          </div>
-      </div>
-      <div class="session-card">
-          <h3>Thème: What is Lorem Ipsum</h3>
-          <p>Informatique</p>
-          <div class="resources">
-              <a href="#" class="btn"><i class="fas fa-file-alt"></i> Ressources</a>
-              <span>Date: 10/01/2024 | 3h</span>
-          </div>
-      </div>
+    </div>
   </div>
 </div>
+
+<!-- Modal Structure -->
+<div *ngIf="showModal" id="myModal" class="modal" (click)="closeModal()">
+  <div class="modal-content" (click)="stopPropagation($event)">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <h1>Ressources</h1>
+    <form action="">
+    <label for="titre">Titre</label>
+    <input type="text" id="titre" class="form-control" placeholder="Input title">
+    <label for="link-input">Insérer le lien</label>
+    <input type="text" id="link-input" class="form-control" placeholder="Input description">
+    <div class="link-item">
+      <i class="fas fa-link"></i>
+      <a href="#">Commissariat de Tampy - S02- E30 (youtube.com)</a>
+    </div>
+    <div class="link-item">
+      <i class="fas fa-link"></i>
+      <a href="#">Commissariat de Tampy - S02- E30 (youtube.com)</a>
+    </div>
+    <button type="submit" class="btn btn-primary">Ajouter</button>
+  </form>
+  </div>
+</div>
+
+
+

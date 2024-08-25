@@ -1,5 +1,5 @@
 export interface FormationModel{
-  id?: number;
+  id: number;
   images?: string;
   nom?: string;
   description?: string;

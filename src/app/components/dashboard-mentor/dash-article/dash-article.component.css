@@ -1,44 +1,97 @@
+/* Mise à jour du style .content */
 .content {
+/* <<<<<<< HEAD
   margin-left:  16em;
   padding: 5em 2em;
+======= */
+  margin-top: 10vh;
+  margin-left: 22vh;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
-.content .edit-button {
+
+/* Conteneur des cartes d'articles */
+.article-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 100%;
+  justify-content: center;
+}
+
+/* Style pour chaque carte d'article */
+.article-card {
+  flex: 1 1 calc(33.333% - 40px); /* 3 cartes par ligne avec 20px de gap */
+  max-width: 25%;
+  background: #f4f4f4;
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Boutons Modifier et Supprimer */
+.edit-button, .delete-button {
   background-color: #5b0a87;
   color: white;
-  padding: 10px 20px;
+  padding: 10px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
-.content .article-title {
-  font-size: 32px;
+
+.delete-button {
+  background-color: #ff4d4d;
+}
+
+/* Style pour le titre de l'article */
+.article-title {
+  font-size: 24px;
   font-weight: bold;
   margin-bottom: 10px;
 }
-.content .article-meta {
-  font-size: 18px;
+
+/* Style pour les métadonnées de l'article */
+.article-meta {
+  font-size: 16px;
   color: #5b0a87;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
-.content .article-meta .author {
+
+.article-meta .author {
   font-weight: bold;
   color: black;
 }
-.content .article-image {
+
+/* Image de l'article */
+.article-image {
   width: 100%;
+  height: auto;
   border-radius: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
-.content .likes {
+
+/* Icône et texte des j'aimes */
+.likes {
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
-.content .likes .icon {
+
+.likes .icon {
   margin-right: 10px;
 }
-.content .article-text {
-  font-size: 18px;
-  line-height: 1.6;
+
+/* Texte de description de l'article */
+.article-text {
+  font-size: 16px;
+  line-height: 1.4;
+  margin-bottom: 10px;
 }
