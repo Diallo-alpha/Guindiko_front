@@ -2,9 +2,10 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { apiUrl } from './apiUrl';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { ArticleModel } from '../models/ArticleModel';
 import { SessionModel } from '../models/SessionModel';
+import { RessourceModel } from '../models/RessourceModel';
 
 @Injectable({
   providedIn: 'root'
@@ -29,28 +30,33 @@ export class MentorService {
   // Méthode pour obtenir les articles créés par le mentor connecté
   getArticlesMentore(mentorId: number): Observable<ArticleModel[]> {
     const headers = this.createHeaders();
-    return this.http.get<ArticleModel[]>(`${apiUrl}/mentor/${mentorId}/articles`, { headers });
+    return this.http.get<ArticleModel[]>(`${apiUrl}/mentor/${mentorId}/articles`, { headers })
+      .pipe(catchError(this.handleError));
   }
 
   // Autres méthodes pour gérer les articles et les actions de mentorat
   ajouterArticle(articleData: any): Observable<any> {
     const headers = this.createHeaders();
-    return this.http.post(`${apiUrl}/ajouter/article`, articleData, { headers });
+    return this.http.post<any>(`${apiUrl}/ajouter/article`, articleData, { headers })
+      .pipe(catchError(this.handleError));
   }
 
   modifierArticle(articleId: number, articleData: any): Observable<any> {
     const headers = this.createHeaders();
-    return this.http.patch(`${apiUrl}/modifier/article/${articleId}`, articleData, { headers });
+    return this.http.patch<any>(`${apiUrl}/modifier/article/${articleId}`, articleData, { headers })
+      .pipe(catchError(this.handleError));
   }
 
   getArticleById(articleId: number): Observable<ArticleModel> {
     const headers = this.createHeaders();
-    return this.http.get<ArticleModel>(`${apiUrl}/articles/${articleId}`, { headers });
+    return this.http.get<ArticleModel>(`${apiUrl}/articles/${articleId}`, { headers })
+      .pipe(catchError(this.handleError));
   }
 
   supprimerArticle(articleId: number): Observable<void> {
     const headers = this.createHeaders();
-    return this.http.delete<void>(`${apiUrl}/supprimer/${articleId}/article`, { headers });
+    return this.http.delete<void>(`${apiUrl}/supprimer/${articleId}/article`, { headers })
+      .pipe(catchError(this.handleError));
   }
 
   // Méthode pour obtenir les formations disponibles
@@ -60,25 +66,57 @@ export class MentorService {
       'Accept': 'application/json'
     });
     return this.http.get<SessionModel[]>(`${apiUrl}/formations`, { headers })
-      .pipe(
-        catchError(this.handleError)
-      );
+      .pipe(catchError(this.handleError));
   }
 
   // Méthode pour créer une session de mentorat
   creerSessionMentorat(sessionModel: SessionModel): Observable<any> {
     const headers = this.createHeaders();
-    return this.http.post(`${apiUrl}/session-mentorats`, sessionModel, { headers })
+    return this.http.post<any>(`${apiUrl}/session-mentorats`, sessionModel, { headers })
+      .pipe(catchError(this.handleError));
+  }
+
+  // Méthode pour obtenir les sessions créées par le mentor connecté
+  getSessionsMentore(mentorId: number): Observable<SessionModel[]> {
+    const headers = this.createHeaders();
+    return this.http.get<SessionModel[]>(`${apiUrl}/mentor/${mentorId}/sessions`, { headers })
+      .pipe(catchError(this.handleError));
+  }
+
+  // Récupère les ressources d'une session spécifique
+  getRessources(sessionId: number): Observable<RessourceModel[]> {
+    const headers = this.createHeaders();
+    return this.http.get<RessourceModel[]>(`${apiUrl}/sessions/${sessionId}/ressources`, { headers })
+      .pipe(catchError(this.handleError));
+  }
+
+  // Récupère les ressources d'une session spécifique (correction)
+  getRessourcesBysession(sessionId: number): Observable<{ success: boolean; ressources: RessourceModel[] }> {
+    const headers = this.createHeaders();
+    return this.http.get<{ success: boolean; ressources: RessourceModel[] }>(`${apiUrl}/sessions/${sessionId}/ressources`, { headers })
       .pipe(
         catchError(this.handleError)
       );
   }
-    // Méthode pour obtenir les sessions créées par le mentor connecté
-    getSessionsMentore(mentorId: number): Observable<SessionModel[]> {
-      const headers = this.createHeaders();
-      return this.http.get<SessionModel[]>(`${apiUrl}/mentor/${mentorId}/sessions`, { headers })
-        .pipe(
-          catchError(this.handleError)
-        );
-    }
+
+  // Ajoute une nouvelle ressource à une session
+  ajouterRessource(ressourceData: RessourceModel): Observable<RessourceModel> {
+    const headers = this.createHeaders();
+    return this.http.post<RessourceModel>(`${apiUrl}/ressources`, ressourceData, { headers })
+      .pipe(catchError(this.handleError));
+  }
+
+  // Modifie une ressource existante
+  modifierRessource(ressourceId: number, ressourceData: RessourceModel): Observable<RessourceModel> {
+    const headers = this.createHeaders();
+    return this.http.patch<RessourceModel>(`${apiUrl}/ressources/${ressourceId}`, ressourceData, { headers })
+      .pipe(catchError(this.handleError));
+  }
+
+  // Supprime une ressource
+  supprimerRessource(ressourceId: number): Observable<void> {
+    const headers = this.createHeaders();
+    return this.http.delete<void>(`${apiUrl}/ressources/${ressourceId}`, { headers })
+      .pipe(catchError(this.handleError));
+  }
 }

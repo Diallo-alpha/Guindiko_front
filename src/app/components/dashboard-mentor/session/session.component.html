@@ -15,28 +15,37 @@
   </div>
 </div>
 
-<!-- Modal Structure -->
+<!-- le modal  -->
 <div *ngIf="showModal" id="myModal" class="modal" (click)="closeModal()">
   <div class="modal-content" (click)="stopPropagation($event)">
     <span class="close" (click)="closeModal()">&times;</span>
     <h1>Ressources</h1>
-    <form action="">
-    <label for="titre">Titre</label>
-    <input type="text" id="titre" class="form-control" placeholder="Input title">
-    <label for="link-input">Insérer le lien</label>
-    <input type="text" id="link-input" class="form-control" placeholder="Input description">
-    <div class="link-item">
-      <i class="fas fa-link"></i>
-      <a href="#">Commissariat de Tampy - S02- E30 (youtube.com)</a>
+
+    <!-- afficher les ressources  -->
+  <!-- Affiche un message si aucune ressource n'est disponible -->
+  <div *ngIf="ressources.length === 0">
+    <p>Aucune ressource disponible pour cette session.</p>
+  </div>
+
+  <!-- Affiche les ressources si elles sont disponibles -->
+  <div *ngIf="ressources.length > 0">
+    <div *ngFor="let ressource of ressources">
+      <h3>{{ ressource.titre || 'Titre non disponible' }}</h3>
+      <a *ngIf="ressource.lien" [href]="ressource.lien" target="_blank">Voir la ressource</a>
+      <span *ngIf="!ressource.lien">Lien non disponible</span>
     </div>
-    <div class="link-item">
-      <i class="fas fa-link"></i>
-      <a href="#">Commissariat de Tampy - S02- E30 (youtube.com)</a>
-    </div>
-    <button type="submit" class="btn btn-primary">Ajouter</button>
-  </form>
+  </div>
+
+
+    <!-- Formulaire pour ajouter les ressources  -->
+    <form (submit)="ajouterRessource()">
+      <label for="titre">Titre</label>
+      <input type="text" id="titre" [(ngModel)]="newResource.titre" name="titre" class="form-control" placeholder="Input title" required>
+
+      <label for="link-input">Insérer le lien</label>
+      <input type="text" id="link-input" [(ngModel)]="newResource.lien" name="lien" class="form-control" placeholder="Input link" required>
+
+      <button type="submit" class="btn btn-primary">Ajouter</button>
+    </form>
   </div>
 </div>
-
-
-
