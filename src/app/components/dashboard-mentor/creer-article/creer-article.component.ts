@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./creer-article.component.css']
 })
 export class CreerArticleComponent implements OnInit {
-
+ 
   articleForm!: FormGroup; // Formulaire pour les articles
   article: ArticleModel[] = []; // Tableau pour stocker les articles
 
@@ -26,7 +26,7 @@ export class CreerArticleComponent implements OnInit {
       titre: ['', Validators.required],
       description: ['', Validators.required],
       formation_id: ['', [Validators.required, Validators.pattern('^[0-9]*$')]], // Remplacé par formation_id
-      image: ['', Validators.required], 
+      image: ['', Validators.required],
       date_publication: [new Date(), Validators.required]
     });
   }
