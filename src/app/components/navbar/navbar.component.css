@@ -1,34 +1,95 @@
 .header {
-  background-color: #110012;
-  color: white;
-  padding: 10px 20px;
+  background-color: #110012; /* Couleur de fond */
+  color: #fffff0;
+  padding: 15px 25px; /* Augmenter légèrement le padding pour plus d'espace */
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: sticky;
   top: 0;
   z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Ombre légère pour profondeur */
 }
+
 .header h1 {
   margin: 0;
-  font-size: 24px;
+  font-size: 28px; /* Augmenter la taille de la police pour plus de visibilité */
   cursor: pointer;
+  font-family: 'Open Sans', sans-serif;
+  transition: color 0.3s ease; /* Transition pour effet au survol */
 }
+
+.header h1:hover {
+  color: #E49BFF; /* Couleur au survol */
+}
+
+.header nav {
+  display: flex;
+}
+
 .header nav a {
-  color: white;
-  margin: 0 15px;
+  color: #fffff0;
+  margin: 0 20px; /* Espacement plus grand entre les liens */
   text-decoration: none;
-  font-size: 16px;
+  font-size: 18px; /* Taille de police légèrement augmentée */
   font-weight: bold;
   font-family: 'Open Sans', sans-serif;
-}
-.header .button {
-  background-color: #E49BFF;
-  color: #110012;
-  font-weight: bold;
-  font-family: 'Open Sans', sans-serif;
-  padding: 5px 20px;
-  border: none;
-  border-radius: 5px;
   cursor: pointer;
+  position: relative;
+  transition: color 0.3s ease; /* Transition pour effet au survol */
+}
+
+.header nav a.active-link {
+  color: #E49BFF; /* Couleur pour l'élément actif */
+}
+
+.header nav a:hover {
+  color: #E49BFF; /* Couleur au survol */
+}
+
+.header nav a::after {
+  content: '';
+  display: block;
+  height: 2px;
+  width: 0;
+  background: #E49BFF; /* Couleur de l'indicateur */
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  transition: width 0.3s ease; /* Transition pour effet au survol */
+}
+
+.header nav a:hover::after {
+  width: 100%;
+}
+
+.button {
+  background-color: #E49BFF; /* Couleur de fond du bouton */
+  color: #110012; /* Couleur du texte du bouton */
+  font-weight: bold;
+  font-family: 'Open Sans', sans-serif;
+  padding: 8px 25px; /* Espacement interne légèrement augmenté */
+  border: none;
+  border-radius: 25px; /* Bordure plus arrondie pour un effet plus moderne */
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Transition pour effet au survol */
+}
+
+.button:hover {
+  background-color: #D68CFC; /* Couleur au survol */
+}
+
+.deconnexion {
+  background-color: #ffffff4e; /* Couleur de fond du bouton de déconnexion */
+  color: #1a011c; /* Couleur du texte du bouton de déconnexion */
+  border: none;
+  border-radius: 25px; /* Bordure plus arrondie pour uniformité avec les autres boutons */
+  padding: 8px 15px; /* Espacement interne ajusté */
+  margin-left: 15px; /* Espacement à gauche */
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Transition pour effet au survol */
+}
+
+.deconnexion:hover {
+  background-color: #fffff0; /* Couleur au survol */
 }
