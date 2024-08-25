@@ -33,7 +33,8 @@
       <h3>{{ ressource.titre || 'Titre non disponible' }}</h3>
       <a *ngIf="ressource.lien" [href]="ressource.lien" target="_blank">Voir la ressource</a>
       <span *ngIf="!ressource.lien">Lien non disponible</span>
-    </div>
+      <button *ngIf="ressource.id !== undefined && ressource.id !== null"
+      (click)="supprimerRessource(ressource.id)">Supprimer</button>    </div>
   </div>
 
 

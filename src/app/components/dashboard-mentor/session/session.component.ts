@@ -25,7 +25,7 @@ export class SessionComponent implements OnInit {
   showModal = false;
   selectedSession: SessionModel | null = null;
   ressources: RessourceModel[] = [];
-  newResource: RessourceModel = { titre: '', lien: '', session_mentorat_id: 0 }; // Correction ici
+  newResource: RessourceModel = { titre: '', lien: '', session_mentorat_id: 0 };
 
   constructor(
     private mentorService: MentorService,
@@ -132,8 +132,6 @@ export class SessionComponent implements OnInit {
     );
   }
 
-
-
   ajouterRessource() {
     if (this.selectedSession?.id) {
       const ressourceData: RessourceModel = {
@@ -171,4 +169,17 @@ export class SessionComponent implements OnInit {
       ? this.formations[formationId]
       : 'Nom de formation inconnu';
   }
+
+  supprimerRessource(ressourceId: number) {
+    this.mentorService.supprimerRessource(ressourceId).subscribe(
+      () => {
+        console.log('Ressource supprimée avec succès.');
+        this.loadRessources(this.selectedSession?.id!);
+      },
+      (error) => {
+        console.error('Erreur lors de la suppression de la ressource :', error);
+      }
+    );
+  }
+
 }
