@@ -4,7 +4,7 @@
   <h2>Mes Sessions</h2>
   <div class="sessions">
     <div *ngFor="let session of sessions" class="session-card">
-      <h3>Thème: {{ session.formation_id }}</h3>
+      <h3>Formation: {{ getFormationName(session.formation_id) }}</h3>
       <p>Statut: {{ session.statut }}</p>
       <p>Mentees: {{ session.mentees }}</p>
       <div class="resources">

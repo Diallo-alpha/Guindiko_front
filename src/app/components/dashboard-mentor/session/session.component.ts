@@ -3,6 +3,12 @@ import { MentorService } from '../../../services/mentor.service';
 import { SessionModel } from '../../../models/SessionModel';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { CommonModule } from '@angular/common';
+import { DonneePublicService } from '../../../services/donnee-public.service';
+import { FormationModel } from '../../../models/FormationModel';
+
+type FormationMapping = {
+  [id: number]: string;
+};
 
 @Component({
   selector: 'app-session',
@@ -13,11 +19,16 @@ import { CommonModule } from '@angular/common';
 })
 export class SessionComponent implements OnInit {
   sessions: SessionModel[] = [];
+  formations: FormationMapping = {}; // Utiliser l'interface FormationMapping
 
-  constructor(private mentorService: MentorService) {}
+  constructor(
+    private mentorService: MentorService,
+    private donneePublicService: DonneePublicService
+  ) {}
 
   ngOnInit() {
     this.loadSessions();
+    this.loadFormations();
   }
 
   loadSessions() {
@@ -29,7 +40,6 @@ export class SessionComponent implements OnInit {
       if (userId) {
         this.mentorService.getSessionsMentore(userId).subscribe(
           (response: any) => {
-            // Assurez-vous que 'sessions' est un tableau avec les détails de formation
             if (Array.isArray(response.sessions)) {
               this.sessions = response.sessions;
               console.log('Sessions chargées :', this.sessions);
@@ -47,5 +57,35 @@ export class SessionComponent implements OnInit {
     } else {
       console.error('Aucune donnée utilisateur trouvée dans le local storage.');
     }
+  }
+
+  loadFormations() {
+    this.donneePublicService.getFormations().subscribe(
+      (response: any) => {
+        if (Array.isArray(response.data)) {
+          this.formations = response.data.reduce((acc: FormationMapping, formation: FormationModel) => {
+            if (formation.id && formation.nom) {
+              acc[formation.id] = formation.nom; // Assurez-vous que 'nom' est le champ correct pour le nom de la formation
+            } else {
+              console.error('Formation invalide:', formation);
+            }
+            return acc;
+          }, {});
+          console.log('Formations chargées :', this.formations);
+        } else {
+          console.error('Le format de réponse des formations est invalide.');
+        }
+      },
+      (error) => {
+        console.error('Erreur lors du chargement des formations :', error);
+      }
+    );
+  }
+
+  // Fonction pour obtenir le nom de la formation à partir de l'ID
+  getFormationName(formationId?: number): string {
+    return formationId !== undefined && formationId in this.formations
+      ? this.formations[formationId]
+      : 'Nom de formation inconnu';
   }
 }

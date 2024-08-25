@@ -4,13 +4,17 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { apiUrl } from './apiUrl';
 import { DomainModel } from '../models/DomainModel';
-import { FormationModel } from '../models/FormationModel'; 
+import { FormationModel } from '../models/FormationModel';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DonneePublicService {
   private http = inject(HttpClient);
+
+  getFormations(): Observable<{ data: FormationModel[] }> {
+    return this.http.get<{ data: FormationModel[] }>(`${apiUrl}/formations`);
+  }
 
   // Récupérer tous les domaines, typé avec DomainModel[]
   getDomains(): Observable<DomainModel[]> {
