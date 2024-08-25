@@ -20,6 +20,8 @@ type FormationMapping = {
 export class SessionComponent implements OnInit {
   sessions: SessionModel[] = [];
   formations: FormationMapping = {}; // Utiliser l'interface FormationMapping
+  showModal = false;
+  selectedSession: SessionModel | null = null;
 
   constructor(
     private mentorService: MentorService,
@@ -65,7 +67,7 @@ export class SessionComponent implements OnInit {
         if (Array.isArray(response.data)) {
           this.formations = response.data.reduce((acc: FormationMapping, formation: FormationModel) => {
             if (formation.id && formation.nom) {
-              acc[formation.id] = formation.nom; // Assurez-vous que 'nom' est le champ correct pour le nom de la formation
+              acc[formation.id] = formation.nom;
             } else {
               console.error('Formation invalide:', formation);
             }
@@ -82,7 +84,21 @@ export class SessionComponent implements OnInit {
     );
   }
 
-  // Fonction pour obtenir le nom de la formation à partir de l'ID
+  openModal(event: MouseEvent, session: SessionModel) {
+    event.preventDefault();
+    this.selectedSession = session;
+    this.showModal = true;
+  }
+
+  closeModal() {
+    this.showModal = false;
+    this.selectedSession = null;
+  }
+
+  stopPropagation(event: MouseEvent) {
+    event.stopPropagation();
+  }
+
   getFormationName(formationId?: number): string {
     return formationId !== undefined && formationId in this.formations
       ? this.formations[formationId]

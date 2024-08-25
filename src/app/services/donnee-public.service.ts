@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { apiUrl } from './apiUrl';
@@ -43,7 +43,15 @@ export class DonneePublicService {
       catchError(this.handleError)
     );
   }
+  // Méthode pour envoyer une demande de mentorat
+  envoyerDemandeMentorat(mentorId: number, menteeId: number): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const body = { mentee_id: menteeId };
 
+    return this.http.post(`${apiUrl}/mentorats/${mentorId}/demande`, body, { headers }).pipe(
+      catchError(this.handleError)
+    );
+  }
   // Méthode de gestion des erreurs
   private handleError(error: HttpErrorResponse) {
     console.error('An error occurred:', error);
