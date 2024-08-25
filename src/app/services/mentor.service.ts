@@ -73,4 +73,12 @@ export class MentorService {
         catchError(this.handleError)
       );
   }
+    // Méthode pour obtenir les sessions créées par le mentor connecté
+    getSessionsMentore(mentorId: number): Observable<SessionModel[]> {
+      const headers = this.createHeaders();
+      return this.http.get<SessionModel[]>(`${apiUrl}/mentor/${mentorId}/sessions`, { headers })
+        .pipe(
+          catchError(this.handleError)
+        );
+    }
 }
