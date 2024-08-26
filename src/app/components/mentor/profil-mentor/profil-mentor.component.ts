@@ -1,4 +1,5 @@
-import { Component } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
+import { HttpClient } from '@angular/common/http'
 import { NavbarComponent } from '../../navbar/navbar.component'
 
 @Component({
@@ -8,18 +9,40 @@ import { NavbarComponent } from '../../navbar/navbar.component'
   templateUrl: './profil-mentor.component.html',
   styleUrls: ['./profil-mentor.component.css']
 })
-export class ProfilMentorComponent {
-  // Propriétés dynamiques
-  mentorName = 'Alpha Diallo'
-  mentorEmail = 'alphaloppecity@gmail.com'
-  mentorBio = `Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-               Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...`
-  mentorExperience = '8 ans'
-  mentorLanguages = 'Français'
-  mentorMembers = 300
-  mentorImage = 'assets/images/mentor1.svg'
+export class ProfilMentorComponent implements OnInit {
+  mentor = {
+    prenom: '',
+    nom: '',
+    email: '',
+    biographie: '',
+    experience: '',
+    langues: '',
+    membres: 0,
+    photoUrl: ''
+  }
 
-  // Méthodes pour actions
+  private apiUrl = 'https://your-api-endpoint.com/mentor-profile' // Remplacez par l'URL de votre API
+
+  constructor (private http: HttpClient) {}
+
+  ngOnInit () {
+    this.fetchMentorProfile()
+  }
+
+  fetchMentorProfile () {
+    this.http.get(this.apiUrl).subscribe(
+      (data: any) => {
+        this.mentor = data
+      },
+      error => {
+        console.error(
+          'Erreur lors de la récupération des données du mentor',
+          error
+        )
+      }
+    )
+  }
+
   requestMentorship () {
     console.log('Demande de mentorat envoyée')
   }

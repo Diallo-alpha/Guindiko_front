@@ -1,4 +1,4 @@
-<app-sidebar/>
+<!-- <app-sidebar/>
 <div class="content">
   <h2>
    Abonnee
@@ -65,4 +65,23 @@
     </div>
    </div>
   </div>
+ </div> -->
+
+ <app-sidebar>
+ <div class="content">
+   <h2>Abonnés</h2>
+   <div class="subscriber-list">
+     <div *ngFor="let subscriber of subscribers" class="subscriber-item">
+       <img [src]="subscriber.profilePictureUrl" alt="Profile picture of {{ subscriber.name }}" height="50"
+         width="50" />
+       <div class="info">
+         <h3>{{ subscriber.name }}</h3>
+         <p>{{ subscriber.email }}</p>
+       </div>
+       <div class="actions">
+         <i class="fas fa-ellipsis-h"></i>
+       </div>
+     </div>
+   </div>
  </div>
+

@@ -1,4 +1,4 @@
-<app-navbar />
+<!-- <app-navbar />
 
 <div class="container profile-container">
   <div class="profil-mentor">
@@ -27,5 +27,31 @@
       <button class="btn btn-outline-dark" (click)="viewSessions()">Sessions</button>
       <button class="btn btn-outline-dark" (click)="viewMembers()">Membres</button>
     </div>
+  </div>
+</div>
+
+ -->
+
+<app-navbar>
+
+<div class="profil-container">
+  <div class="profile-header">
+    <img [src]="mentor.photoUrl" alt="Profile photo" />
+    <h1>{{ mentor.prenom }} {{ mentor.nom }}</h1>
+    <p>{{ mentor.email }}</p>
+  </div>
+
+  <div class="profile-details">
+    <p><strong>Biographie:</strong> {{ mentor.biographie }}</p>
+    <p><strong>Expérience:</strong> {{ mentor.experience }} ans</p>
+    <p><strong>Langues:</strong> {{ mentor.langues }}</p>
+    <p><strong>Nombre de membres:</strong> {{ mentor.membres }}</p>
+  </div>
+
+  <div class="profile-actions">
+    <button (click)="requestMentorship()">Demander un mentorat</button>
+    <button (click)="viewArticles()">Voir les articles</button>
+    <button (click)="viewSessions()">Voir les sessions</button>
+    <button (click)="viewMembers()">Voir les membres</button>
   </div>
 </div>
