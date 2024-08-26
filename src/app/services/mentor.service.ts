@@ -2,9 +2,10 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { apiUrl } from './apiUrl';
-import { catchError } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 import { ArticleModel } from '../models/ArticleModel';
 import { SessionModel } from '../models/SessionModel';
+
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,25 @@ export class MentorService {
   private handleError(error: any): Observable<never> {
     console.error('Erreur lors de la requête', error);
     return throwError(() => new Error(error.message || 'Erreur serveur'));
+  }
+
+  getMentors(): Observable<any[]> { // Ensure the return type is an array
+    const headers = this.createHeaders();
+
+    return this.http.get<any>(`${apiUrl}/mentors`, { headers }).pipe(
+      map(response => response.mentors || []), // Adjust according to your API structure
+      catchError(this.handleError)
+    );
+  }
+
+  getUserMentorships(): Observable<any[]> {
+    const headers = this.createHeaders();
+    return this.http.get<any[]>(`${apiUrl}/user/mentorships`, { headers });
+  }
+
+
+  requestMentorship(mentorId: number): Observable<any> {
+    return this.http.post(`${apiUrl}/mentorats/${mentorId}/demande`, {});
   }
 
   // Méthode pour obtenir les articles créés par le mentor connecté
