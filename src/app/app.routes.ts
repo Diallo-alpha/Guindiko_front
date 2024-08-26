@@ -5,7 +5,8 @@
 // import { ArticlesComponent } from './components/articles/articles.component'
 // import { MenteurComponent } from './components/menteur/menteur.component'
 // import { DetailsArticleComponent } from './components/details-article/details-article.component'
-// import { ProfilMentorComponent } from './components/mentor/profil-mentor/profil-mentor.component'
+import { ProfilMentorComponent } from './components/mentor/profil-mentor/profil-mentor.component'
+
 // import { SessionMentorComponent } from './components/mentor/session-mentor/session-mentor.component'
 // import { ArticleMentorComponent } from './components/mentor/article-mentor/article-mentor.component'
 // import { AbonnerMentorComponent } from './components/mentor/abonner-mentor/abonner-mentor.component'
@@ -106,7 +107,7 @@ import { FormationComponent } from './components/formation/formation.component'
 import { ArticlesComponent } from './components/articles/articles.component'
 import { MenteurComponent } from './components/menteur/menteur.component'
 import { DetailsArticleComponent } from './components/details-article/details-article.component'
-import { ProfilMentorComponent } from './components/mentor/profil-mentor/profil-mentor.component'
+// import { ProfilMentorComponent } from './components/mentor/profil-mentor/profil-mentor.component'
 import { SessionMentorComponent } from './components/mentor/session-mentor/session-mentor.component'
 import { ArticleMentorComponent } from './components/mentor/article-mentor/article-mentor.component'
 import { AbonnerMentorComponent } from './components/mentor/abonner-mentor/abonner-mentor.component'
@@ -120,7 +121,7 @@ import { DashboardComponent } from './components/dashboard-mentor/dashboard/dash
 import { AbonnerComponent } from './components/dashboard-mentor/abonner/abonner.component'
 import { DashArticleComponent } from './components/dashboard-mentor/dash-article/dash-article.component'
 import { DetailFormationComponent } from './components/detail-formation/detail-formation.component'
-import { ProfilMentorComponents } from './components/dashboard-mentor/profil-mentore/profil-mentor.components'
+// import { ProfilMentorComponent } from './components/mentor/profil-mentor/profil-mentor.component'
 import { DashboardAdminComponent } from './components/dashboard-admin/dashboard-admin.component'
 import { AdminGuard } from './Guard/admin-guard.guard'
 import { FormationAdminComponent } from './components/admin-formation/formation/formation.component'
@@ -177,7 +178,7 @@ export const routes: Routes = [
     canActivate: [MentorGuard]
   },
   { path: 'detail-formation', component: DetailFormationComponent },
-  { path: 'modifier/profile-mentor', component: ProfilMentorComponents },
+{ path: 'modifier/profile-mentor', component: ProfilMentorComponent },
   {
     path: 'admin-dashboard',
     component: DashboardAdminComponent,
