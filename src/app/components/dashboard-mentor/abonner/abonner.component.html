@@ -1,68 +1,27 @@
-<app-sidebar/>
-<div class="content">
-  <h2>
-   Abonnee
-  </h2>
-  <div class="subscriber-list">
-   <div class="subscriber-item">
-    <img alt="Profile picture of Modou Faye" height="50" src="https://replicate.delivery/yhqm/1ajKcsD4NmoNPlDCMCLYPTt4wjzTSrDl8jiyp3Wp0qTcdB1E/out-0.png" width="50"/>
+<app-sidebar></app-sidebar>
+
+<div *ngIf="loading">Chargement des demandes...</div>
+<div *ngIf="error">{{ error }}</div>
+
+<!-- Afficher un message si aucune demande n'est reçue -->
+<ng-container *ngIf="!loading && demandesRecues.length === 0">
+  <ng-template #noDemandes>
+    <p>Vous n'avez pas encore reçu de demandes de mentorat.</p>
+  </ng-template>
+  <ng-container *ngTemplateOutlet="noDemandes"></ng-container>
+</ng-container>
+
+<!-- Afficher la liste des demandes reçues -->
+<div *ngIf="!loading && demandesRecues.length > 0" class="subscriber-list">
+  <div *ngFor="let demande of demandesRecues" class="subscriber-item">
+    <img [src]="demande.profileImageUrl || defaultProfileImageUrl"
+         alt="Photo de profil de {{ demande.mentee_id }}" height="50" width="50" />
     <div class="info">
-     <h3>
-      Modou Faye
-     </h3>
-     <p>
-      ndiayeamina775&#64;gmail.com
-     </p>
+      <h3>Mentee ID: {{ demande.mentee_id }}</h3>
     </div>
     <div class="actions">
-     <i class="fas fa-ellipsis-h">
-     </i>
+      <button (click)="accepterDemande(demande.id)">Accepter</button>
+      <button (click)="refuserDemande(demande.id)">Refuser</button>
     </div>
-   </div>
-   <div class="subscriber-item">
-    <img alt="Profile picture of Modou Faye" height="50" src="https://replicate.delivery/yhqm/1ajKcsD4NmoNPlDCMCLYPTt4wjzTSrDl8jiyp3Wp0qTcdB1E/out-0.png" width="50"/>
-    <div class="info">
-     <h3>
-      Modou Faye
-     </h3>
-     <p>
-      ndiayeamina775&#64;gmail.com
-     </p>
-    </div>
-    <div class="actions">
-     <i class="fas fa-ellipsis-h">
-     </i>
-    </div>
-   </div>
-   <div class="subscriber-item">
-    <img alt="Profile picture of Modou Faye" height="50" src="https://replicate.delivery/yhqm/1ajKcsD4NmoNPlDCMCLYPTt4wjzTSrDl8jiyp3Wp0qTcdB1E/out-0.png" width="50"/>
-    <div class="info">
-     <h3>
-      Modou Faye
-     </h3>
-     <p>
-      ndiayeamina775&#64;gmail.com
-     </p>
-    </div>
-    <div class="actions">
-     <i class="fas fa-ellipsis-h">
-     </i>
-    </div>
-   </div>
-   <div class="subscriber-item">
-    <img alt="Profile picture of Modou Faye" height="50" src="https://replicate.delivery/yhqm/1ajKcsD4NmoNPlDCMCLYPTt4wjzTSrDl8jiyp3Wp0qTcdB1E/out-0.png" width="50"/>
-    <div class="info">
-     <h3>
-      Modou Faye
-     </h3>
-     <p>
-      ndiayeamina775&#64;gmail.com
-     </p>
-    </div>
-    <div class="actions">
-     <i class="fas fa-ellipsis-h">
-     </i>
-    </div>
-   </div>
   </div>
- </div>
+</div>

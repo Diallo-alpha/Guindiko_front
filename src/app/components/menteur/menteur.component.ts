@@ -12,17 +12,18 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./menteur.component.css']
 })
 export class MenteurComponent implements OnInit {
-  mentors: any[] = []; // Assurez-vous que mentors est un tableau
+  mentors: any[] = [];
+  filteredMentors: any[] = []; // Tableau pour stocker les mentors filtrés
 
   constructor(private mentorService: MentorService) {}
 
   ngOnInit(): void {
     this.mentorService.getMentors().subscribe({
       next: (data) => {
-        console.log('Données reçues:', data); // Vérifiez les données reçues
+        console.log('Données reçues:', data);
         if (Array.isArray(data)) {
-          this.mentors = data;
-          console.log('Mentors assignés:', this.mentors); // Vérifiez les données assignées
+          this.mentors = data.filter(mentor => mentor && mentor.name); // Filtrez les mentors valides
+          this.filteredMentors = this.mentors; // Initialisez les mentors filtrés
         } else {
           console.error('Données reçues ne sont pas un tableau', data);
         }
@@ -33,6 +34,14 @@ export class MenteurComponent implements OnInit {
     });
   }
 
+
+  filterMentors(event: Event): void {
+    const query = (event.target as HTMLInputElement).value.toLowerCase();
+    this.filteredMentors = this.mentors.filter(mentor =>
+      mentor.name.toLowerCase().includes(query) ||
+      mentor.formation.name.toLowerCase().includes(query)
+    );
+  }
 
   requestMentorship(mentorId: number) {
     this.mentorService.requestMentorship(mentorId).subscribe(
