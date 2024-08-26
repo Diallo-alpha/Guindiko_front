@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../../services/auth-service.service';
+import { CommonModule } from '@angular/common';
+
 @Component({
   selector: 'app-sidebar',
   standalone: true,
+  imports: [CommonModule, RouterModule],
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css'],
 })
