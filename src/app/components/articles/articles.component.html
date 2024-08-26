@@ -1,105 +1,41 @@
-<app-navbar/>
-<div class="container mt-5">
+<app-navbar></app-navbar>
+
+
+
+<!-- Sidebar - Optionally add in a different view or context -->
+ <div class="page pt-5">
+<div class="container">
   <div class="row">
-   <div class="col-md-3">
-    <div class="sidebar">
-     <h2 class="shadow1">
-      Articles
-     </h2>
-     <button class="btn">
-      INFORMATIQUE
-     </button>
-     <button class="btn">
-      COMPTABILITÉ
-     </button>
-     <button class="btn">
-      SOCIOLOGIE
-     </button>
-     <button class="btn">
-      FISCALITÉ
-     </button>
+    <div class="col-md-3">
+      <div class="sidebar">
+        <h2 class="shadow1">Formations</h2>
+        <button *ngFor="let formation of formations" class="btn btn-sidebar" (click)="filterByFormation(formation.id)">
+          {{ formation.name }}
+        </button>
+      </div>
     </div>
-   </div>
-   <div class="col-md-9">
-    <div class="row">
-     <div class="col-md-4">
-      <div class="card shadow">
-        <div class="card-body">
-          <h5 class="card-title">
-            L'évolution du Développement Web
-           </h5>
-        </div>
-       <img alt="Person working on a computer with code on the screen" class="card-img-top" height="200" src="assets/images/detail.svg" width="600"/>
-       <div class="card-body">
 
-        <p class="card-text">
-         Décrivez les premières années du web, où les sites étaient statiques, principalement composés de texte et d'images simples, avec HTML comme langage de base.
-        </p>
-       </div>
-       <div class="card-footer">
-        <small class="text-muted">
-         Par: Cheikh Sane
-        </small>
-        <a class="btn btn-link float-end" routerLink="/details-article">
-         Voir plus
-         <i class="fas fa-arrow-right">
-         </i>
-        </a>
-       </div>
-      </div>
-     </div>
-     <div class="col-md-4">
-      <div class="card shadow">
-        <div class="card-body">
-          <h5 class="card-title">
-            L'évolution du Développement Web
-           </h5>
+    <div class="col-md-9">
+      <div class="row">
+        <div *ngFor="let article of filteredArticles" class="col-md-4 mb-4">
+          <div class="card shadow">
+            <div class="card-body">
+              <h5 class="">{{ article.titre }}</h5>
+            </div>
+            <img src="https://contenthub-static.grammarly.com/blog/wp-content/uploads/2019/08/August-blog-header-Amplification.png" alt="Article image" class="card-img-top" height="200" />
+            <div class="card-body">
+              <p class="card-text">{{ article.description }}</p>
+            </div>
+            <div class="card-footer">
+              <small class="text-muted">Par: {{ getMentorName(article.user_id) }}</small>
+              <a class="btn btn-link float-end" [routerLink]="['/details-article', article.id]">
+                Voir plus <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
         </div>
-       <img alt="Person working on a computer with code on the screen" class="card-img-top" height="200" src="assets/images/detail.svg" width="600"/>
-       <div class="card-body">
-
-        <p class="card-text">
-         Décrivez les premières années du web, où les sites étaient statiques, principalement composés de texte et d'images simples, avec HTML comme langage de base.
-        </p>
-       </div>
-       <div class="card-footer">
-        <small class="text-muted">
-         Par: Cheikh Sane
-        </small>
-        <a class="btn btn-link float-end" routerLink="/details-article">
-         Voir plus
-         <i class="fas fa-arrow-right">
-         </i>
-        </a>
-       </div>
       </div>
-     </div>
-     <div class="col-md-4">
-      <div class="card shadow">
-        <div class="card-body">
-          <h5 class="card-title">
-            L'évolution du Développement Web
-           </h5>
-        </div>
-       <img alt="Person working on a computer with code on the screen" class="card-img-top" height="200" src="assets/images/detail.svg" width="600"/>
-       <div class="card-body">
-
-        <p class="card-text">
-         Décrivez les premières années du web, où les sites étaient statiques, principalement composés de texte et d'images simples, avec HTML comme langage de base.
-        </p>
-       </div>
-       <div class="card-footer">
-        <small class="text-muted">
-         Par: Cheikh Sane
-        </small>
-        <a class="btn btn-link float-end" routerLink="/details-article">
-         Voir plus
-         <i class="fas fa-arrow-right">
-         </i>
-        </a>
-       </div>
-      </div>
-     </div>
-   </div>
+    </div>
   </div>
- </div>
+</div>
+</div>

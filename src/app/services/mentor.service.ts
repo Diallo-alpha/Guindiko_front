@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { apiUrl } from './apiUrl';
 import { map, catchError } from 'rxjs/operators';
@@ -48,6 +48,17 @@ export class MentorService {
     return this.http.post(`${apiUrl}/mentorats/${mentorId}/demande`, {});
   }
 
+  getArticles(formationId?: number): Observable<any> {
+    let params = new HttpParams();
+    if (formationId) {
+      params = params.set('formation_id', formationId.toString());
+    }
+    return this.http.get<any>(`${apiUrl}/Articles`, { params });
+  }
+
+  // getFormations(): Observable<any> {
+  //   return this.http.get<any>(`${apiUrl}/Formations`); // Assurez-vous que l'URL est correcte pour récupérer les formations
+  // }
   // Méthode pour obtenir les articles créés par le mentor connecté
   getArticlesMentore(mentorId: number): Observable<ArticleModel[]> {
     const headers = this.createHeaders();
@@ -89,6 +100,7 @@ export class MentorService {
     return this.http.get<SessionModel[]>(`${apiUrl}/formations`, { headers })
       .pipe(catchError(this.handleError));
   }
+
 
   // Méthode pour créer une session de mentorat
   creerSessionMentorat(sessionModel: SessionModel): Observable<any> {
@@ -160,5 +172,6 @@ refuserDemandeMentorat(demandeId: number): Observable<any> {
   return this.http.post(`${apiUrl}/mentorats/${demandeId}/refuser`, {}, { headers })
     .pipe(catchError(this.handleError));
 };
+
 
 }
