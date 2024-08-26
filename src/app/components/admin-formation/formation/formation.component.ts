@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms'; // Import FormsModule
+import { FormsModule } from '@angular/forms';
 import { DonneePublicService } from '../../../services/donnee-public.service';
 import { AdminService } from '../../../services/admin.service';
 import { DomainModel } from '../../../models/DomainModel';
 import { FormationModel } from '../../../models/FormationModel';
+import Swal from 'sweetalert2';  // Import SweetAlert
 
 @Component({
   selector: 'app-formation',
   standalone: true,
-  imports: [CommonModule, FormsModule], // Include FormsModule
+  imports: [CommonModule, FormsModule],
   templateUrl: './formation.component.html',
   styleUrls: ['./formation.component.css']
 })
@@ -30,7 +31,6 @@ export class FormationAdminComponent implements OnInit {
     this.loadFormations(this.selectedDomainId);
   }
 
-  // Charger les domaines via le service
   loadDomains(): void {
     this.donneePublicService.getDomains().subscribe({
       next: (response: any) => {
@@ -47,7 +47,6 @@ export class FormationAdminComponent implements OnInit {
     });
   }
 
-  // Charger les formations d'un domaine sélectionné
   loadFormations(domainId: number): void {
     this.donneePublicService.getFormationsByDomain(domainId).subscribe({
       next: (response: any) => {
@@ -70,16 +69,32 @@ export class FormationAdminComponent implements OnInit {
       this.adminService.creerFormation(this.newFormation).subscribe(
         response => {
           console.log('Formation ajoutée:', response);
+          Swal.fire({
+            icon: 'success',
+            title: 'Formation ajoutée',
+            text: 'La formation a été ajoutée avec succès!',
+            confirmButtonText: 'OK'
+          });
           this.newFormation = { libelle: '', domaine: 0, description: '' };
           this.loadFormations(this.selectedDomainId);
         },
         error => {
           console.error('Erreur lors de l\'ajout de la formation:', error);
-          alert('Erreur lors de l\'ajout de la formation.');
+          Swal.fire({
+            icon: 'error',
+            title: 'Erreur',
+            text: 'Erreur lors de l\'ajout de la formation.',
+            confirmButtonText: 'OK'
+          });
         }
       );
     } else {
-      alert('Veuillez remplir tous les champs avant de soumettre.');
+      Swal.fire({
+        icon: 'warning',
+        title: 'Champs manquants',
+        text: 'Veuillez remplir tous les champs avant de soumettre.',
+        confirmButtonText: 'OK'
+      });
     }
   }
 
