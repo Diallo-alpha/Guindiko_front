@@ -175,4 +175,25 @@ refuserDemandeMentorat(demandeId: number): Observable<any> {
     .pipe(catchError(this.handleError));
 };
 
+// Méthode pour obtenir le nombre de demandes de mentorat pour l'utilisateur connecté
+getNombreDemandes(): Observable<any> {
+  const headers = this.createHeaders();
+  return this.http.get<any>(`${apiUrl}/mentor/statistiques/demandes`, { headers })
+    .pipe(catchError(this.handleError));
+}
+
+// Méthode pour obtenir le nombre de sessions créées par l'utilisateur connecté
+getNombreSessions(): Observable<any> {
+  const headers = this.createHeaders();
+  return this.http.get<any>(`${apiUrl}/mentor-sessions/statistiques/sessions`, { headers })
+    .pipe(catchError(this.handleError));
+}
+
+// Méthode pour obtenir le nombre d'articles créés par l'utilisateur connecté
+getNombreArticles(): Observable<any> {
+  const headers = this.createHeaders();
+  return this.http.get<any>(`${apiUrl}/mentor-articles/statistiques/articles`, { headers })
+    .pipe(catchError(this.handleError));
+}
+
 }
