@@ -3,6 +3,7 @@ import { MentorService } from '../../../services/mentor.service';
 import { DemandeMentorat } from '../../../models/DemandeMentorat';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { CommonModule } from '@angular/common';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-abonner',
@@ -13,27 +14,36 @@ import { CommonModule } from '@angular/common';
 })
 export class AbonnerComponent implements OnInit {
   demandesRecues: DemandeMentorat[] = [];
+  demandesAcceptees: DemandeMentorat[] = [];
   mentorId: number = 0;
   loading = true;
   error: string | null = null;
   defaultProfileImageUrl = 'chemin/vers/image/default.png'; // Chemin de l'image par défaut
 
-  constructor(private mentorService: MentorService) {}
+  constructor(private mentorService: MentorService, private cdRef: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
       const user = JSON.parse(storedUser);
-      this.mentorId = user.id; // Supposons que `id` soit l'ID du mentor
+      this.mentorId = user.id;
     }
     this.fetchDemandesRecues();
+    this.fetchDemandesAcceptees();
   }
-
   fetchDemandesRecues(): void {
-    this.mentorService.getDemandesRecues().subscribe(
-      (demandes: DemandeMentorat[]) => { // Supposons que l'API retourne un tableau directement
-        console.log('Demandes reçues:', demandes);
-        this.demandesRecues = demandes; // Assigner directement le tableau aux demandesRecues
+    this.mentorService.getDemandesRecues(this.mentorId).subscribe(
+      (response: any) => {
+        console.log('Réponse complète des demandes reçues:', response);
+        if (response && Array.isArray(response.demandes)) {
+          // Filtrer les demandes acceptées
+          this.demandesRecues = response.demandes;
+          this.demandesAcceptees = this.demandesRecues.filter(demande => demande.statut === 'acceptée');
+          console.log('Demandes reçues après traitement:', this.demandesRecues);
+          console.log('Demandes acceptées après filtrage:', this.demandesAcceptees);
+        } else {
+          this.error = 'Format de réponse inattendu.';
+        }
         this.loading = false;
       },
       (error) => {
@@ -42,6 +52,26 @@ export class AbonnerComponent implements OnInit {
       }
     );
   }
+
+  fetchDemandesAcceptees(): void {
+    this.mentorService.getDemandesAcceptees(this.mentorId).subscribe(
+      (response: any) => {
+        console.log('Réponse complète des demandes acceptées:', response);
+        if (response && Array.isArray(response.demandes_acceptees)) {
+          this.demandesAcceptees = response.demandes_acceptees;
+          console.log('Demandes acceptées après traitement:', this.demandesAcceptees);
+        } else {
+          this.error = 'Format de réponse inattendu.';
+        }
+        this.loading = false;
+      },
+      (error) => {
+        this.error = 'Erreur lors de la récupération des demandes acceptées.';
+        this.loading = false;
+      }
+    );
+  }
+
 
   accepterDemande(demandeId: number | null | undefined): void {
     if (demandeId !== null && demandeId !== undefined) {
