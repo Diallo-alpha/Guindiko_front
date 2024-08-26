@@ -13,9 +13,7 @@
   <div class="profile-details">
     <h1>Alpha Diallo</h1>
     <p>alphaloppecity&#64;gmail.com</p>
-    <p>
-      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-    </p>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
 
     <p>
       <span class="experience">8ans</span> expériences |
@@ -28,9 +26,10 @@
     </div>
 
     <div class="buttons">
-      <button class="btn btn-articles">Articles</button>
-      <button class="btn btn-outline-dark">Sessions</button>
-      <button class="btn btn-outline-dark">Membres</button>
+
+      <button class="btn btn-articles" (click)="goToPage('article/mentor')">Articles</button>
+      <button class="btn btn-outline-dark" (click)="goToPage('session')">Sessions</button>
+      <button class="btn btn-outline-dark" (click)="goToPage('abonner/mentore')">Membres</button>
     </div>
   </div>
 </div>

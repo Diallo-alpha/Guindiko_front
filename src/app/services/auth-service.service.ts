@@ -105,4 +105,10 @@ export class AuthService {
     console.error('Une erreur est survenue:', error);
     return throwError(() => new Error('Une erreur est survenue, veuillez réessayer plus tard.'));
   }
+
+  getUserInfo(): any {
+    const storedUser = localStorage.getItem('User');
+    return storedUser ? JSON.parse(storedUser) : null;
+  }
+
 }

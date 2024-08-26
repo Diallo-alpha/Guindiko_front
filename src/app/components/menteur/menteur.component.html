@@ -1,274 +1,36 @@
-<app-navbar/>
+<app-navbar></app-navbar>
+
 <div class="container mentor-section">
   <div class="row">
-   <div class="col-md-4">
-    <h1>
-     Nos mentors
-    </h1>
-    <p>
-     Nos mentors sont des leaders dans leurs domaines respectifs, prêts à partager leur expertise et à vous guider vers la réussite. Découvrez les profils inspirants de ceux qui font la différence au sein de la communauté Guindiko.
-    </p>
-    <div class="search-box">
-     <input placeholder="Rechercher un mentor" type="text"/>
+    <div class="col-md-4">
+      <h1>Nos mentors</h1>
+      <p>
+        Nos mentors sont des leaders dans leurs domaines respectifs, prêts à partager leur expertise et à vous guider vers la réussite.
+      </p>
+      <div class="search-box">
+        <input placeholder="Rechercher un mentor" type="text" />
+      </div>
     </div>
-   </div>
-   <div class="col-md-8">
-    <div class="row">
-     <div class="col-md-6">
-      <div class="mentor-card" routerLink="article/mentor">
-        <img alt="Portrait of Alpha Diallo" height="50" src="assets/images/mentor1.svg" width="50"/>
-        <div class="mentor-info">
-          <h5>
-            Alpha Diallo
-          </h5>
-          <p>
-            Informatique
-          </p>
+
+    <div class="col-md-6">
+      <div class="row">
+        <div *ngFor="let mentor of mentors" class="col-md-6">
+          <div class="mentor-card" [routerLink]="['/profile', mentor.id]">
+            <img
+              [src]="mentor.profilePictureUrl ? mentor.profilePictureUrl : 'https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-portrait-176256935.jpg'"
+              alt="Portrait of {{ mentor.name }}" height="50" width="50"
+            />
+            <div class="mentor-info">
+              <h5>{{ mentor.name }}</h5>
+              <p>{{ mentor.formation.name }}</p>
+            </div>
+            <div class="mentor-action">
+              <i class="fas fa-plus-circle" (click)="requestMentorship(mentor.id)"></i>
+            </div>
+          </div>
         </div>
-        <div class="mentor-action">
-          <i class="fas fa-plus-circle"></i>
-        </div>
       </div>
-     </div>
-     <div class="col-md-6">
-      <div class="mentor-card">
-       <img alt="Portrait of Alpha Diallo" height="50" src="assets/images/mentor1.svg" width="50"/>
-       <div class="mentor-info">
-        <h5>
-         Alpha Diallo
-        </h5>
-        <p>
-         Informatique
-        </p>
-       </div>
-       <div class="mentor-action">
-        <i class="fas fa-plus-circle">
-        </i>
-       </div>
-      </div>
-     </div>
-     <div class="col-md-6">
-      <div class="mentor-card">
-       <img alt="Portrait of Alpha Diallo" height="50" src="assets/images/mentor1.svg" width="50"/>
-       <div class="mentor-info">
-        <h5>
-         Alpha Diallo
-        </h5>
-        <p>
-         Informatique
-        </p>
-       </div>
-       <div class="mentor-action">
-        <i class="fas fa-plus-circle">
-        </i>
-       </div>
-      </div>
-     </div>
-     <div class="col-md-6">
-      <div class="mentor-card">
-       <img alt="Portrait of Alpha Diallo" height="50" src="assets/images/mentor1.svg" width="50"/>
-       <div class="mentor-info">
-        <h5>
-         Alpha Diallo
-        </h5>
-        <p>
-         Informatique
-        </p>
-       </div>
-       <div class="mentor-action">
-        <i class="fas fa-plus-circle">
-        </i>
-       </div>
-      </div>
-     </div>
-     <div class="col-md-6">
-      <div class="mentor-card">
-       <img alt="Portrait of Alpha Diallo" height="50" src="assets/images/mentor1.svg" width="50"/>
-       <div class="mentor-info">
-        <h5>
-         Alpha Diallo
-        </h5>
-        <p>
-         Informatique
-        </p>
-       </div>
-       <div class="mentor-action">
-        <i class="fas fa-plus-circle">
-        </i>
-       </div>
-      </div>
-     </div>
-     <div class="col-md-6">
-      <div class="mentor-card">
-       <img alt="Portrait of Alpha Diallo" height="50" src="assets/images/mentor1.svg" width="50"/>
-       <div class="mentor-info">
-        <h5>
-         Alpha Diallo
-        </h5>
-        <p>
-         Informatique
-        </p>
-       </div>
-       <div class="mentor-action">
-        <i class="fas fa-plus-circle">
-        </i>
-       </div>
-      </div>
-     </div>
-     <div class="col-md-6">
-      <div class="mentor-card">
-       <img alt="Portrait of Alpha Diallo" height="50" src="assets/images/mentor1.svg" width="50"/>
-       <div class="mentor-info">
-        <h5>
-         Alpha Diallo
-        </h5>
-        <p>
-         Informatique
-        </p>
-       </div>
-       <div class="mentor-action">
-        <i class="fas fa-plus-circle">
-        </i>
-       </div>
-      </div>
-     </div>
-     <div class="col-md-6">
-      <div class="mentor-card">
-       <img alt="Portrait of Alpha Diallo" height="50" src="assets/images/mentor1.svg" width="50"/>
-       <div class="mentor-info">
-        <h5>
-         Alpha Diallo
-        </h5>
-        <p>
-         Informatique
-        </p>
-       </div>
-       <div class="mentor-action">
-        <i class="fas fa-plus-circle">
-        </i>
-       </div>
-      </div>
-     </div>
-     <div class="col-md-6">
-      <div class="mentor-card">
-       <img alt="Portrait of Alpha Diallo" height="50" src="assets/images/mentor1.svg" width="50"/>
-       <div class="mentor-info">
-        <h5>
-         Alpha Diallo
-        </h5>
-        <p>
-         Informatique
-        </p>
-       </div>
-       <div class="mentor-action">
-        <i class="fas fa-plus-circle">
-        </i>
-       </div>
-      </div>
-     </div>
-     <div class="col-md-6">
-      <div class="mentor-card">
-       <img alt="Portrait of Alpha Diallo" height="50" src="assets/images/mentor1.svg" width="50"/>
-       <div class="mentor-info">
-        <h5>
-         Alpha Diallo
-        </h5>
-        <p>
-         Informatique
-        </p>
-       </div>
-       <div class="mentor-action">
-        <i class="fas fa-plus-circle">
-        </i>
-       </div>
-      </div>
-     </div>
-     <div class="col-md-6">
-      <div class="mentor-card">
-       <img alt="Portrait of Alpha Diallo" height="50" src="assets/images/mentor1.svg" width="50"/>
-       <div class="mentor-info">
-        <h5>
-         Alpha Diallo
-        </h5>
-        <p>
-         Informatique
-        </p>
-       </div>
-       <div class="mentor-action">
-        <i class="fas fa-plus-circle">
-        </i>
-       </div>
-      </div>
-     </div>
-     <div class="col-md-6">
-      <div class="mentor-card">
-       <img alt="Portrait of Alpha Diallo" height="50" src="assets/images/mentor1.svg" width="50"/>
-       <div class="mentor-info">
-        <h5>
-         Alpha Diallo
-        </h5>
-        <p>
-         Informatique
-        </p>
-       </div>
-       <div class="mentor-action">
-        <i class="fas fa-plus-circle">
-        </i>
-       </div>
-      </div>
-     </div>
-     <div class="col-md-6">
-      <div class="mentor-card">
-       <img alt="Portrait of Alpha Diallo" height="50" src="assets/images/mentor1.svg" width="50"/>
-       <div class="mentor-info">
-        <h5>
-         Alpha Diallo
-        </h5>
-        <p>
-         Informatique
-        </p>
-       </div>
-       <div class="mentor-action">
-        <i class="fas fa-plus-circle">
-        </i>
-       </div>
-      </div>
-     </div>
-     <div class="col-md-6">
-      <div class="mentor-card">
-       <img alt="Portrait of Alpha Diallo" height="50" src="assets/images/mentor1.svg" width="50"/>
-       <div class="mentor-info">
-        <h5>
-         Alpha Diallo
-        </h5>
-        <p>
-         Informatique
-        </p>
-       </div>
-       <div class="mentor-action">
-        <i class="fas fa-plus-circle">
-        </i>
-       </div>
-      </div>
-     </div>
-     <div class="col-md-6">
-      <div class="mentor-card">
-       <img alt="Portrait of Alpha Diallo" height="50" src="assets/images/mentor1.svg" width="50"/>
-       <div class="mentor-info">
-        <h5>
-         Alpha Diallo
-        </h5>
-        <p>
-         Informatique
-        </p>
-       </div>
-       <div class="mentor-action">
-        <i class="fas fa-plus-circle">
-        </i>
-       </div>
-      </div>
-     </div>
     </div>
-   </div>
   </div>
- </div>
+</div>
+l

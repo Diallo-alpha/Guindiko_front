@@ -1,5 +1,7 @@
 import { Routes } from '@angular/router';
 import { NavbarComponent } from './components/navbar/navbar.component';
+
+
 import { AccueilComponent } from './components/accueil/accueil.component';
 import { FormationComponent } from './components/formation/formation.component';
 import { ArticlesComponent } from './components/articles/articles.component';
@@ -34,6 +36,7 @@ export const routes: Routes = [
   {path: 'mentor', component:MenteurComponent},
   {path: 'details-article', component:DetailsArticleComponent},
   {path: 'profile', component:ProfilMentorComponent},
+  { path: 'profile/:id', component: ProfilMentorComponent },
   {path: 'session', component:SessionMentorComponent},
   {path: 'article/mentor', component:ArticleMentorComponent},
   {path: 'abonner/mentore', component:AbonnerMentorComponent},
@@ -49,6 +52,7 @@ export const routes: Routes = [
   {path: 'article-dashboard', component:DashArticleComponent, canActivate:[MentorGuard]},
   {path: 'detail-formation', component:DetailFormationComponent},
   {path: 'modifier/profile-mentor', component:ProfilMentorComponents},
+
   {path: 'admin-dashboard', component:DashboardAdminComponent, canActivate:[AdminGuard]},
   {path: 'admin-formation', component:FormationAdminComponent}
 ];

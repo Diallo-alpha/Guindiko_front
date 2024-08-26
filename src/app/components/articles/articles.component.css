@@ -12,12 +12,22 @@
 .sidebar .btn:hover {
   background-color: #e0cfff;
 }
+.shadow1{
+  text-shadow: 2px 2px 4px rgba(255, 0, 255, 0.5);
+  font-size: 32px;
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+
+}
 .card {
   margin-bottom: 1rem;
+  border: none;
 }
 .card img {
-  height: 200px;
+  /* height: 200px; */
   object-fit: cover;
+  border-radius: 0;
+  height: 150px;
 }
 .card-title {
   font-size: 1.25rem;
@@ -25,10 +35,15 @@
 }
 .card-text {
   font-size: 0.875rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
 }
 .card-footer {
   background-color: transparent;
   border-top: none;
+  padding-top: 0;
 }
 .card-footer .text-muted {
   font-size: 0.875rem;
