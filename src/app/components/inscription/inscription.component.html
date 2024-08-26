@@ -1,67 +1,140 @@
 <div class="container">
   <div class="logo">
-    <img src="assets/images/logo.svg"/>
-    <h1>Bienvenue chez guindiko</h1>
+    <img src="assets/images/logo.svg" alt="Guindiko logo" height="100" width="200" />
+    <h1>Bienvenue chez Guindiko</h1>
   </div>
 
-  <!-- Étape 1 -->
+  <!-- Étape 1: Basic Information -->
   <form *ngIf="currentStep === 1">
     <div class="mb-3">
       <label for="nom" class="form-label">Nom</label>
-      <input type="text" class="form-control" id="nom" placeholder="Entrez votre nom" [(ngModel)]="userData.name" name="name">
+      <input
+        type="text"
+        class="form-control"
+        id="nom"
+        placeholder="Entrez votre nom"
+        [(ngModel)]="userData.name"
+        name="name"
+      />
     </div>
     <div class="mb-3">
       <label for="email" class="form-label">Email</label>
-      <input type="email" class="form-control" id="email" placeholder="exemple@exemple.com" [(ngModel)]="userData.email" name="email">
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        placeholder="exemple@exemple.com"
+        [(ngModel)]="userData.email"
+        name="email"
+      />
     </div>
     <div class="mb-3">
       <label for="parcours_academique" class="form-label">Parcours Académique</label>
-      <input type="text" class="form-control" id="parcours_academique" placeholder="Entrez votre parcours académique" [(ngModel)]="userData.parcours_academique" name="parcours_academique">
+      <input
+        type="text"
+        class="form-control"
+        id="parcours_academique"
+        placeholder="Entrez votre parcours académique"
+        [(ngModel)]="userData.parcours_academique"
+        name="parcours_academique"
+      />
     </div>
     <div class="mb-3">
       <label for="diplome" class="form-label">Diplôme</label>
-      <input type="text" class="form-control" id="diplome" placeholder="Entrez votre diplôme" [(ngModel)]="userData.diplome" name="diplome">
+      <input
+        type="text"
+        class="form-control"
+        id="diplome"
+        placeholder="Entrez votre diplôme"
+        [(ngModel)]="userData.diplome"
+        name="diplome"
+      />
     </div>
     <div class="mb-3">
       <label for="langue" class="form-label">Langue</label>
-      <input type="text" class="form-control" id="langue" placeholder="Entrez votre langue" [(ngModel)]="userData.langue" name="langue">
-    </div>
-    <div class="mb-3">
-      <label for="cv" class="form-label">Curriculum Vitae</label>
-      <input type="text" class="form-control" id="cv">
+      <input
+        type="text"
+        class="form-control"
+        id="langue"
+        placeholder="Entrez votre langue"
+        [(ngModel)]="userData.langue"
+        name="langue"
+      />
     </div>
     <button type="button" class="btn btn-primary" (click)="nextStep()">Continuer</button>
   </form>
 
-  <!-- Étape 2 -->
-  <form *ngIf="currentStep === 2" (ngSubmit)="nextStep()">
+  <!-- Étape 2: Experience and Biography -->
+  <form *ngIf="currentStep === 2">
     <div class="mb-3">
       <label for="experience" class="form-label">Années d'expérience</label>
-      <input type="text" class="form-control" id="experience" placeholder="Entrez vos années d'expérience" [(ngModel)]="userData.experience" name="experience">
+      <input
+        type="text"
+        class="form-control"
+        id="experience"
+        placeholder="Entrez vos années d'expérience"
+        [(ngModel)]="userData.experience"
+        name="experience"
+      />
     </div>
     <div class="mb-3">
       <label for="domaine" class="form-label">Domaine</label>
-      <input type="text" class="form-control" id="domaine" placeholder="Entrez votre domaine" [(ngModel)]="userData.domaine" name="domaine">
+      <input
+        type="text"
+        class="form-control"
+        id="domaine"
+        placeholder="Entrez votre domaine"
+        [(ngModel)]="userData.domaine"
+        name="domaine"
+      />
     </div>
     <div class="mb-3">
       <label for="formation_id" class="form-label">Formation ID</label>
-      <input type="text" class="form-control" id="formation_id" placeholder="Entrez l'ID de formation" [(ngModel)]="userData.formation_id" name="formation_id">
+      <input
+        type="text"
+        class="form-control"
+        id="formation_id"
+        placeholder="Entrez l'ID de formation"
+        [(ngModel)]="userData.formation_id"
+        name="formation_id"
+      />
     </div>
     <div class="mb-3">
       <label for="biographie" class="form-label">Biographie</label>
-      <textarea class="form-control" id="biographie" placeholder="Entrez votre biographie" rows="3" [(ngModel)]="userData.biographie" name="biographie"></textarea>
+      <textarea
+        class="form-control"
+        id="biographie"
+        placeholder="Entrez votre biographie"
+        rows="3"
+        [(ngModel)]="userData.biographie"
+        name="biographie"
+      ></textarea>
     </div>
     <button type="button" class="btn btn-primary" (click)="nextStep()">Continuer</button>
     <button type="button" class="btn btn-secondary" (click)="prevStep()">Retour</button>
   </form>
 
-  <!-- Étape 3 -->
+  <!-- Étape 3: Password Setup -->
   <form *ngIf="currentStep === 3" (ngSubmit)="onSubmit()">
     <div class="mb-3">
       <label for="password" class="form-label">Mot de passe</label>
-      <input type="password" class="form-control" id="password" placeholder="Saisissez votre mot de passe" [(ngModel)]="userData.password" name="password">
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        placeholder="Saisissez votre mot de passe"
+        [(ngModel)]="userData.password"
+        name="password"
+      />
     </div>
     <button type="submit" class="btn btn-primary">Soumettre</button>
     <button type="button" class="btn btn-secondary" (click)="prevStep()">Retour</button>
   </form>
+
+  <!-- Already have an account? -->
+  <div class="mt-3">
+    <p>
+      Vous avez déjà un compte? <a routerLink="/connexion" class="text-decoration-none">Se connecter</a>
+    </p>
+  </div>
 </div>

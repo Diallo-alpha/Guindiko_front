@@ -1,9 +1,15 @@
 <header class="header">
   <h1 routerLink="/">Guindiko</h1>
   <nav>
-    <a routerLink="/formations">Formation</a>
-    <a routerLink="/mentor">Mentor</a>
-    <a routerLink="/article">Articles</a>
+    <a routerLink="/formations" routerLinkActive="active-link">Formation</a>
+    <a routerLink="/mentor" routerLinkActive="active-link">Mentor</a>
+    <a routerLink="/article" routerLinkActive="active-link">Articles</a>
   </nav>
-  <button class="button">Connexion</button>
+  <div *ngIf="isAuthenticated; else loginTemplate">
+    <span>Bienvenue, {{ userName }}</span>
+    <button (click)="logout()" class="deconnexion">Déconnexion</button>
+  </div>
+  <ng-template #loginTemplate>
+    <button class="button" routerLink="/connexion">Connexion</button>
+  </ng-template>
 </header>

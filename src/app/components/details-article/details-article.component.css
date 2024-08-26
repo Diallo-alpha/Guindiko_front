@@ -1,5 +1,11 @@
+body{
+  background-color: #FFFFF0;
+  font-family: 'open Sans', sans-serif;
+}
+
+
 .content {
-  padding: 2rem;
+  padding: 2rem 0rem;
 }
 .content h1 {
   font-size: 2rem;
@@ -9,7 +15,7 @@
   font-size: 1.25rem;
   color: #6c757d;
 }
-.content img {
+.content .image-banner {
   width: 100%;
   border-radius: 0.5rem;
 }
@@ -26,7 +32,7 @@
   font-size: 1rem;
 }
 .content p {
-  margin-top: 1rem;
+  margin-top: .3rem;
   line-height: 1.5;
 }
 .comments {
@@ -62,14 +68,20 @@
 .card-text {
   font-size: 1rem;
   margin-bottom: 0.5rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
 }
-.card-author {
+ .card-author {
   font-size: 0.875rem;
   font-weight: bold;
+  margin: 0;
 }
+/*
 .card {
   margin-bottom: 1rem;
 }
 .card-body {
   padding-left: 0.5rem;
-}
+} */

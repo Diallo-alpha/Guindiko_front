@@ -4,40 +4,59 @@
   text-align: center;
   align-items: flex-start;
   gap: 15px;
+
 }
+
 .logo {
   margin-bottom: 20px;
 }
+
 .logo img {
   max-width: 100%;
 }
+
 .form-control {
   margin-bottom: 20px;
+  border-radius: 8px; /* Add border radius to inputs */
 }
+
 .btn-custom {
   background-color: #4b004b;
-  color: white;
   width: 100%;
-  width: 546px;
   height: 59px;
+  border-radius: 8px; /* Add border radius to button */
+  color: #fff; /* Ensure button text is white */
+  font-weight: 600; /* Make button text bold */
 }
+
 .form-label {
   text-align: left;
   display: block;
   font-size: 16px;
   font-weight: 600;
 }
-input[type="email"], input[type="password"]{
-  display: flex;
-  width: 546px;
+
+input[type="email"], input[type="password"] {
+  width: 100%; /* Make input fields responsive */
   height: 50px;
   padding: 14px 27px;
-  align-items: center;
-  gap: 10px;
-  align-self: stretch;
+  border-radius: 8px; /* Add border radius to input fields */
 }
+
 input[type="submit"] {
   flex-shrink: 0;
   border-radius: 8px;
-  background: var(--Mauve-Profond, #5C0C69);
-  }
+  background: #5C0C69;
+}
+
+.mt-3 {
+  margin-top: 1rem;
+}
+
+.text-decoration-none {
+  text-decoration: none;
+}
+
+.text-decoration-none:hover {
+  text-decoration: underline; /* Underline link on hover */
+}

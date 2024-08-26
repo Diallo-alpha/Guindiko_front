@@ -8,7 +8,9 @@ import { FormationModel } from '../../models/FormationModel';
 
 @Component({
   selector: 'app-formation',
+
   standalone: true,
+
   imports: [NavbarComponent, FooterComponent, CommonModule],
   templateUrl: './formation.component.html',
   styleUrls: ['./formation.component.css']

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavbarComponent } from '../../navbar/navbar.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profil-mentor',
@@ -10,4 +11,9 @@ import { NavbarComponent } from '../../navbar/navbar.component';
 })
 export class ProfilMentorComponent {
 
+  constructor(private router: Router) { }
+
+  goToPage(path: string) {
+    this.router.navigate([`/${path}`]);
+  }
 }

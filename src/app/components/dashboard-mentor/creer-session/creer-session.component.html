@@ -1,55 +1,53 @@
-<app-sidebar/>
+<app-sidebar></app-sidebar>
+
 <div class="content">
-  <h2>
-   creer une nouvelle session
-  </h2>
+  <h2>Créer une nouvelle session</h2>
+
   <div class="form-container">
-   <div class="form-row">
-    <div class="form-group">
-     <label for="theme">
-      Theme
-     </label>
-     <input id="theme" placeholder="Input description" type="text"/>
+    <!-- Champ pour choisir la formation -->
+    <div class="form-row">
+      <div class="form-group">
+        <label for="formation">Formation</label>
+        <select id="formation" [(ngModel)]="sessionModel.formation_id" name="formation_id" required>
+          <option *ngFor="let formation of formations" [value]="formation.id">
+            {{ formation.nom }}
+          </option>
+        </select>
+      </div>
     </div>
-    <div class="form-group">
-     <label for="domaine">
-      Domaine
-     </label>
-     <input id="domaine" placeholder="Input description" type="text"/>
+
+    <!-- Champ pour choisir la date de la session -->
+    <div class="form-row">
+      <div class="form-group">
+        <label for="date">Date</label>
+        <input id="date" type="datetime-local" [(ngModel)]="sessionModel.date" name="date" required/>
+      </div>
     </div>
-   </div>
-   <div class="form-row">
-    <div class="form-group">
-     <label for="formation">
-      Formation
-     </label>
-     <input id="formation" placeholder="Input description" type="text"/>
+
+    <!-- Champ pour choisir le statut de la session -->
+    <div class="form-row">
+      <div class="form-group">
+        <label for="statut">Statut</label>
+        <select id="statut" [(ngModel)]="sessionModel.statut" name="statut" required>
+          <option value="en attente">En attente</option>
+          <option value="confirmée">En cours</option>
+          <option value="terminée">Terminée</option>
+          <option value="annulée">Annuler</option>
+        </select>
+      </div>
     </div>
-    <div class="form-group">
-     <label for="lien-meet">
-      Lien meet
-     </label>
-     <input id="lien-meet" placeholder="Input description" type="text"/>
+
+    <!-- Champ pour saisir la durée de la session -->
+    <div class="form-row">
+      <div class="form-group">
+        <label for="duree">Durée (en heures)</label>
+        <input id="duree" type="number" [(ngModel)]="sessionModel.duree" name="duree" placeholder="Durée en heures" min="1" required/>
+      </div>
     </div>
-   </div>
-   <div class="form-row">
-    <div class="form-group">
-     <label for="date">
-      Date
-     </label>
-     <input id="date" placeholder="Input description" type="text"/>
-    </div>
-    <div class="form-group">
-     <label for="duree">
-      Duree
-     </label>
-     <input id="duree" placeholder="Input description" type="text"/>
-    </div>
-   </div>
   </div>
+
+  <!-- Bouton pour publier la session -->
   <div class="form-group">
-   <button type="submit">
-    Publier
-   </button>
+    <button (click)="creerSession()">Publier</button>
   </div>
- </div>
+</div>

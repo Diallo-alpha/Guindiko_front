@@ -26,7 +26,8 @@ import { FormationAdminComponent } from './components/admin-formation/formation/
 import { DashboardAdminComponent } from './components/dashboard-admin/dashboard-admin.component';
 import { ProfilMentorComponents } from './components/dashboard-mentor/profil-mentore/profil-mentor.components';
 import { AdminGuard } from './Guard/admin-guard.guard';
-
+import { MentorGuard } from './Guard/mentor-guard.guard';
+import { ModifierArticleComponent } from './components/dashboard-mentor/modifier-article/modifier-article.component';
 export const routes: Routes = [
   { path: 'navbar', component: NavbarComponent },
   { path: 'dashboard', component: DashboardAdminComponent },
@@ -61,21 +62,27 @@ export const routes: Routes = [
   {path: 'mentor', component:MenteurComponent},
   {path: 'details-article', component:DetailsArticleComponent},
   {path: 'profile', component:ProfilMentorComponent},
+  { path: 'profile/:id', component: ProfilMentorComponent },
   {path: 'session', component:SessionMentorComponent},
   {path: 'article/mentor', component:ArticleMentorComponent},
   {path: 'abonner/mentore', component:AbonnerMentorComponent},
   {path: 'inscription', component:InscriptionComponent},
   {path: 'connexion', component:ConnexionComponent},
   {path: 'sidebar', component:SidebarComponent},
-  {path: 'session-mentor', component:SessionComponent},
-  {path: 'creer-session', component:CreerSessionComponent},
-  {path: 'creer-article', component:CreerArticleComponent},
-  {path: 'dashboard-mentor', component:DashboardComponent},
-  {path: 'abonner-mentor', component:AbonnerComponent},
-  {path: 'article-dashboard', component:DashArticleComponent},
+  {path: 'session-mentor', component:SessionComponent,  canActivate:[MentorGuard]},
+  {path: 'creer-session', component:CreerSessionComponent, canActivate:[MentorGuard]},
+  {path: 'creer-article', component:CreerArticleComponent, canActivate:[MentorGuard]},
+  {path: 'dashboard-mentor', component:DashboardComponent, canActivate:[MentorGuard]},
+  {path: 'modifier-article/:id', component:ModifierArticleComponent, canActivate:[MentorGuard]},
+  {path: 'abonner-mentor', component:AbonnerComponent, canActivate:[MentorGuard]},
+  {path: 'article-dashboard', component:DashArticleComponent, canActivate:[MentorGuard]},
   {path: 'detail-formation', component:DetailFormationComponent},
   {path: 'modifier/profile-mentor', component:ProfilMentorComponents},
-  {path: 'admin-dashboard', component:DashboardAdminComponent, canActivate:[AdminGuard]}
+  {path: 'admin-dashboard', component:DashboardAdminComponent, canActivate:[AdminGuard]},
+  {path: 'admin-dashboard', component:DashboardAdminComponent, canActivate:[AdminGuard]},
+  {path: 'admin-formation', component:FormationAdminComponent}
   ];
 
 
+
+ 
