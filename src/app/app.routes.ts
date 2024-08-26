@@ -5,6 +5,7 @@ import { FormationComponent } from './components/formation/formation.component'
 import { ArticlesComponent } from './components/articles/articles.component'
 import { MenteurComponent } from './components/menteur/menteur.component'
 import { DetailsArticleComponent } from './components/details-article/details-article.component'
+import { ProfilMentorComponent } from './components/mentor/profil-mentor/profil-mentor.component'
 import { SessionMentorComponent } from './components/mentor/session-mentor/session-mentor.component'
 import { ArticleMentorComponent } from './components/mentor/article-mentor/article-mentor.component'
 import { AbonnerMentorComponent } from './components/mentor/abonner-mentor/abonner-mentor.component'
@@ -18,10 +19,10 @@ import { DashboardComponent } from './components/dashboard-mentor/dashboard/dash
 import { AbonnerComponent } from './components/dashboard-mentor/abonner/abonner.component'
 import { DashArticleComponent } from './components/dashboard-mentor/dash-article/dash-article.component'
 import { DetailFormationComponent } from './components/detail-formation/detail-formation.component'
-import { ProfilMentoreComponents } from './components/dashboard-mentor/profil-mentore/profil-mentore.components' // Assurez-vous que le chemin est correct
-import { ProfilMentorComponent } from './components/mentor/profil-mentor/profil-mentor.component' // Assurez-vous que le chemin est correct
+import { ProfilMentoreComponents } from './components/dashboard-mentor/profil-mentore/profil-mentore.components'
 import { DashboardAdminComponent } from './components/dashboard-admin/dashboard-admin.component'
 import { AdminGuard } from './Guard/admin-guard.guard'
+import { FormationAdminComponent } from './components/admin-formation/formation/formation.component'
 import { MentorGuard } from './Guard/mentor-guard.guard'
 import { ModifierArticleComponent } from './components/dashboard-mentor/modifier-article/modifier-article.component'
 
@@ -37,8 +38,8 @@ export const routes: Routes = [
   { path: 'inscription', component: InscriptionComponent },
   { path: 'connexion', component: ConnexionComponent },
   { path: 'detail-formation', component: DetailFormationComponent },
-  { path: 'mentor/profil/edit', component: ProfilMentoreComponents }, // Route pour afficher le profil du mentor
-  { path: 'mentor/profil', component: ProfilMentorComponent }, // Route pour modifier le profil du mentor
+  { path: 'mentor/profil', component: ProfilMentorComponent }, // Afficher le profil du mentor
+  { path: 'mentor/profil/edit', component: ProfilMentoreComponents }, // Modifier le profil du mentor
 
   // Routes protégées pour Mentor
   {
