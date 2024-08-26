@@ -7,6 +7,7 @@ import { DonneePublicService } from '../../../services/donnee-public.service';
 import { FormationModel } from '../../../models/FormationModel';
 import { RessourceModel } from '../../../models/RessourceModel';
 import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 
 type FormationMapping = {
   [id: number]: string;
@@ -15,7 +16,7 @@ type FormationMapping = {
 @Component({
   selector: 'app-session',
   standalone: true,
-  imports: [SidebarComponent, CommonModule, FormsModule],
+  imports: [SidebarComponent, CommonModule, FormsModule, RouterLink],
   templateUrl: './session.component.html',
   styleUrls: ['./session.component.css']
 })
