@@ -38,6 +38,8 @@ export class MentorService {
     );
   }
 
+
+
   getUserMentorships(): Observable<any[]> {
     const headers = this.createHeaders();
     return this.http.get<any[]>(`${apiUrl}/user/mentorships`, { headers });
@@ -66,6 +68,15 @@ export class MentorService {
       .pipe(catchError(this.handleError));
   }
 
+  getMentorById(id: number): Observable<any> {
+    const headers = this.createHeaders();
+    return this.http.get<any>(`${apiUrl}/mentors/${id}`, { headers })
+      .pipe(
+        map(response => response.mentor), // Adjust according to your API structure
+        catchError(this.handleError)
+      );
+  }
+  
   // Autres méthodes pour gérer les articles et les actions de mentorat
   ajouterArticle(articleData: any): Observable<any> {
     const headers = this.createHeaders();
