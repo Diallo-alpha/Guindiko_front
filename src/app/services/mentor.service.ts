@@ -6,6 +6,7 @@ import { catchError, map } from 'rxjs/operators';
 import { ArticleModel } from '../models/ArticleModel';
 import { SessionModel } from '../models/SessionModel';
 import { RessourceModel } from '../models/RessourceModel';
+import { DemandeMentorat } from '../models/DemandeMentorat';
 
 @Injectable({
   providedIn: 'root'
@@ -119,4 +120,25 @@ export class MentorService {
     return this.http.delete<void>(`${apiUrl}/ressources/${ressourceId}`, { headers })
       .pipe(catchError(this.handleError));
   }
+  // Méthode pour obtenir les demandes de mentorat reçues par le mentor connecté
+getDemandesRecues():Observable<DemandeMentorat[]> {
+  const headers = this.createHeaders();
+  return this.http.get<DemandeMentorat[]>(`${apiUrl}/mentor/demandes-recues`, { headers })
+    .pipe(catchError(this.handleError));
+}
+
+// Méthode pour accepter une demande de mentorat
+accepterDemandeMentorat(demandeId: number): Observable<any> {
+  const headers = this.createHeaders();
+  return this.http.post(`${apiUrl}/mentorats/${demandeId}/accepter`, {}, { headers })
+    .pipe(catchError(this.handleError));
+}
+
+// Méthode pour refuser une demande de mentorat
+refuserDemandeMentorat(demandeId: number): Observable<any> {
+  const headers = this.createHeaders();
+  return this.http.post(`${apiUrl}/mentorats/${demandeId}/refuser`, {}, { headers })
+    .pipe(catchError(this.handleError));
+};
+
 }
