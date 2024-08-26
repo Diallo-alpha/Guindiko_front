@@ -1,6 +1,7 @@
 <app-navbar></app-navbar>
 
 <div class="page">
+<!-- <<<<<<< HEAD
 <div class="container mentor-section">
   <div class="row">
     <div class="col-md-4">
@@ -14,6 +15,21 @@
         type="text"
         (input)="filterMentors($event)"
         />
+======= -->
+  <div class="container mentor-section">
+    <div class="row">
+      <div class="col-md-4">
+        <h1>Nos mentors</h1>
+        <p>
+          Nos mentors sont des leaders dans leurs domaines respectifs, prêts à partager leur expertise et à vous guider vers la réussite.
+        </p>
+        <div class="search-box">
+          <input
+          placeholder="Rechercher un mentor"
+          type="text"
+          (input)="filterMentors($event)"
+          />
+        </div>
 
       </div>
 
@@ -22,7 +38,7 @@
           <div *ngFor="let mentor of filteredMentors" class="col-md-6">
             <div *ngIf="mentor && mentor.name" class="mentor-card" [routerLink]="['/profile', mentor.id]">
               <img
-              [src]="mentor.profilePictureUrl ? mentor.profilePictureUrl : 'https://contenthub-static.grammarly.com/blog/wp-content/uploads/2022/08/BMD-3398.png'"
+              [src]="mentor.profilePictureUrl ? mentor.profilePictureUrl : 'https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-portrait-176256935.jpg'"
               alt="Portrait of {{ mentor.name }}" height="50" width="50"
               />
               <div class="mentor-info">
@@ -39,4 +55,4 @@
     </div>
   </div>
 </div>
-</div>
+

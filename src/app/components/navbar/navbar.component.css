@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans&display=swap');
+
 .header {
   background-color: #110012; /* Couleur de fond */
   color: #fffff0;
@@ -15,8 +17,10 @@
   margin: 0;
   font-size: 28px; /* Augmenter la taille de la police pour plus de visibilité */
   cursor: pointer;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   transition: color 0.3s ease; /* Transition pour effet au survol */
+  font-weight: bold;
+
 }
 
 .header h1:hover {
