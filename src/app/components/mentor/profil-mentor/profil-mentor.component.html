@@ -1,42 +1,8 @@
-<!-- <app-navbar />
-
-<div class="container profile-container">
-  <div class="profil-mentor">
-    <img [alt]="'Profile picture of ' + mentorName" class="profile-image" [src]="mentorImage" width="250"
-      height="250" />
-  </div>
-  <div class="profile-details">
-    <h1>{{ mentorName }}</h1>
-    <p>{{ mentorEmail }}</p>
-    <p>{{ mentorBio }}</p>
-
-    <p>
-      <span class="experience">{{ mentorExperience }}</span> expériences |
-      <span class="experience">{{ mentorLanguages }}</span>
-    </p>
-    <div class="request">
-      <p class="members">{{ mentorMembers }} membres</p>
-      <div (click)="requestMentorship()">
-        <i class="fas fa-plus"></i>
-        <span>Demande</span>
-      </div>
-    </div>
-
-    <div class="buttons">
-      <button class="btn btn-articles" (click)="viewArticles()">Articles</button>
-      <button class="btn btn-outline-dark" (click)="viewSessions()">Sessions</button>
-      <button class="btn btn-outline-dark" (click)="viewMembers()">Membres</button>
-    </div>
-  </div>
-</div>
-
- -->
-
 <app-navbar>
 
-<div class="profil-container">
+<div class="profile-container">
   <div class="profile-header">
-    <img [src]="mentor.photoUrl" alt="Profile photo" />
+    <img [src]="mentor.photoUrl" alt="Photo de profil" class="profile-image" />
     <h1>{{ mentor.prenom }} {{ mentor.nom }}</h1>
     <p>{{ mentor.email }}</p>
   </div>
