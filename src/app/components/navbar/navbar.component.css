@@ -70,7 +70,7 @@
   font-family: 'Open Sans', sans-serif;
   padding: 8px 25px; /* Espacement interne légèrement augmenté */
   border: none;
-  border-radius: 25px; /* Bordure plus arrondie pour un effet plus moderne */
+  border-radius: 5px; /* Bordure plus arrondie pour un effet plus moderne */
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease; /* Transition pour effet au survol */
 }
@@ -83,7 +83,7 @@
   background-color: #ffffff4e; /* Couleur de fond du bouton de déconnexion */
   color: #1a011c; /* Couleur du texte du bouton de déconnexion */
   border: none;
-  border-radius: 25px; /* Bordure plus arrondie pour uniformité avec les autres boutons */
+  border-radius: 5px; /* Bordure plus arrondie pour uniformité avec les autres boutons */
   padding: 8px 15px; /* Espacement interne ajusté */
   margin-left: 15px; /* Espacement à gauche */
   cursor: pointer;
