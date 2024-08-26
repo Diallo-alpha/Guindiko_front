@@ -18,7 +18,7 @@
   <div *ngIf="showNotifications" class="notifications-dropdown">
     <ul>
       <li *ngFor="let notification of notifications">
-        {{ notification.message }} <!-- Assurez-vous que "message" correspond à une propriété existante -->
+        {{ notification.data }}
       </li>
     </ul>
   </div>
