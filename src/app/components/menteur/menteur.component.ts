@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { MenteeService } from '../../services/mentee.service';
 
 @Component({
   selector: 'app-menteur',
@@ -15,7 +16,10 @@ export class MenteurComponent implements OnInit {
   mentors: any[] = [];
   filteredMentors: any[] = []; // Tableau pour stocker les mentors filtrés
 
-  constructor(private mentorService: MentorService) {}
+
+  constructor(private mentorService: MentorService,
+        private menteeService: MenteeService
+  ) {}
 
   ngOnInit(): void {
     this.mentorService.getMentors().subscribe({
@@ -43,16 +47,19 @@ export class MenteurComponent implements OnInit {
     );
   }
 
-  requestMentorship(mentorId: number) {
-    this.mentorService.requestMentorship(mentorId).subscribe(
-      (response) => {
-        alert('Demande de mentorat envoyée avec succès!');
+  envoyerDemande(mentorId: number): void {
+    this.menteeService.EnvoyerDemande(mentorId).subscribe({
+      next: (response) => {
+        console.log('Demande de mentorat envoyée avec succès', response);
+        alert('Votre demande de mentorat a été envoyée.');
       },
-      (error) => {
-        console.error('Erreur lors de la demande de mentorat:', error);
-        alert('Une erreur est survenue. Veuillez réessayer plus tard.');
+      error: (error) => {
+        console.error('Erreur lors de l\'envoi de la demande de mentorat', error);
+        alert('Une erreur est survenue lors de l\'envoi de la demande.');
       }
-    );
+    });
   }
+
+
 }
 

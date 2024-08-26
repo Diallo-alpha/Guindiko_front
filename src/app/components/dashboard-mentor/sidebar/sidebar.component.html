@@ -1,18 +1,13 @@
 <div class="sidebar">
   <h1>Guindiko <span>nature</span></h1>
   <ul>
-<!-- <<<<<<< HEAD
-      <li><a routerLink="/dashboard-mentor" routerLinkActive="active"><i class="fas fa-home"></i> Dashboard</a></li>
-      <li><a routerLink="/session-mentor" routerLinkActive="active"><i class="fas fa-calendar-alt"></i> Sessions</a></li>
-      <li><a routerLink="/article-dashboard" routerLinkActive="active"><i class="fas fa-newspaper"></i> Articles</a></li>
-      <li><a routerLink="/abonner-mentor" routerLinkActive="active"><i class="fas fa-user"></i> Abonnee</a></li>
-      <li><a routerLink="/logout" routerLinkActive="active"><i class="fas fa-sign-out-alt"></i> Deconnexion</a></li>
-======= -->
+
     <li (click)="navigateTo('dashboard-mentor')"><i class="fas fa-home"></i> Dashboard</li>
     <li (click)="navigateTo('session-mentor')"><i class="fas fa-calendar-alt"></i> Sessions</li>
     <li (click)="navigateTo('article-dashboard')"><i class="fas fa-newspaper"></i> Articles</li>
     <li (click)="navigateTo('abonner-mentor')"><i class="fas fa-user"></i> Abonné(e)</li>
-    <li (click)="logout()"><i class="fas fa-sign-out-alt"></i> Déconnexion</li>
+
+      <li (click)="logout()"><a routerLink="/logout" routerLinkActive="active"><i class="fas fa-sign-out-alt"></i> Deconnexion</a></li>
   </ul>
 </div>
 

@@ -2,7 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { apiUrl } from './apiUrl';
-import { map, catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { ArticleModel } from '../models/ArticleModel';
 import { SessionModel } from '../models/SessionModel';
 import { RessourceModel } from '../models/RessourceModel';
@@ -76,7 +76,7 @@ export class MentorService {
         catchError(this.handleError)
       );
   }
-  
+
   // Autres méthodes pour gérer les articles et les actions de mentorat
   ajouterArticle(articleData: any): Observable<any> {
     const headers = this.createHeaders();
