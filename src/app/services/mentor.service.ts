@@ -196,4 +196,13 @@ getNombreArticles(): Observable<any> {
     .pipe(catchError(this.handleError));
 }
 
+//afficher les notifications
+getMentorNotifications(userId: string): Observable<any> {
+  const headers = this.createHeaders();
+  console.log('Headers envoyés:', headers);
+  return this.http.get<any>(`${apiUrl}/mentor/${userId}/notifications`, { headers })
+    .pipe(
+      catchError(this.handleError)
+    );
+}
 }
