@@ -1,36 +1,31 @@
-<app-navbar/>
+<app-navbar />
 
 <div class="container profile-container">
   <div class="profil-mentor">
-  <img
-    alt="Profile picture of a person wearing glasses and a green sweater, holding books"
-    class="profile-image"
-    src="assets/images/mentor1.svg"
-    width="250"
-    height="250"
-  />
-</div>
+    <img [alt]="'Profile picture of ' + mentorName" class="profile-image" [src]="mentorImage" width="250"
+      height="250" />
+  </div>
   <div class="profile-details">
-    <h1>Alpha Diallo</h1>
-    <p>alphaloppecity&#64;gmail.com</p>
-    <p>
-      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-    </p>
+    <h1>{{ mentorName }}</h1>
+    <p>{{ mentorEmail }}</p>
+    <p>{{ mentorBio }}</p>
 
     <p>
-      <span class="experience">8ans</span> expériences |
-      <span class="experience">francais</span>
+      <span class="experience">{{ mentorExperience }}</span> expériences |
+      <span class="experience">{{ mentorLanguages }}</span>
     </p>
     <div class="request">
-      <p class="members">300 membres</p>
-      <div> <i class="fas fa-plus"></i>
-        <span>Demande</span></div>
+      <p class="members">{{ mentorMembers }} membres</p>
+      <div (click)="requestMentorship()">
+        <i class="fas fa-plus"></i>
+        <span>Demande</span>
+      </div>
     </div>
 
     <div class="buttons">
-      <button class="btn btn-articles">Articles</button>
-      <button class="btn btn-outline-dark">Sessions</button>
-      <button class="btn btn-outline-dark">Membres</button>
+      <button class="btn btn-articles" (click)="viewArticles()">Articles</button>
+      <button class="btn btn-outline-dark" (click)="viewSessions()">Sessions</button>
+      <button class="btn btn-outline-dark" (click)="viewMembers()">Membres</button>
     </div>
   </div>
 </div>
