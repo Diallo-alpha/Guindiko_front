@@ -13,11 +13,12 @@ export class MenteeService {
 
   private headers = new HttpHeaders({
     'Content-Type': 'application/json',
-    'Authorization': `Bearer ${localStorage.getItem('Token')}` // Add the token to requests
+    'Authorization': `Bearer ${localStorage.getItem('Token')}` 
   });
 
   // Envoyer une demande de mentorat
   EnvoyerDemande(mentorId: number): Observable<any> {
+    console.log('En-têtes:', this.headers);
     return this.http.post(`${apiUrl}/mentorats/${mentorId}/demande`, {}, { headers: this.headers })
       .pipe(catchError(this.handleError));
   }

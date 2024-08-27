@@ -17,7 +17,7 @@ export class MenteurComponent implements OnInit {
 
   constructor(private mentorService: MentorService,
         private menteeService: MenteeService
-  ) {} 
+  ) {}
 
   ngOnInit(): void {
     this.mentorService.getMentors().subscribe({
@@ -45,7 +45,7 @@ export class MenteurComponent implements OnInit {
         console.error('Erreur lors de l\'envoi de la demande de mentorat', error);
         alert('Une erreur est survenue lors de l\'envoi de la demande.');
       }
-    });
+    }); 
   }
 
 
