@@ -7,6 +7,7 @@ import { ArticleModel } from '../models/ArticleModel';
 import { SessionModel } from '../models/SessionModel';
 import { RessourceModel } from '../models/RessourceModel';
 import { DemandeMentorat } from '../models/DemandeMentorat';
+import { UserModel } from '../models/userModel';
 
 
 @Injectable({
@@ -205,4 +206,10 @@ getMentorNotifications(userId: string): Observable<any> {
       catchError(this.handleError)
     );
 }
+getMentorById(user_id: number): Observable<UserModel> {
+  const headers = this.createHeaders();
+  return this.http.get<UserModel>(`${apiUrl}/mentore/${user_id}`, { headers })
+    .pipe(catchError(this.handleError));
+}
+
 }

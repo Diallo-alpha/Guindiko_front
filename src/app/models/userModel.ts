@@ -8,6 +8,5 @@ export interface UserModel {
   cv?: string;
   experience?: string;
   domaine?: string;
-  // formation_id?: string;
   biographie?: string;
 }
