@@ -5,7 +5,7 @@ import { DonneePublicService } from '../../../services/donnee-public.service';
 import { AdminService } from '../../../services/admin.service';
 import { DomainModel } from '../../../models/DomainModel';
 import { FormationModel } from '../../../models/FormationModel';
-import Swal from 'sweetalert2';  // Import SweetAlert
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-formation',
@@ -19,7 +19,8 @@ export class FormationAdminComponent implements OnInit {
   formations: FormationModel[] = [];
   selectedDomainId: number = 1;
   startIndex: number = 0;
-  newFormation: { libelle: string, domaine: number, description: string } = { libelle: '', domaine: 0, description: '' };
+  selectedFormation: FormationModel | null = null;
+  newFormation: FormationModel = { nom: '', domaine_id: 0, description: '' };
 
   constructor(
     private donneePublicService: DonneePublicService,
@@ -34,15 +35,15 @@ export class FormationAdminComponent implements OnInit {
   loadDomains(): void {
     this.donneePublicService.getDomains().subscribe({
       next: (response: any) => {
-        console.log(response);
+        console.log('Réponse des domaines:', response);
         if (response && Array.isArray(response.data)) {
           this.domains = response.data;
         } else {
-          console.error('Données reçues ne sont pas un tableau');
+          console.error('Les données reçues ne sont pas un tableau');
         }
       },
       error: (error: any) => {
-        console.error('Erreur lors du chargement des domaines :', error);
+        console.error('Erreur lors du chargement des domaines:', error);
       }
     });
   }
@@ -58,24 +59,24 @@ export class FormationAdminComponent implements OnInit {
         }
       },
       error: (error: any) => {
-        console.error('Erreur lors du chargement des formations :', error);
+        console.error('Erreur lors du chargement des formations:', error);
       }
     });
   }
 
   ajouterFormation(): void {
-    if (this.newFormation.libelle && this.newFormation.domaine && this.newFormation.description) {
-      console.log('Données envoyées:', this.newFormation); // Vérifiez les données ici
+    if (this.newFormation.nom && this.newFormation.domaine_id && this.newFormation.description) {
+      console.log('Données envoyées:', this.newFormation);
       this.adminService.creerFormation(this.newFormation).subscribe(
         response => {
-          console.log('Formation ajoutée:', response);
+          console.log('Réponse de l\'API:', response);
           Swal.fire({
             icon: 'success',
             title: 'Formation ajoutée',
             text: 'La formation a été ajoutée avec succès!',
             confirmButtonText: 'OK'
           });
-          this.newFormation = { libelle: '', domaine: 0, description: '' };
+          this.newFormation = { nom: '', domaine_id: 0, description: '' };
           this.loadFormations(this.selectedDomainId);
         },
         error => {
@@ -96,6 +97,62 @@ export class FormationAdminComponent implements OnInit {
         confirmButtonText: 'OK'
       });
     }
+  }
+
+  editFormation(formation: FormationModel): void {
+    this.selectedFormation = { ...formation }; // Crée une copie pour l'édition
+  }
+
+  saveFormation(): void {
+    if (this.selectedFormation && this.selectedFormation.id) {
+      console.log('Mise à jour de la formation:', this.selectedFormation);
+      this.adminService.mettreAJourFormation(this.selectedFormation.id, this.selectedFormation).subscribe(
+        response => {
+          console.log('Formation mise à jour:', response);
+          this.selectedFormation = null; // Réinitialiser après mise à jour
+          this.loadFormations(this.selectedDomainId); // Recharger les formations après mise à jour
+        },
+        error => {
+          console.error('Erreur lors de la mise à jour de la formation:', error);
+        }
+      );
+    } else {
+      console.warn('ID de formation invalide ou non défini');
+    }
+  }
+
+  cancelEdit(): void {
+    this.selectedFormation = null; // Annuler l'édition
+  }
+
+  deleteFormation(id: number): void {
+    Swal.fire({
+      icon: 'warning',
+      title: 'Êtes-vous sûr ?',
+      text: 'Vous ne pourrez pas revenir en arrière !',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Oui, supprimer !'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.adminService.supprimerFormation(id).subscribe(
+          response => {
+            console.log('Formation supprimée:', response);
+            this.loadFormations(this.selectedDomainId); // Recharger les formations après suppression
+          },
+          error => {
+            console.error('Erreur lors de la suppression de la formation:', error);
+            Swal.fire({
+              icon: 'error',
+              title: 'Erreur',
+              text: 'Erreur lors de la suppression de la formation.',
+              confirmButtonText: 'OK'
+            });
+          }
+        );
+      }
+    });
   }
 
   onDomainClick(domainId: number | undefined): void {

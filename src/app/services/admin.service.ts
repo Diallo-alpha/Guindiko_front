@@ -88,10 +88,12 @@ export class AdminService {
         tap(data => console.log('Domaines reçus:', data)) // Ajouter un log pour vérifier les données
       );
   }
+  // Créer une formation
   creerFormation(formation: FormationModel): Observable<any> {
-    return this.http.put<any>(`${apiUrl}/formations/create`, formation, { headers: this.headers })
+    return this.http.post<any>(`${apiUrl}/formations`, formation, { headers: this.headers })
       .pipe(catchError(this.handleError));
   }
+  
 }
 
 

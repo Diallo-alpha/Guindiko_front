@@ -59,7 +59,7 @@ body {
 }
 
 .main-content {
-    margin-left: 240px;
+    margin-left: 220px;
     padding: 20px;
     width: calc(100% - 240px);
     background-color: #FFFFF0;
@@ -272,3 +272,58 @@ form input[type="button"] {
 form input[type="button"]:hover {
   background-color: #7B437A;
 }
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.card {
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-img-top {
+  height: 150px;
+  object-fit: cover;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.card-title {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.card-text {
+  font-size: 0.95em;
+  color: #555;
+}
+
+.card-footer {
+  background-color: #f9f9f9;
+  border-top: 1px solid #eee;
+}
+
+.btn-outline-info, .btn-outline-danger {
+  font-size: 0.85em;
+  padding: 5px 10px;
+}
+
+.btn-outline-custom {
+  border-color: #007bff;
+  color: #007bff;
+  background-color: transparent;
+}
+
+.btn-outline-custom:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
