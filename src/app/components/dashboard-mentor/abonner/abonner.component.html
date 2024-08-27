@@ -1,27 +1,42 @@
 <app-sidebar></app-sidebar>
 
-<div *ngIf="loading">Chargement des demandes...</div>
-<div *ngIf="error">{{ error }}</div>
+<!-- Contenu principal -->
+<div class="content">
+  <!-- Message d'erreur -->
+  <div *ngIf="error" class="error-message">{{ error }}</div>
 
-<!-- Afficher un message si aucune demande n'est reçue -->
-<ng-container *ngIf="!loading && demandesRecues.length === 0">
-  <ng-template #noDemandes>
-    <p>Vous n'avez pas encore reçu de demandes de mentorat.</p>
-  </ng-template>
-  <ng-container *ngTemplateOutlet="noDemandes"></ng-container>
-</ng-container>
+  <!-- Message si aucune demande reçue -->
+  <ng-container *ngIf="!loading && !error">
+    <div *ngIf="demandesRecues.length === 0" class="no-demande">
+      <p>Vous n'avez pas encore reçu de demandes de mentorat.</p>
+    </div>
 
-<!-- Afficher la liste des demandes reçues -->
-<div *ngIf="!loading && demandesRecues.length > 0" class="subscriber-list">
-  <div *ngFor="let demande of demandesRecues" class="subscriber-item">
-    <img [src]="demande.profileImageUrl || defaultProfileImageUrl"
-         alt="Photo de profil de {{ demande.mentee_id }}" height="50" width="50" />
-    <div class="info">
-      <h3>Mentee ID: {{ demande.mentee_id }}</h3>
+    <!-- Liste des demandes reçues -->
+    <div *ngIf="demandesRecues.length > 0" class="subscriber-list">
+      <div *ngFor="let demande of demandesRecues" class="subscriber-item">
+        <img [src]="demande.profileImageUrl || defaultProfileImageUrl"
+             alt="Photo de profil de {{ demande.mentee_id }}" />
+             <div class="info">
+              <h3>Nom du Mentee: {{ demande.mentee_id || 'Nom non disponible' }}</h3>
+              <p>Mentee ID: {{ demande.mentee_id }}</p>
+            </div>
+        <div class="actions">
+          <button (click)="accepterDemande(demande.id)">Accepter</button>
+          <button (click)="refuserDemande(demande.id)">Refuser</button>
+        </div>
+      </div>
     </div>
-    <div class="actions">
-      <button (click)="accepterDemande(demande.id)">Accepter</button>
-      <button (click)="refuserDemande(demande.id)">Refuser</button>
+
+     <!-- Liste des demandes acceptées -->
+     <div *ngIf="demandesAcceptees.length > 0" class="accepted-mentees-list">
+      <h2>Mentees Acceptés</h2>
+      <div *ngFor="let mentee of demandesAcceptees" class="accepted-mentee-item">
+        <img [src]="mentee.profileImageUrl || defaultProfileImageUrl"
+             alt="Photo de profil de {{ mentee.mentee_id }}" />
+        <div class="info">
+          <h3>{{ mentee.mentee_id || 'Nom non disponible' }}</h3>
+        </div>
+      </div>
     </div>
-  </div>
+  </ng-container>
 </div>

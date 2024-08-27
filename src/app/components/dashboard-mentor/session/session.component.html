@@ -9,7 +9,7 @@
       <p>Mentees: {{ session.mentees }}</p>
       <div class="resources">
         <a href="#" class="btn" (click)="openModal($event, session)"><i class="fas fa-file-alt"></i> Ressources</a>
-        <span>Date: {{ session.date | date:'dd/MM/yyyy' }} | Durée: {{ session.duree }}h</span>
+        <span class="date">Date: {{ session.date | date:'dd/MM/yyyy' }} | Durée: {{ session.duree }}h</span>
       </div>
     </div>
   </div>
