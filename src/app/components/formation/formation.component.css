@@ -1,4 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans&display=swap');
 
+h5{
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+  color: #110012;
+}
 .content-form{
   background-color: #E6D4F0;
   /* padding: 30px; */
@@ -16,7 +22,21 @@
 .text-content {
   flex: 1;
   padding: 20px;
-
+}
+.btn-dark {
+  border: none;
+  background-color: #6a1b9a;
+}
+.card-img-overlay {
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 10px;
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-top: 6em;
 }
 .image-content {
   flex: 1;
@@ -28,14 +48,14 @@
 }
 /*nos formation*/
 .title {
-  font-family: 'Arial', sans-serif;
+  font-family: 'open Sans', sans-serif;
   font-size: 2rem;
   font-weight: bold;
-  color: #000;
+  color: #110012;
   text-shadow: 2px 2px 5px #9b59b6;
 }
 .btn-custom {
-  font-family: 'Arial', sans-serif;
+  font-family: 'open Sans', sans-serif;
   font-size: 1rem;
   font-weight: bold;
   color: #fff;
@@ -46,7 +66,7 @@
   margin: 0 10px;
 }
 .btn-outline-custom {
-  font-family: 'Arial', sans-serif;
+  font-family: 'open Sans', sans-serif;
   font-size: 1rem;
   font-weight: bold;
   color: #6a1b9a;
@@ -58,6 +78,26 @@
 }
 .arrow {
   font-size: 1.5rem;
-  color: #000;
+  color: #110012;
   margin: 0 20px;
 }
+.btn-outline-custom {
+  background-color: transparent;
+  border: 1px solid #5c0c69; /* Ajustez la couleur selon votre thème */
+  color: #5c0c69;
+}
+
+.btn-primary {
+  background-color: #5c0c69; /* Couleur active */
+  border-color: #5c0c69;
+  color: #ffffff; /* Couleur du texte pour le bouton actif */
+}
+.btn {
+  transition: background-color 0.3s, color 0.3s;
+}
+.alert-warning {
+  background-color: #e4daf6; /* Couleur d'arrière-plan personnalisée */
+  color: #5c0c69; /* Couleur du texte */
+  border: 1px solid #5c0c69; /* Bordure correspondant à votre thème */
+}
+

@@ -43,6 +43,10 @@ export class DonneePublicService {
       catchError(this.handleError)
     );
   }
+   // Récupérer toutes les formations
+   getAllFormations(): Observable<any> {
+    return this.http.get(`${apiUrl}/formations`);
+  }
   // Méthode pour envoyer une demande de mentorat
   envoyerDemandeMentorat(mentorId: number, menteeId: number): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
