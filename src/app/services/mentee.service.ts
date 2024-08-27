@@ -48,10 +48,13 @@ export class MenteeService {
   }
 
   // Créer une réservation
-  createReservation(reservationData: any): Observable<ReservationModel> {
-    return this.http.post<ReservationModel>(`${apiUrl}/reservations`, reservationData, { headers: this.headers })
-      .pipe(catchError(this.handleError));
-  }
+ // Créer une réservation
+createReservation(data: { session_mentorat_id: number; statut: string }): Observable<any> {
+  return this.http.post<any>(`${apiUrl}/reservations`, data).pipe(
+    catchError(this.handleError)
+  );
+}
+  
 
   // Mettre à jour une réservation
   updateReservation(reservationId: number, reservationData: any): Observable<ReservationModel> {
