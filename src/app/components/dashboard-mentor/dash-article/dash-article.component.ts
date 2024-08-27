@@ -3,12 +3,12 @@ import { MentorService } from '../../../services/mentor.service';
 import { ArticleModel } from '../../../models/ArticleModel';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute,Router } from '@angular/router';
+import { ActivatedRoute,Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-dash-article',
   standalone: true,
-  imports: [SidebarComponent, CommonModule],
+  imports: [SidebarComponent, CommonModule, RouterLink],
   templateUrl: './dash-article.component.html',
   styleUrls: ['./dash-article.component.css']
 })

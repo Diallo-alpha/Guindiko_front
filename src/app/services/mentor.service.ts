@@ -2,11 +2,12 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { apiUrl } from './apiUrl';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
 import { ArticleModel } from '../models/ArticleModel';
 import { SessionModel } from '../models/SessionModel';
 import { RessourceModel } from '../models/RessourceModel';
 import { DemandeMentorat } from '../models/DemandeMentorat';
+import { UserModel } from '../models/userModel';
 
 
 @Injectable({
@@ -141,11 +142,16 @@ export class MentorService {
       .pipe(catchError(this.handleError));
   }
   // Méthode pour obtenir les demandes de mentorat reçues par le mentor connecté
-getDemandesRecues():Observable<DemandeMentorat[]> {
-  const headers = this.createHeaders();
-  return this.http.get<DemandeMentorat[]>(`${apiUrl}/mentor/demandes-recues`, { headers })
-    .pipe(catchError(this.handleError));
-}
+  getDemandesRecues(userId: number) {
+    const headers = this.createHeaders();
+    const params = { user_id: userId.toString() };
+
+    return this.http.get<any>(`${apiUrl}/mentor/demandes-recues`, { headers, params })
+      .pipe(
+        tap(response => console.log('Données récupérées:', response)),
+        catchError(this.handleError)
+      );
+  }
 
 // Méthode pour accepter une demande de mentorat
 accepterDemandeMentorat(demandeId: number): Observable<any> {
@@ -154,11 +160,56 @@ accepterDemandeMentorat(demandeId: number): Observable<any> {
     .pipe(catchError(this.handleError));
 }
 
+getDemandesAcceptees(userId: number): Observable<any> {
+  const headers = this.createHeaders();
+  return this.http.get<any>(`${apiUrl}/mentor/${userId}/demandes-acceptees`, { headers })
+    .pipe(
+      tap(response => console.log('Demandes acceptées récupérées:', response)),
+      catchError(this.handleError)
+    );
+}
+
 // Méthode pour refuser une demande de mentorat
 refuserDemandeMentorat(demandeId: number): Observable<any> {
   const headers = this.createHeaders();
   return this.http.post(`${apiUrl}/mentorats/${demandeId}/refuser`, {}, { headers })
     .pipe(catchError(this.handleError));
 };
+
+// Méthode pour obtenir le nombre de demandes de mentorat pour l'utilisateur connecté
+getNombreDemandes(): Observable<any> {
+  const headers = this.createHeaders();
+  return this.http.get<any>(`${apiUrl}/mentor/statistiques/demandes`, { headers })
+    .pipe(catchError(this.handleError));
+}
+
+// Méthode pour obtenir le nombre de sessions créées par l'utilisateur connecté
+getNombreSessions(): Observable<any> {
+  const headers = this.createHeaders();
+  return this.http.get<any>(`${apiUrl}/mentor-sessions/statistiques/sessions`, { headers })
+    .pipe(catchError(this.handleError));
+}
+
+// Méthode pour obtenir le nombre d'articles créés par l'utilisateur connecté
+getNombreArticles(): Observable<any> {
+  const headers = this.createHeaders();
+  return this.http.get<any>(`${apiUrl}/mentor-articles/statistiques/articles`, { headers })
+    .pipe(catchError(this.handleError));
+}
+
+//afficher les notifications
+getMentorNotifications(userId: string): Observable<any> {
+  const headers = this.createHeaders();
+  console.log('Headers envoyés:', headers);
+  return this.http.get<any>(`${apiUrl}/mentor/${userId}/notifications`, { headers })
+    .pipe(
+      catchError(this.handleError)
+    );
+}
+getMentorById(user_id: number): Observable<UserModel> {
+  const headers = this.createHeaders();
+  return this.http.get<UserModel>(`${apiUrl}/mentore/${user_id}`, { headers })
+    .pipe(catchError(this.handleError));
+}
 
 }

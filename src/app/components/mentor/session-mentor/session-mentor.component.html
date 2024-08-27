@@ -1,66 +1,17 @@
-<app-profil-mentor/>
+<app-profil-mentor></app-profil-mentor>
 <div class="container">
   <h1 class="mb-4">Disponible</h1>
   <div class="row">
-      <div class="col-md-4">
-          <div class="card p-3">
-              <div class="card-body">
-                  <h5 class="card-title">Thème: What is Lorem Ipsum</h5>
-                  <p class="card-text">Informatique</p>
-                  <button class="btn btn-reserver mb-2">Réserver</button>
-                  <p class="date-text">Date: 10/01/2024 | 3h</p>
-              </div>
-          </div>
+    <div class="col-md-4" *ngFor="let session of sessions">
+      <div class="card p-3">
+        <div class="card-body">
+          <h5 class="card-title">Thème: {{ session.titre}}</h5>
+          <p class="card-text">Statut: {{ session.statut }}</p>
+          <p class="card-text">Mentees: {{ session.mentees }}</p>
+          <button class="btn btn-reserver mb-2">Réserver</button>
+          <p class="date-text">Date: {{ session.date | date:'dd/MM/yyyy' }} | Durée: {{ session.duree }}h</p>
+        </div>
       </div>
-      <div class="col-md-4">
-          <div class="card p-3">
-              <div class="card-body">
-                  <h5 class="card-title">Thème: What is Lorem Ipsum</h5>
-                  <p class="card-text">Informatique</p>
-                  <button class="btn btn-reserver mb-2">Réserver</button>
-                  <p class="date-text">Date: 10/01/2024 | 3h</p>
-              </div>
-          </div>
-      </div>
-      <div class="col-md-4">
-          <div class="card p-3">
-              <div class="card-body">
-                  <h5 class="card-title">Thème: What is Lorem Ipsum</h5>
-                  <p class="card-text">Informatique</p>
-                  <button class="btn btn-reserver mb-2">Réserver</button>
-                  <p class="date-text">Date: 10/01/2024 | 3h</p>
-              </div>
-          </div>
-      </div>
-      <div class="col-md-4">
-          <div class="card p-3">
-              <div class="card-body">
-                  <h5 class="card-title">Thème: What is Lorem Ipsum</h5>
-                  <p class="card-text">Informatique</p>
-                  <button class="btn btn-reserver mb-2">Réserver</button>
-                  <p class="date-text">Date: 10/01/2024 | 3h</p>
-              </div>
-          </div>
-      </div>
-      <div class="col-md-4">
-          <div class="card p-3">
-              <div class="card-body">
-                  <h5 class="card-title">Thème: What is Lorem Ipsum</h5>
-                  <p class="card-text">Informatique</p>
-                  <button class="btn btn-reserver mb-2">Réserver</button>
-                  <p class="date-text">Date: 10/01/2024 | 3h</p>
-              </div>
-          </div>
-      </div>
-      <div class="col-md-4">
-          <div class="card p-3">
-              <div class="card-body">
-                  <h5 class="card-title">Thème: What is Lorem Ipsum</h5>
-                  <p class="card-text">Informatique</p>
-                  <button class="btn btn-reserver mb-2">Réserver</button>
-                  <p class="date-text">Date: 10/01/2024 | 3h</p>
-              </div>
-          </div>
-      </div>
+    </div>
   </div>
 </div>
