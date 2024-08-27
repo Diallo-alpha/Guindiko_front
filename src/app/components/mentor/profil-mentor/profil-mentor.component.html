@@ -3,28 +3,25 @@
 <div class="container profile-container">
   <div class="profil-mentor">
     <img
-      [src]="mentor?.profilePictureUrl || 'https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-portrait-176256935.jpg'"
-      alt="Profile picture of {{ mentor?.name }}"
+      alt="Profile picture of the mentor"
       class="profile-image"
+      src="assets/images/mentor1.svg"
       width="250"
       height="250"
     />
   </div>
-  <div class="profile-details">
-    <h1>nom{{ mentor?.name }}</h1>
-    <p>email{{ mentor?.email }}</p>
-    <p>description{{ mentor?.description }}</p>
-
+  <div class="profile-details" *ngIf="mentor; else loading">
+    <h1>{{ mentor.name }}</h1>
+    <p>{{ mentor.email }}</p>
+    <p>{{ mentor.biographie }}</p>
     <p>
-      <span class="experience">{{ mentor?.experience }} ans</span> expériences |
-      <span class="experience">{{ mentor?.language }}</span>
+      <span class="experience">{{ mentor.experience }} ans</span> expériences |
+      <span class="language">{{ mentor.langue }}</span>
     </p>
     <div class="request">
-      <p class="members">{{ mentor?.membersCount }} membres</p>
-      <div>
-        <i class="fas fa-plus"></i>
-        <span>Demande</span>
-      </div>
+      <p class="members">300 membres</p>
+      <div> <i class="fas fa-plus"></i>
+        <span>Demande</span></div>
     </div>
 
     <div class="buttons">
@@ -33,4 +30,7 @@
       <button class="btn btn-outline-dark" (click)="goToPage('abonner/mentore')">Membres</button>
     </div>
   </div>
+  <ng-template #loading>
+    <p>Chargement des détails du mentor...</p>
+  </ng-template>
 </div>

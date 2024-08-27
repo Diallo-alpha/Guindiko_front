@@ -38,7 +38,7 @@ export const routes: Routes = [
   {path: 'profile', component:ProfilMentorComponent},
   { path: 'profile/:id', component: ProfilMentorComponent },
   {path: 'session', component:SessionMentorComponent},
-  {path: 'article/mentor', component:ArticleMentorComponent},
+  {path: 'article/mentor/:mentorId', component:ArticleMentorComponent},
   {path: 'abonner/mentore', component:AbonnerMentorComponent},
   {path: 'inscription', component:InscriptionComponent},
   {path: 'connexion', component:ConnexionComponent},

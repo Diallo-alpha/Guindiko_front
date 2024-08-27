@@ -77,6 +77,12 @@ export class MentorService {
       );
   }
 
+getArticlesByMentor(mentorId: number): Observable<any> {
+  const headers = this.createHeaders();
+  return this.http.get<any>(`${apiUrl}/mentor/${mentorId}/articles`, { headers })
+    .pipe(catchError(this.handleError));
+}
+
   // Autres méthodes pour gérer les articles et les actions de mentorat
   ajouterArticle(articleData: any): Observable<any> {
     const headers = this.createHeaders();
