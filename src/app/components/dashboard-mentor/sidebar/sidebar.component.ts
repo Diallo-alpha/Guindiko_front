@@ -1,21 +1,13 @@
-// <<<<<<< HEAD
-// import { Component } from '@angular/core';
-// import { RouterModule } from '@angular/router';
-
-// @Component({
-//   selector: 'app-sidebar',
-//   standalone: true,
-//   imports: [RouterModule],
-// =======
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../../services/auth-service.service';
-import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [RouterModule],
+
+  imports: [CommonModule, RouterModule],
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css'],
 })

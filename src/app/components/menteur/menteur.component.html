@@ -1,6 +1,7 @@
 <app-navbar></app-navbar>
 
 <div class="page">
+
   <div class="container mentor-section">
     <div class="row">
       <div class="col-md-4">
@@ -23,16 +24,15 @@
           <div *ngFor="let mentor of filteredMentors" class="col-md-6">
             <div *ngIf="mentor && mentor.name" class="mentor-card" [routerLink]="['/profile', mentor.id]">
               <img
-              [src]="mentor.profilePictureUrl ? mentor.profilePictureUrl : 'https://contenthub-static.grammarly.com/blog/wp-content/uploads/2022/08/BMD-3398.png'"
+              [src]="mentor.profilePictureUrl ? mentor.profilePictureUrl : 'https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-portrait-176256935.jpg'"
               alt="Portrait of {{ mentor.name }}" height="50" width="50"
-              />
-              <div class="mentor-info">
-                <h5>{{ mentor.name }}</h5>
-                <p>{{ mentor.formation?.name }}</p>
-              </div>
-              <div class="mentor-action">
-                <i class="fas fa-plus-circle" (click)="requestMentorship(mentor.id)"></i>
-              </div>
+            />
+            <div class="mentor-info">
+              <h5>{{ mentor.name }}</h5>
+              <p>{{ mentor.formation.name }}</p>
+            </div>
+            <div class="mentor-action">
+              <i class="fas fa-plus-circle" (click)="envoyerDemande(mentor.id)"></i>
             </div>
           </div>
         </div>
@@ -40,3 +40,4 @@
     </div>
   </div>
 </div>
+

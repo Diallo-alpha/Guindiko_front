@@ -1,43 +1,47 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { NavbarComponent } from '../../navbar/navbar.component';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MentorService } from '../../../services/mentor.service';
+import { UserModel } from '../../../models/userModel';
+import { ChangeDetectorRef } from '@angular/core';
+import { NavbarComponent } from '../../navbar/navbar.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-profil-mentor',
   standalone: true,
-  imports: [NavbarComponent],
+  imports: [NavbarComponent, CommonModule],
   templateUrl: './profil-mentor.component.html',
   styleUrls: ['./profil-mentor.component.css']
 })
 export class ProfilMentorComponent implements OnInit {
-  mentor: any; // Vous pouvez définir un type spécifique pour Mentor si disponible
+  user_id: number = 0;
+  mentor: UserModel | undefined;
 
   constructor(
-    private router: Router,
     private route: ActivatedRoute,
-    private mentorService: MentorService
-  ) { }
+    private router: Router,
+    private mentorService: MentorService,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
-    // Obtenir l'ID du mentor depuis les paramètres de l'URL
-    const mentorId = +this.route.snapshot.paramMap.get('id')!;
-    this.getMentorDetails(mentorId);
+    this.user_id = +this.route.snapshot.paramMap.get('id')!;
+    this.loadMentorDetails();
   }
 
-  getMentorDetails(id: number): void {
-    this.mentorService.getMentorById(id).subscribe(
-      (data) => {
-        this.mentor = data;
-        console.log('Mentor Details:', this.mentor);
+  private loadMentorDetails(): void {
+    this.mentorService.getMentorById(this.user_id).subscribe(
+      (data: any) => {
+        this.mentor = data.mentor; // S'assurer que 'mentor' est correctement assigné
+        console.log(this.mentor); // Log pour débogage
       },
       (error) => {
-        console.error('Error fetching mentor details:', error);
+        console.error('Erreur lors de la récupération des détails du mentor', error);
       }
     );
   }
 
-  goToPage(path: string) {
-    this.router.navigate([`/${path}`]);
+  goToPage(page: string): void {
+    this.router.navigate([`/profile/${this.user_id}/${page}`]);
   }
 }
