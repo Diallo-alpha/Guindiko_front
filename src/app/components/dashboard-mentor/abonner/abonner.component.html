@@ -16,10 +16,10 @@
       <div *ngFor="let demande of demandesRecues" class="subscriber-item">
         <img [src]="demande.profileImageUrl || defaultProfileImageUrl"
              alt="Photo de profil de {{ demande.mentee_id }}" />
-             <div class="info">
-              <h3>Nom du Mentee: {{ demande.mentee_id || 'Nom non disponible' }}</h3>
-              <p>Mentee ID: {{ demande.mentee_id }}</p>
-            </div>
+        <div class="info">
+          <h3>Nom du Mentee: {{ demande.mentee_id || 'Nom non disponible' }}</h3>
+          <p>Mentee ID: {{ demande.mentee_id }}</p>
+        </div>
         <div class="actions">
           <button (click)="accepterDemande(demande.id)">Accepter</button>
           <button (click)="refuserDemande(demande.id)">Refuser</button>
@@ -27,14 +27,15 @@
       </div>
     </div>
 
-     <!-- Liste des demandes acceptées -->
-     <div *ngIf="demandesAcceptees.length > 0" class="accepted-mentees-list">
+    <!-- Liste des demandes acceptées -->
+    <div *ngIf="demandesAcceptees.length > 0" class="accepted-mentees-list">
       <h2>Mentees Acceptés</h2>
       <div *ngFor="let mentee of demandesAcceptees" class="accepted-mentee-item">
         <img [src]="mentee.profileImageUrl || defaultProfileImageUrl"
-             alt="Photo de profil de {{ mentee.mentee_id }}" />
+             alt="Photo de profil de {{ mentee.mentee_id }}" class="photo" />
         <div class="info">
           <h3>{{ mentee.mentee_id || 'Nom non disponible' }}</h3>
+          <!-- Vous pouvez ajouter plus d'informations ici si nécessaire -->
         </div>
       </div>
     </div>
