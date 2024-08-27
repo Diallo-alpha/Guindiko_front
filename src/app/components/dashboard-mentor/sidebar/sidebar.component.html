@@ -13,13 +13,20 @@
   <div class="user-info">
     <span>{{ userName }}</span>
     <i class="fas fa-bell" (click)="toggleNotifications()"></i>
+    <!-- Affichage du nombre de notifications non lues -->
+    <span *ngIf="notifications.length > 0" class="notification-count">
+      {{ notifications.length }}
+    </span>
     <a routerLink="/modifier/profile-mentor"><i class="fas fa-user-circle"></i></a>
   </div>
+
   <div *ngIf="showNotifications" class="notifications-dropdown">
     <ul>
       <li *ngFor="let notification of notifications">
-        {{ notification.data }}
+        {{ notification.data.message || 'Notification reçue' }}
+        <i class="fas fa-trash-alt"></i>
       </li>
     </ul>
   </div>
 </div>
+
