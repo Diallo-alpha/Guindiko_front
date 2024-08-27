@@ -13,7 +13,7 @@ export class MenteeService {
 
   private headers = new HttpHeaders({
     'Content-Type': 'application/json',
-    'Authorization': `Bearer ${localStorage.getItem('Token')}` 
+    'Authorization': `Bearer ${localStorage.getItem('Token')}`
   });
 
   // Envoyer une demande de mentorat
@@ -66,6 +66,12 @@ export class MenteeService {
       .pipe(catchError(this.handleError));
   }
 
+  //devenir mentor
+  devenirMentor(mentorId: number, demandeData: any): Observable<any> {
+    console.log('En-têtes:', this.headers);
+    return this.http.post(`${apiUrl}/mentorats/devenir`, { mentorId, ...demandeData }, { headers: this.headers })
+      .pipe(catchError(this.handleError));
+  }
   // Gérer les erreurs API
   private handleError(error: any): Observable<never> {
     console.error('An error occurred:', error);
