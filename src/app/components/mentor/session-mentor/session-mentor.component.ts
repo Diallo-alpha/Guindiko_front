@@ -11,11 +11,11 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [NavbarComponent, ProfilMentorComponent, CommonModule],
   templateUrl: './session-mentor.component.html',
-  styleUrl: './session-mentor.component.css'
+  styleUrls: ['./session-mentor.component.css']
 })
 export class SessionMentorComponent {
   user_id: number = 0;
-  sessions: any[] = [];
+  sessions: SessionModel[] = [];
 
   constructor(private route: ActivatedRoute, private mentorService: MentorService) {}
 
@@ -24,8 +24,17 @@ export class SessionMentorComponent {
 
     // Récupérer les sessions spécifiques au mentor
     this.mentorService.getSessionsMentore(this.user_id).subscribe(
-      (sessions) => {
-        this.sessions = Array.isArray(sessions) ? sessions : Object.values(sessions);
+      (response: any) => {
+        console.log('Sessions récupérées:', response);
+
+        // Vérification si la réponse est un tableau
+        if (Array.isArray(response)) {
+          this.sessions = response;
+        } else if (response && typeof response === 'object' && Array.isArray(response.sessions)) {
+          this.sessions = response.sessions;
+        } else {
+          console.error('La réponse n\'est pas un tableau de sessions', response);
+        }
       },
       (error) => {
         console.error('Erreur lors de la récupération des sessions', error);
