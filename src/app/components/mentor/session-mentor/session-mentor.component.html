@@ -8,7 +8,8 @@
           <h6 class="card-title">Thème: {{ session.formation_id || 'Formation informatique' }}</h6>
           <p class="card-text">Statut: {{ session.statut || 'Statut inconnu' }}</p>
           <p class="card-text">Mentees: {{ session.mentees || 'Aucun mentee' }}</p>
-          <button class="btn btn-primary mb-2">Réserver</button>
+          <!-- Vérifie si session.id est défini avant d'appeler la méthode -->
+          <button class="btn btn-primary mb-2" *ngIf="session.id" (click)="reserverSession(session.id!)">Réserver</button>
           <p class="text-muted">Date: {{ session.date | date:'dd/MM/yyyy' }} | Durée: {{ session.duree || 0 }}h</p>
         </div>
       </div>

@@ -41,4 +41,8 @@ export class SessionMentorComponent {
       }
     );
   }
+  reserverSession(sessionId: number): void {
+    console.log('Session réservée avec ID:', sessionId);
+    // Oumyna  tu peux ajouter la logique pour traiter la réservation de la session ici
+  }
 }
