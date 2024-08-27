@@ -78,16 +78,16 @@ export class AuthService {
 
   // Stocker les données utilisateur (y compris le token) dans le localStorage
   storeUserData(user: any, token: string): void {
-    // Assurez-vous que le rôle et l'ID utilisateur sont stockés correctement
     const userData = {
-      ...user,
-      role: user.role || null, // Assurez-vous que role est défini, même s'il est null
-      id: user.id || null // Stocker l'ID utilisateur si disponible
+        ...user,
+        role: user.role || null,
+        id: user.id || null // Assurez-vous que l'ID utilisateur est bien défini
     };
 
+    console.log('Stockage des données utilisateur:', userData); // Log pour vérifier ce qui est stocké
     localStorage.setItem('User', JSON.stringify(userData));
     localStorage.setItem('Token', token);
-  }
+}
 
   // Vérifier si l'utilisateur est authentifié
   isAuthenticated(): boolean {

@@ -4,7 +4,7 @@
   <div class="content-container">
    <div class="text-content">
     <h5>
-     Nos Domaines d'Action et Formations Associées
+     Domaines & Formations
     </h5>
     <p>
      <strong>
@@ -12,8 +12,8 @@
      </strong>
      , nous proposons une orientation professionnelle de qualité en couvrant divers domaines d'action. Explorez des secteurs variés, tels que la technologie, les sciences humaines, l’économie, etc avec des formations adaptées pour chaque domaine. Ces formations sont conçues pour développer vos compétences et vous aider à exceller dans votre carrière. Pour toute question, notre équipe de mentors est là pour vous guider.
     </p>
+    <a class="btn btn-dark" (click)="devenirMentor(mentorId)">Devenir mentor</a>
    </div>
-
   </div>
   <div class="image-content">
     <img alt="A group of diverse people in a professional setting, engaged in a discussion." height="400" src="assets/images/herro-form.svg" width="600"/>
@@ -30,8 +30,11 @@
 
     <!-- Boucle pour afficher chaque domaine (max 5 à la fois) -->
     <div class="d-flex justify-content-center align-items-center">
+      <button class="btn-outline-custom" (click)="onAllClick()">All</button>
       <button *ngFor="let domain of domains.slice(startIndex, startIndex + 5)"
-              class="btn btn-outline-custom mx-2"
+
+              class="btn mx-2"
+              [ngClass]="{'btn-outline-custom': selectedDomainId !== domain.id, 'btn-primary': selectedDomainId === domain.id}"
               (click)="onDomainClick(domain.id!)">
         {{ domain.nom }}
       </button>
@@ -42,7 +45,13 @@
 </div>
 
 <div class="container py-5">
-  <div class="row row-cols-1 row-cols-md-4 g-2">
+  <!-- Afficher un message si aucune formation n'est disponible -->
+  <div *ngIf="!hasFormations" class="alert alert-warning text-center">
+    Aucune formation n'est disponible pour ce domaine.
+  </div>
+
+  <!-- Afficher les formations si elles existent -->
+  <div *ngIf="hasFormations" class="row row-cols-1 row-cols-md-4 g-2">
     <div class="col" *ngFor="let formation of formations">
       <div class="card">
         <img alt="{{ formation.nom }}" class="card-img" src="assets/images/formation.svg" />
@@ -54,55 +63,3 @@
     </div>
   </div>
 </div>
-<app-footer/>
-<!-- <<<<<<< HEAD
-=======
-<div class="sidebar">
-    <div class="logo">
-        <img src="../../../assets/logo.png" alt="Logo">
-    </div>
-    <nav>
-        <ul>
-            <li><a href="#"> <img src="../../../assets/uil_dashboard1.svg" alt=""> Tableau de bord</a></li>
-            <li><a href="#" id="domaine"><img src="../../../assets/dashicons_category1.svg" alt=""> Domaines</a></li>
-            <li><a href="#"><img src="../../../assets/healthicons_i-training-class.svg" alt="">Formations</a></li>
-            <li><a href="#"><img src="../../../assets/eos-icons_role-binding.svg" alt="">Rôles et permissions</a></li>
-        </ul>
-    </nav>
-</div>
-
-<div class="main-content">
-    <div class="header">
-        <h2>Nos Catégories</h2>
-        <button class="btn-add">Ajouter</button>
-    </div>
-
-    <div class="tags-container">
-        <button class="category-tag">Informatique</button>
-        <button class="category-tag">Marketing</button>
-        <button class="category-tag">Comptabilité</button>
-        <button class="category-tag">Transport Logistique</button>
-    </div>
-
-    <div class="categories">
-        <div class="category-card">
-            <img src="../../../assets/informatique.png" alt="Informatique">
-            <p>Informatique</p>
-        </div>
-        <div class="category-card">
-            <img src="../../../assets/informatique.png" alt="Marketing">
-            <p>Marketing</p>
-        </div>
-        <div class="category-card">
-            <img src="../../../assets/informatique.png" alt="Comptabilité">
-            <p>Comptabilité</p>
-        </div>
-        <div class="category-card">
-            <img src="../../../assets/informatique.png" alt="Transport Logistique">
-            <p>Transport Logistique</p>
-        </div>
-    </div>
-</div>
->>>>>>> 70ca62d6e6932799fd7d992707a64071e3f8c5e2
-=======
->>>>>>> bf4b8691a43b72b9cf75700294f3fda73c7bd0c4 -->
