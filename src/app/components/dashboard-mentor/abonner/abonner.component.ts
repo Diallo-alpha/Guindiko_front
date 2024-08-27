@@ -18,7 +18,7 @@ export class AbonnerComponent implements OnInit {
   mentorId: number = 0;
   loading = true;
   error: string | null = null;
-  defaultProfileImageUrl = 'chemin/vers/image/default.png'; // Chemin de l'image par défaut
+  defaultProfileImageUrl = 'assets/images/mentor1.svg';
 
   constructor(private mentorService: MentorService, private cdRef: ChangeDetectorRef) {}
 
@@ -71,7 +71,6 @@ export class AbonnerComponent implements OnInit {
       }
     );
   }
-
 
   accepterDemande(demandeId: number | null | undefined): void {
     if (demandeId !== null && demandeId !== undefined) {

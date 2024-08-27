@@ -4,6 +4,21 @@ import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../../services/auth-service.service';
 import { CommonModule } from '@angular/common';
 
+// Define the type for Notification outside the component
+interface Notification {
+  id: string;
+  type: string;
+  notifiable_type: string;
+  notifiable_id: number;
+  data: {
+    message?: string;
+    [key: string]: any; // Allow for other dynamic properties
+  };
+  read_at: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
 @Component({
   selector: 'app-sidebar',
   standalone: true,
@@ -14,16 +29,18 @@ import { CommonModule } from '@angular/common';
 })
 export class SidebarComponent implements OnInit {
   userName: string = '';
-  notifications: any[] = [];
+  notifications: Notification[] = [];
   showNotifications: boolean = false;
 
-  constructor(private router: Router,
-     private authService: AuthService,
-     private MentorService: MentorService
-    ) {}
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private MentorService: MentorService
+  ) {}
 
   ngOnInit(): void {
     this.getUserInfo();
+    this.getNotifications();
   }
 
   getUserInfo(): void {
@@ -33,13 +50,14 @@ export class SidebarComponent implements OnInit {
       this.userName = user.name || 'Utilisateur';
     }
   }
+
   getNotifications(): void {
     const storedUser = localStorage.getItem('User');
     if (storedUser) {
       const user = JSON.parse(storedUser);
       this.MentorService.getMentorNotifications(user.id).subscribe(
-        (data) => {
-          this.notifications = data;
+        (data: Notification[]) => {
+          this.notifications = data.filter((notification: Notification) => !notification.read_at);
           console.log('Notifications:', this.notifications);
         },
         (error) => {
@@ -48,6 +66,7 @@ export class SidebarComponent implements OnInit {
       );
     }
   }
+
   toggleNotifications(): void {
     this.showNotifications = !this.showNotifications;
   }
