@@ -1,8 +1,8 @@
-export interface SessionModel{
+export interface SessionModel {
   id?: number;
   formation_id?: number;
   date?: Date;
-   duree?: number;
+  duree?: number;
   statut?: string;
   mentees?: string;
 }
