@@ -26,13 +26,13 @@ export class MenteeService {
 
   // Récupérer tous les commentaires
   getComments(): Observable<CommentaireModel[]> {
-    return this.http.get<CommentaireModel[]>(`${apiUrl}/commentaires`, { headers: this.createHeaders() })
+    return this.http.get<CommentaireModel[]>(`${apiUrl}/commentaires`, { headers: this.headers })
       .pipe(catchError(this.handleError));
   }
 
   // Créer un commentaire
   createComment(commentData: any): Observable<CommentaireModel> {
-    return this.http.post<CommentaireModel>(`${apiUrl}/commentaires`, commentData, { headers: this.createHeaders() })
+    return this.http.post<CommentaireModel>(`${apiUrl}/commentaires`, commentData, { headers: this.headers })
       .pipe(catchError(this.handleError));
   }
 
@@ -40,41 +40,41 @@ export class MenteeService {
 
   // Récupérer toutes les réservations
   getReservations(): Observable<ReservationModel[]> {
-    return this.http.get<ReservationModel[]>(`${apiUrl}/reservations`, { headers: this.createHeaders() })
+    return this.http.get<ReservationModel[]>(`${apiUrl}/reservations`, { headers: this.headers })
       .pipe(catchError(this.handleError));
   }
 
   // Récupérer une réservation spécifique
   getReservationById(reservationId: number): Observable<ReservationModel> {
-    return this.http.get<ReservationModel>(`${apiUrl}/reservations/${reservationId}`, { headers: this.createHeaders() })
+    return this.http.get<ReservationModel>(`${apiUrl}/reservations/${reservationId}`, { headers: this.headers })
       .pipe(catchError(this.handleError));
   }
 
   // Créer une réservation
   createReservation(data: { session_mentorat_id: number; statut: string }): Observable<any> {
-    return this.http.post<any>(`${apiUrl}/reservations`, data, { headers: this.createHeaders() })
+    return this.http.post<any>(`${apiUrl}/reservations`, data, { headers: this.headers })
       .pipe(catchError(this.handleError));
   }
 
-
   // Mettre à jour une réservation
   updateReservation(reservationId: number, reservationData: any): Observable<ReservationModel> {
-    return this.http.put<ReservationModel>(`${apiUrl}/reservations/${reservationId}`, reservationData, { headers: this.createHeaders() })
+    return this.http.put<ReservationModel>(`${apiUrl}/reservations/${reservationId}`, reservationData, { headers: this.headers })
       .pipe(catchError(this.handleError));
   }
 
   // Supprimer une réservation
   deleteReservation(reservationId: number): Observable<void> {
-    return this.http.delete<void>(`${apiUrl}/reservations/${reservationId}`, { headers: this.createHeaders() })
+    return this.http.delete<void>(`${apiUrl}/reservations/${reservationId}`, { headers: this.headers })
       .pipe(catchError(this.handleError));
   }
 
-  //devenir mentor
+  // Devenir mentor
   devenirMentor(mentorId: number, demandeData: any): Observable<any> {
     console.log('En-têtes:', this.headers);
     return this.http.post(`${apiUrl}/mentorats/devenir`, { mentorId, ...demandeData }, { headers: this.headers })
       .pipe(catchError(this.handleError));
   }
+
   // Gérer les erreurs API
   private handleError(error: any): Observable<never> {
     console.error('An error occurred:', error);
