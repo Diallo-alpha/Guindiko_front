@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans&display=swap');
 
+.page{
+  background-color: #fffff0;
+}
 h5{
   font-weight: bold;
   font-family: 'Montserrat', sans-serif;
@@ -10,7 +13,7 @@ h5{
   /* padding: 30px; */
 }
 .content-container {
-  background-color: #ffff;
+  background-color: #fffff0;
   border-radius: 20px;
   padding: 20px;
   margin: 20px;
@@ -28,7 +31,7 @@ h5{
   background-color: #6a1b9a;
 }
 .card-img-overlay {
-  color: white;
+  color: #fffff0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -58,7 +61,7 @@ h5{
   font-family: 'open Sans', sans-serif;
   font-size: 1rem;
   font-weight: bold;
-  color: #fff;
+  color: #fffff0;
   background-color: #6a1b9a;
   border: 2px solid #6a1b9a;
   border-radius: 5px;
@@ -90,7 +93,7 @@ h5{
 .btn-primary {
   background-color: #5c0c69; /* Couleur active */
   border-color: #5c0c69;
-  color: #ffffff; /* Couleur du texte pour le bouton actif */
+  color: #fffff0; /* Couleur du texte pour le bouton actif */
 }
 .btn {
   transition: background-color 0.3s, color 0.3s;

@@ -1,5 +1,6 @@
 <app-profil-mentor></app-profil-mentor>
-<div class="container mt-5">
+<div class="page">
+<div class="container pt-5">
   <div *ngFor="let abonne of abonnes" class="card mb-3">
     <div class="card-body d-flex align-items-center">
       <img [src]="'assets/images/abonner.svg'" class="profile-img" alt="Profile image of {{ abonne.nom }}" width="50" height="50">
@@ -12,4 +13,5 @@
       </div>
     </div>
   </div>
+</div>
 </div>

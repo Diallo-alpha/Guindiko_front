@@ -1,8 +1,9 @@
 <app-profil-mentor></app-profil-mentor>
+<div class="page">
 <div class="container">
   <h1 class="mb-4">Sessions disponibles</h1>
   <div class="row">
-    <div class="col-md-4" *ngFor="let session of sessions">
+    <div class="col-md-3" *ngFor="let session of sessions">
       <div class="card p-3 mb-3">
         <div class="card-body">
           <h6 class="card-title">Thème: {{ session.formation_id || 'Formation informatique' }}</h6>
@@ -11,4 +12,5 @@
           <!-- Vérifie si session.id est défini avant d'appeler la méthode -->
           <button class="btn btn-primary mb-2" *ngIf="session.id" (click)="reserverSession(session.id!)">Réserver</button>
 
+</div>
 </div>

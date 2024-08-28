@@ -1,17 +1,17 @@
 <app-profil-mentor></app-profil-mentor>
-
-<div class="container mt-5">
-  <div class="row">
-    <div class="col-md-4" *ngFor="let article of articles">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">{{ article.title }}</h5>
-          <img src="assets/images/logo.svg" alt="{{ article.title }}" class="card-img-top" height="200" />
-          <p class="card-text mt-3">{{ article.description }}</p>
-          <a class="card-link" href="#">
-            Voir plus
-            <i class="fas fa-arrow-right"></i>
-          </a>
+<div class="page">
+  <div class="container pt-5">
+    <div class="row">
+      <div class="col-md-3" *ngFor="let article of articles">
+        <div class="card h-100 shadow-sm border-0">
+          <img src="assets/images/dev-evo.svg" alt="{{ article.title }}" class="card-img-top img-fluid rounded-top" height="200" />
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title text-primary">{{ article.title }}</h5>
+            <p class="card-text text-muted mt-2 mb-4 flex-grow-1">{{ article.description }}</p>
+            <a class="card-link text-decoration-none mt-auto" href="#">
+              Voir plus <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
         </div>
       </div>
     </div>
