@@ -69,13 +69,10 @@ export class MentorService {
       .pipe(catchError(this.handleError));
   }
 
-  getMentorById(id: number): Observable<any> {
+  getMentorById(user_id: number): Observable<UserModel> {
     const headers = this.createHeaders();
-    return this.http.get<any>(`${apiUrl}/mentors/${id}`, { headers })
-      .pipe(
-        map(response => response.mentor), // Adjust according to your API structure
-        catchError(this.handleError)
-      );
+    return this.http.get<UserModel>(`${apiUrl}/mentore/${user_id}`, { headers })
+      .pipe(catchError(this.handleError));
   }
 
 getArticlesByMentor(mentorId: number): Observable<any> {

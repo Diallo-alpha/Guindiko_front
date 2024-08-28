@@ -1,47 +1,104 @@
 <div class="sidebar">
     <div class="logo">
-        <img src="../../../assets/logo.png" alt="Logo">
+      <img src="../../../assets/logo.png" alt="Logo">
     </div>
     <nav>
-        <ul>
-            <li><a href="#"> <img src="../../../assets/uil_dashboard1.svg" alt=""> Tableau de bord</a></li>
-            <li><a href="#" id="domaine"><img src="../../../assets/dashicons_category1.svg" alt=""> Domaines</a></li>
-            <li><a href="#"><img src="../../../assets/healthicons_i-training-class.svg" alt="">Formations</a></li>
-            <li><a href="#"><img src="../../../assets/eos-icons_role-binding.svg" alt="">Rôles et permissions</a></li>
-        </ul>
+      <ul>
+        <li><a href="#"> <img src="../../../assets/uil_dashboard1.svg" alt=""> Tableau de bord</a></li>
+        <li><a href="#" id="domaine"><img src="../../../assets/dashicons_category1.svg" alt=""> Domaines</a></li>
+        <li><a href="#"><img src="../../../assets/healthicons_i-training-class.svg" alt=""> Formations</a></li>
+        <li><a href="#"><img src="../../../assets/eos-icons_role-binding.svg" alt=""> Rôles et permissions</a></li>
+      </ul>
     </nav>
-</div>
-
-<div class="main-content">
-    <div class="header">
-        <h2>Nos Catégories</h2>
-        <button class="btn-add">Ajouter</button>
+  </div>
+  
+  <div class="main-content">
+    <div class="header1">
+      <h1 *ngIf="!selectedFormation">Ajouter une Formation</h1>
+      <h1 *ngIf="selectedFormation">Modifier la Formation</h1>
     </div>
-
-    <div class="tags-container">
-        <button class="category-tag">Informatique</button>
-        <button class="category-tag">Marketing</button>
-        <button class="category-tag">Comptabilité</button>
-        <button class="category-tag">Transport Logistique</button>
+  
+    <!-- Formulaire d'ajout de formation -->
+    <form *ngIf="!selectedFormation" (ngSubmit)="ajouterFormation()">
+      <div class="infos">
+        <div class="row">
+          <div class="libelle">
+            <label for="libelle">Libellé:</label>
+            <input type="text" id="libelle" [(ngModel)]="newFormation.nom" name="libelle" placeholder="Libellé de la formation" required>
+          </div>
+          <div class="domaine">
+            <label for="domaine">Domaine:</label>
+            <select name="domaine" id="domaine1" [(ngModel)]="newFormation.domaine_id" required>
+              <option *ngFor="let domaine of domains" [value]="domaine.id">{{ domaine.nom }}</option>
+            </select>
+          </div>
+        </div>
+        <label for="description">Description:</label>
+        <textarea name="description" id="description" [(ngModel)]="newFormation.description" cols="30" rows="5" placeholder="Description de la formation" required></textarea>
+      </div>
+      <button type="submit">Ajouter</button>
+    </form>
+  
+    <!-- Formulaire d'édition de formation -->
+    <form *ngIf="selectedFormation" (ngSubmit)="saveFormation()">
+      <div class="infos">
+        <div class="row">
+          <div class="libelle">
+            <label for="libelle">Libellé:</label>
+            <input type="text" id="libelle" [(ngModel)]="selectedFormation.nom" name="libelle" placeholder="Libellé de la formation" required>
+          </div>
+          <div class="domaine">
+            <label for="domaine">Domaine:</label>
+            <select name="domaine" id="domaine" [(ngModel)]="selectedFormation.domaine_id" required>
+              <option *ngFor="let domaine of domains" [value]="domaine.id">{{ domaine.nom }}</option>
+            </select>
+          </div>
+        </div>
+        <label for="description">Description:</label>
+        <textarea name="description" id="description" [(ngModel)]="selectedFormation.description" cols="30" rows="5" placeholder="Description de la formation" required></textarea>
+      </div>
+      <button type="submit">Sauvegarder</button>
+      <button type="button" (click)="cancelEdit()">Annuler</button>
+    </form>
+  
+    <!-- Affichage des Formations -->
+   <!-- Updated Formation List -->
+  <!--nos formation -->
+  <div class="container mt-5">
+    <h1 class="title text-start">Nos Formations</h1>
+  
+    <div class="d-flex justify-content-between align-items-center mt-4">
+      <!-- Bouton Précédent -->
+      <button class="btn btn-outline-primary" (click)="prev()">Précédent</button>
+  
+      <!-- Boucle pour afficher chaque domaine (max 5 à la fois) -->
+      <div class="d-flex justify-content-center align-items-center">
+        <button *ngFor="let domain of domains.slice(startIndex, startIndex + 5)"
+                class="btn btn-outline-custom mx-2"
+                (click)="onDomainClick(domain.id!)">
+          {{ domain.nom }}
+        </button>
+      </div>
+      <!-- Bouton Suivant -->
+      <button class="btn btn-outline-primary" (click)="next()">Suivant</button>
     </div>
-
-    <div class="categories">
-        <div class="category-card">
-            <img src="../../../assets/informatique.png" alt="Informatique">
-            <p>Informatique</p>
+  </div>
+  
+  <div class="container py-5">
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+      <div class="col" *ngFor="let formation of formations">
+        <div class="card h-100">
+          <img alt="{{ formation.nom }}" class="card-img-top" src="assets/images/formation.svg" />
+          <div class="card-body">
+            <h5 class="card-title">{{ formation.nom }}</h5>
+            <p class="card-text">{{ formation.description }}</p>
+          </div>
+          <div class="card-footer d-flex justify-content-between">
+            <button class="btn btn-outline-info" (click)="editFormation(formation)">Modifier</button>
+            <button class="btn btn-outline-danger" (click)="deleteFormation(formation.id!)">Supprimer</button>
+          </div>
         </div>
-        <div class="category-card">
-            <img src="../../../assets/informatique.png" alt="Marketing">
-            <p>Marketing</p>
-        </div>
-        <div class="category-card">
-            <img src="../../../assets/informatique.png" alt="Comptabilité">
-            <p>Comptabilité</p>
-        </div>
-        <div class="category-card">
-            <img src="../../../assets/informatique.png" alt="Transport Logistique">
-            <p>Transport Logistique</p>
-        </div>
+      </div>
     </div>
-</div>
- 
+  </div>
+  

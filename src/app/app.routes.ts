@@ -1,7 +1,5 @@
 import { Routes } from '@angular/router';
 import { NavbarComponent } from './components/navbar/navbar.component';
-
-
 import { AccueilComponent } from './components/accueil/accueil.component';
 import { FormationComponent } from './components/formation/formation.component';
 import { ArticlesComponent } from './components/articles/articles.component';
@@ -21,13 +19,41 @@ import { DashboardComponent } from './components/dashboard-mentor/dashboard/dash
 import { AbonnerComponent } from './components/dashboard-mentor/abonner/abonner.component';
 import { DashArticleComponent } from './components/dashboard-mentor/dash-article/dash-article.component';
 import { DetailFormationComponent } from './components/detail-formation/detail-formation.component';
-import { ProfilMentorComponents } from './components/dashboard-mentor/profil-mentore/profil-mentor.components';
-import { DashboardAdminComponent } from './components/dashboard-admin/dashboard-admin.component';
-import { AdminGuard } from './Guard/admin-guard.guard';
+// import { ProfilMentorComponent as ProfilMentorComponent } from './components/dashboard-mentor/profil-mentore/profil-mentor.components';
+import { RoleComponent } from './components/role/role.component';
+import { PermissionComponent } from './components/permission/permission.component';
 import { FormationAdminComponent } from './components/admin-formation/formation/formation.component';
+import { DashboardAdminComponent } from './components/dashboard-admin/dashboard-admin.component';
+import { ProfilMentorComponents } from './components/dashboard-mentor/profil-mentore/profil-mentor.components';
+import { AdminGuard } from './Guard/admin-guard.guard';
 import { MentorGuard } from './Guard/mentor-guard.guard';
 import { ModifierArticleComponent } from './components/dashboard-mentor/modifier-article/modifier-article.component';
 export const routes: Routes = [
+  { path: 'navbar', component: NavbarComponent },
+  { path: 'dashboard', component: DashboardAdminComponent },
+  { path: 'formations', component: FormationComponent },
+  { path: 'formations-admin', component: FormationAdminComponent },
+  { path: 'article', component: ArticlesComponent },
+  { path: 'mentor', component: MenteurComponent },
+  { path: 'details-article', component: DetailsArticleComponent },
+  { path: 'profile', component: ProfilMentorComponent },
+  { path: 'session', component: SessionMentorComponent },
+  { path: 'article/mentor', component: ArticleMentorComponent },
+  { path: 'abonner/mentore', component: AbonnerMentorComponent },
+  { path: 'inscription', component: InscriptionComponent },
+  { path: 'connexion', component: ConnexionComponent },
+  { path: 'sidebar', component: SidebarComponent },
+  { path: 'session-mentor', component: SessionComponent },
+  { path: 'creer-session', component: CreerSessionComponent },
+  { path: 'creer-article', component: CreerArticleComponent },
+  { path: 'dashboard-mentor', component: DashboardComponent },
+  { path: 'abonner-mentor', component: AbonnerComponent },
+  { path: 'article-dashboard', component: DashArticleComponent },
+  { path: 'detail-formation', component: DetailFormationComponent },
+  { path: 'modifier/profile-mentor', component: ProfilMentorComponent },
+  { path: 'roles', component: RoleComponent },
+  { path: 'permissions', component: PermissionComponent },
+  { path: '', component: AccueilComponent },  // Mettre cette route à la fin
   {path: '', pathMatch: 'full', redirectTo: 'accueil'},
   {path: 'navbar', component:NavbarComponent},
   {path: 'accueil', component:AccueilComponent},
@@ -52,7 +78,11 @@ export const routes: Routes = [
   {path: 'article-dashboard', component:DashArticleComponent, canActivate:[MentorGuard]},
   {path: 'detail-formation', component:DetailFormationComponent},
   {path: 'modifier/profile-mentor', component:ProfilMentorComponents},
-
+  {path: 'admin-dashboard', component:DashboardAdminComponent, canActivate:[AdminGuard]},
   {path: 'admin-dashboard', component:DashboardAdminComponent, canActivate:[AdminGuard]},
   {path: 'admin-formation', component:FormationAdminComponent}
-];
+  ];
+
+
+
+ 

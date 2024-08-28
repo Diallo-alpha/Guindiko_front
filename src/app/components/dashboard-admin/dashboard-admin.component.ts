@@ -1,25 +1,66 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AdminService } from '../../services/admin.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard-admin.component.html',
-  styleUrls: ['./dashboard-admin.component.css']
+  styleUrls: ['./dashboard-admin.component.css'],
+  standalone: true,
+  imports: [CommonModule] 
+
 })
-export class DashboardAdminComponent {
-  requests = [
-    { name: 'Adiaratou Oumy Fall', email: 'falladiaratouumy@gmail.com', phone: '+221 77 812 84 26', diploma: 'Ingénieur en informatique' },
-    // Ajoutez d'autres demandes ici
-  ];
+export class DashboardAdminComponent implements OnInit {
+  requests: any[] = [];
 
-  viewDetails(request: any) {
-    // Logic for viewing details
+  constructor(private adminService: AdminService) {}
+
+  ngOnInit() {
+    this.fetchMentorRequests();
   }
 
-  editRequest(request: any) {
-    // Logic for editing the request
-  }
+// Supposons que l'API renvoie un objet avec les demandes sous la propriété `demandes`
+fetchMentorRequests() {
+  this.adminService.obtenirDemandesMentor().subscribe(
+    (data: any) => {
+      console.log('Response from API:', data);
+      // Utilisez `data.demandes` pour accéder aux données
+      this.requests = data.demandes || [];
+    },
+    (error) => {
+      console.error('Error fetching mentor requests:', error);
+    }
+  );
+}
 
-  deleteRequest(request: any) {
-    // Logic for deleting the request
-  }
+ // Validate a mentor request
+ validerDemande(mentorId: number): void {
+  this.adminService.validerMentor(mentorId).subscribe({
+    next: () => {
+      alert('La demande a été validée avec succès.');
+      this.fetchMentorRequests();  // Refresh the list
+    },
+    error: (error: any) => {
+      console.error('Erreur lors de la validation de la demande :', error);
+      alert('Erreur lors de la validation de la demande.');
+    }
+  });
+}
+
+// Reject a mentor request
+rejeterDemande(mentorId: number): void {
+  this.adminService.suspendreUtilisateur(mentorId).subscribe({
+    next: () => {
+      alert('La demande a été rejetée avec succès.');
+      this.fetchMentorRequests();  // Refresh the list
+    },
+    error: (error: any) => {
+      console.error('Erreur lors du rejet de la demande :', error);
+      alert('Erreur lors du rejet de la demande.');
+    }
+  });
+}
+
+
+
 }
