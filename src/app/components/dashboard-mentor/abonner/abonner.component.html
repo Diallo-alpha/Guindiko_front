@@ -5,6 +5,7 @@
   <!-- Message d'erreur -->
   <div *ngIf="error" class="error-message">{{ error }}</div>
 
+  <h2>Mes Demandes </h2>
   <!-- Message si aucune demande reçue -->
   <ng-container *ngIf="!loading && !error">
     <div *ngIf="demandesRecues.length === 0" class="no-demande">
@@ -21,15 +22,15 @@
           <p>Mentee ID: {{ demande.mentee_id }}</p>
         </div>
         <div class="actions">
-          <button (click)="accepterDemande(demande.id)">Accepter</button>
-          <button (click)="refuserDemande(demande.id)">Refuser</button>
+          <button class="btn btn-primary"  (click)="accepterDemande(demande.id)">Accepter</button>
+          <button class="btn btn-danger" (click)="refuserDemande(demande.id)">Refuser</button>
         </div>
       </div>
     </div>
 
     <!-- Liste des demandes acceptées -->
-    <div *ngIf="demandesAcceptees.length > 0" class="accepted-mentees-list">
-      <h2>Mentees Acceptés</h2>
+    <div  *ngIf="demandesAcceptees.length > 0" class="accepted-mentees-list mt-5">
+      <h2 >Mentees Acceptés</h2>
       <div *ngFor="let mentee of demandesAcceptees" class="accepted-mentee-item">
         <img [src]="mentee.profileImageUrl || defaultProfileImageUrl"
              alt="Photo de profil de {{ mentee.mentee_id }}" class="photo" />

@@ -1,6 +1,6 @@
 <app-sidebar></app-sidebar>
 <div class="content">
-  <h2>Créer un article</h2>
+  <h2>Créer un Article</h2>
   <form [formGroup]="articleForm" (ngSubmit)="onSubmit()">
     <div class="form-row">
       <div class="form-group half-width">
@@ -28,7 +28,7 @@
     </div>
 
     <div class="form-group">
-      <label for="formation_id">ID de la formation</label>
+      <label for="formation_id">ID de la Formation</label>
       <input id="formation_id" formControlName="formation_id" placeholder="Entrez l'ID de la formation" type="text" class="form-control" />
       <div *ngIf="articleForm.controls['formation_id'].invalid && articleForm.controls['formation_id'].touched" class="text-danger">
         Veuillez entrer un ID de formation valide.
@@ -36,7 +36,7 @@
     </div>
 
     <div class="form-group">
-      <input type="submit" value="Publier" class="btn btn-primary" [disabled]="articleForm.invalid" />
+      <button type="submit" class="btn btn-submit" [disabled]="articleForm.invalid">Publier</button>
     </div>
   </form>
 </div>

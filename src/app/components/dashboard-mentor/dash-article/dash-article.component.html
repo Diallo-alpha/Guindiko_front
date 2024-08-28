@@ -1,7 +1,8 @@
+<div class="page">
 <app-sidebar></app-sidebar>
 <nav class="navbar"></nav>
 <div class="content">
-  <a routerLink="/creer-article" class="btn">Créer une nouvelle article</a>
+  <a routerLink="/creer-article" class="btn edit-button">Créer une nouvelle article</a>
   <div class="article-container">
     <div class="article-card" *ngFor="let article of articles">
       <div class="article-title">{{ article.titre }}</div>
@@ -12,8 +13,11 @@
       <img src="assets/images/logo.svg" alt="{{ article.titre }}" class="article-image"/>
 
       <div class="article-text">{{ article.description | slice:0:100 }}...</div>
+      <div class="d-flex ">
       <button class="edit-button" (click)="editArticle(article.id)">Modifier l'article</button>
       <button class="delete-button" (click)="deleteArticle(article.id)">Supprimer l'article</button>
     </div>
+    </div>
   </div>
+</div>
 </div>

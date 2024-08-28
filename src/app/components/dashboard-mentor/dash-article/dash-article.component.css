@@ -1,106 +1,108 @@
-/* Mise à jour du style .content */
+/* Styles généraux */
+
 .content {
-/* <<<<<<< HEAD
-  margin-left:  16em;
   padding: 5em 2em;
-======= */
-  margin-top: 10vh;
-  margin-left: 22vh;
-  padding: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  margin-left: 250px; /* Ajuster en fonction de la largeur du sidebar */
+  background-color: #fffff0;
 }
 
-/* Conteneur des cartes d'articles */
 .article-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
-  width: 100%;
-  justify-content: center;
-}
-.content .btn {
-  background-color: #5e2a84;
-  color: #fff;
-  padding: 10px 20px;
-  text-decoration: none;
-  border-radius: 5px;
-  display: inline-block;
-  margin-bottom: 20px;
-  margin-left: 10vh;
-}
-/* Style pour chaque carte d'article */
-.article-card {
-  flex: 1 1 calc(33.333% - 40px); /* 3 cartes par ligne avec 20px de gap */
-  max-width: 25%;
-  background: #f4f4f4;
-  border: 1px solid #ddd;
-  margin-bottom: 20px;
-  padding: 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  gap: 1.5rem;
+  justify-content: flex-start;
 }
 
-/* Boutons Modifier et Supprimer */
-.edit-button, .delete-button {
-  background-color: #5b0a87;
-  color: white;
-  padding: 10px;
+/* Styles des cartes */
+.article-card {
+  margin-top: 3em;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.article-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.article-title {
+  font-size: 1.25rem;
+  color: #3D1957;
+  margin: 0.75rem;
+  font-weight: bold;
+}
+
+.article-meta {
+  font-size: 0.75rem;
+  color: #888888;
+  margin: 0 0.75rem;
+}
+
+.article-image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  background-color: #e0e0e0;
+}
+
+.article-text {
+  padding: 0.75rem;
+  font-size: 0.875rem;
+  color: #333333;
+}
+
+.edit-button,
+.delete-button {
+  display: inline-block;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: bold;
+  text-align: center;
+  color: #ffffff;
+  background-color: #3D1957;
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
   cursor: pointer;
-  margin-bottom: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.edit-button:hover,
+.delete-button:hover {
+  background-color: #3D1957;
 }
 
 .delete-button {
-  background-color: #ff4d4d;
+  background-color: #d32f2f;
 }
 
-/* Style pour le titre de l'article */
-.article-title {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 10px;
+.delete-button:hover {
+  background-color: #c62828;
 }
 
-/* Style pour les métadonnées de l'article */
-.article-meta {
-  font-size: 16px;
-  color: #5b0a87;
-  margin-bottom: 10px;
+/* Design Responsive */
+@media (max-width: 1024px) {
+  .article-card {
+    width: calc(33.333% - 1rem); /* Trois cartes par ligne sur les tablettes */
+  }
 }
 
-.article-meta .author {
-  font-weight: bold;
-  color: black;
+@media (max-width: 768px) {
+  .content {
+    margin-left: 0; /* Sidebar masqué sur mobile */
+    padding: 1rem;
+  }
+
+  .article-card {
+    width: calc(50% - 1rem); /* Deux cartes par ligne sur les mobiles en paysage */
+  }
 }
 
-/* Image de l'article */
-.article-image {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-  margin-bottom: 10px;
-}
-
-/* Icône et texte des j'aimes */
-.likes {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.likes .icon {
-  margin-right: 10px;
-}
-
-/* Texte de description de l'article */
-.article-text {
-  font-size: 16px;
-  line-height: 1.4;
-  margin-bottom: 10px;
+@media (max-width: 480px) {
+  .article-card {
+    width: 100%; /* Pleine largeur sur les petits écrans */
+  }
 }

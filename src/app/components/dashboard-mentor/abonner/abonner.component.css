@@ -3,6 +3,8 @@
 .content {
   margin-left: 250px;
   padding: 80px 20px 20px 20px;
+  background-color: #fffff0;
+  min-height: 100vh;
 }
 
 .content h2 {
@@ -50,12 +52,14 @@
   padding: 5px 10px;
   cursor: pointer;
   border: none;
-  background-color: #007bff;
   color: white;
   border-radius: 5px;
   transition: background-color 0.3s;
 }
 
+.btn-primary{
+  background-color: #3D1957;
+}
 .subscriber-item .actions button:hover {
   background-color: #0056b3;
 }
