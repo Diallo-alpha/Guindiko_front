@@ -1,8 +1,9 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import { apiUrl } from './apiUrl'; // Assurez-vous que le chemin est correct
+import { FormationModel } from '../models/FormationModel';
 
 @Injectable({
   providedIn: 'root'
@@ -31,10 +32,10 @@ export class AdminService {
   }
 
   // Créer une formation
-  creerFormation(formationData: any): Observable<any> {
-    return this.http.post(`${apiUrl}/formations`, formationData, { headers: this.headers })
-      .pipe(catchError(this.handleError));
-  }
+  // creerFormation(formationData: any): Observable<any> {
+  //   return this.http.post(`${apiUrl}/formations`, formationData, { headers: this.headers })
+  //     .pipe(catchError(this.handleError));
+  // }
 
   // Mettre à jour une formation
   mettreAJourFormation(formationId: number, formationData: any): Observable<any> {
@@ -71,4 +72,28 @@ export class AdminService {
     console.error('Une erreur est survenue :', error);
     throw error; // Lever l'erreur pour être gérée par l'appelant
   }
+
+  obtenirFormations(): Observable<any[]> {
+    return this.http.get<any[]>(`${apiUrl}/formations`, { headers: this.headers })
+      .pipe(
+        catchError(this.handleError),
+        tap(data => console.log('Formations reçues:', data)) // Ajouter un log pour vérifier les données
+      );
+  }
+
+  obtenirDomaines(): Observable<any[]> {
+    return this.http.get<any[]>(`${apiUrl}/domaines`, { headers: this.headers })
+      .pipe(
+        catchError(this.handleError),
+        tap(data => console.log('Domaines reçus:', data)) // Ajouter un log pour vérifier les données
+      );
+  }
+  // Créer une formation
+  creerFormation(formation: FormationModel): Observable<any> {
+    return this.http.post<any>(`${apiUrl}/formations`, formation, { headers: this.headers })
+      .pipe(catchError(this.handleError));
+  }
+  
 }
+
+

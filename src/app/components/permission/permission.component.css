@@ -1,0 +1,268 @@
+
+
+.logo {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.logo img {
+    width: 180px;
+}
+
+.sidebar nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar nav ul li {
+    margin: 15px 0;
+}
+
+.sidebar nav ul li a {
+    color: #333; /* Gris foncé pour le texte des liens */
+    text-decoration: none;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar nav ul li a img {
+    margin-right: 10px;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a.active {
+    background-color: #7B437A; /* Un mauve plus doux pour le survol et les éléments actifs */
+    color: #FFFFFF; /* Blanc pour un bon contraste */
+}
+
+.main-content {
+    margin-top: 20px;
+    margin-left: 18%;
+    padding: 20px;
+    width: calc(100% - 240px);
+    background-color: #FFFFFF; /* Blanc pour le fond du contenu principal */
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    margin: 0;
+    color: #5A2961; /* Mauve profond pour le titre */
+}
+
+.buttons {
+    display: flex;
+}
+
+.buttons button {
+    background-color: #5A2961; /* Mauve profond */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-right: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.buttons button.active {
+    background-color: #7B437A; /* Mauve doux */
+}
+
+.buttons button:hover {
+    background-color: #7B437A; /* Mauve doux */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table thead {
+    background-color: #5C0C69; /* Mauve profond pour l'en-tête de tableau */
+    color: #FFFFFF; /* Blanc pour un bon contraste */
+}
+
+table thead th {
+    padding: 15px;
+    text-align: left;
+}
+
+table tbody tr {
+    border-bottom: 1px solid #DDD; /* Lignes de séparation subtiles */
+}
+
+table tbody td {
+    padding: 15px;
+    color: #333;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #F4F4F4; /* Gris très clair pour les lignes paires */
+    color: #333;
+}
+
+table tbody tr:hover {
+    background-color: #FFFFF0; /* Légère variation de gris clair au survol */
+}
+
+table tbody td .action-icons {
+    display: flex;
+    gap: 10px;
+}
+
+table tbody td .action-icons i {
+    cursor: pointer;
+    font-size: 16px;
+}
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #F9F9F9; /* Un gris très clair pour le fond général */
+    color: #333;
+    display: flex;
+}
+
+.sidebar {
+    position: fixed;
+    width: 220px;
+    height: 100%;
+    background-color: #FFFFF0; /* Un gris clair pour la barre latérale */
+    display: flex;
+    flex-direction: column;
+    /* padding-left: 20px; */
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+#roles {
+    background-color: #5C0C69;
+    color: #FFFFF0;
+    padding: 10px 0 10px 0;
+    border-radius: 0 30px 30px 0;
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.logo img {
+    width: 180px;
+}
+
+.sidebar nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar nav ul li {
+    margin: 10px 0;
+}
+
+.sidebar nav ul li a {
+    color: #333; /* Gris foncé pour le texte des liens */
+    text-decoration: none;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar nav ul li a img {
+    margin-left: 10px;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a.active {
+    background-color: #7B437A; /* Un mauve plus doux pour le survol et les éléments actifs */
+    color: #FFFFFF; /* Blanc pour un bon contraste */
+}
+
+.main-content {
+    margin-top: 20px;
+    /* margin-left: 20%; */
+    padding: 20px;
+    width: calc(100% - 240px);
+    background-color: #FFFFF0; /* Blanc pour le fond du contenu principal */
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    margin: 0;
+    color: #5A2961; /* Mauve profond pour le titre */
+}
+
+.buttons {
+    display: flex;
+}
+
+.buttons button {
+    background-color: #5A2961; /* Mauve profond */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-right: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.buttons button.active {
+    background-color: #7B437A; /* Mauve doux */
+}
+
+.buttons button:hover {
+    background-color: #7B437A; /* Mauve doux */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table thead {
+    background-color: #5C0C69; /* Mauve profond pour l'en-tête de tableau */
+    color: #FFFFF0; /* Blanc pour un bon contraste */
+}
+
+table thead th {
+    padding: 15px;
+    text-align: left;
+}
+
+table tbody tr {
+    border-bottom: 1px solid #DDD; /* Lignes de séparation subtiles */
+}
+
+table tbody td {
+    padding: 15px;
+    color: #333;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: rgba(92, 12, 105, 0.2); /* Gris très clair pour les lignes paires */
+    color: #333;
+}
+
+
+table tbody td .action-icons {
+    display: flex;
+    gap: 10px;
+}
+
+table tbody td .action-icons i {
+    cursor: pointer;
+    font-size: 16px;
+}

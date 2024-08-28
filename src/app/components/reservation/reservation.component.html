@@ -1,0 +1,46 @@
+<div class="container">
+    <h2>Réservations</h2>
+    <form (ngSubmit)="createReservation()">
+      <div>
+        <label for="user_id">User ID:</label>
+        <input id="user_id" [(ngModel)]="newReservation.user_id" name="user_id" required>
+      </div>
+      <div>
+        <label for="session_mentorat_id">Session ID:</label>
+        <input id="session_mentorat_id" [(ngModel)]="newReservation.session_mentorat_id" name="session_mentorat_id" required>
+      </div>
+      <div>
+        <button type="submit">Réserver</button>
+      </div>
+    </form>
+  
+    <hr>
+  
+    <h3>Liste des réservations</h3>
+    <ul>
+      <li *ngFor="let reservation of reservations">
+        {{ reservation | json }}
+        <button (click)="editReservation(reservation)">Modifier</button>
+        <button (click)="deleteReservation(reservation.id!)">Supprimer</button>
+      </li>
+    </ul>
+  
+    <div *ngIf="selectedReservation">
+      <h3>Modifier la réservation</h3>
+      <form (ngSubmit)="saveReservation()">
+        <div>
+          <label for="edit_user_id">User ID:</label>
+          <input id="edit_user_id" [(ngModel)]="selectedReservation.user_id" name="edit_user_id" required>
+        </div>
+        <div>
+          <label for="edit_session_mentorat_id">Session ID:</label>
+          <input id="edit_session_mentorat_id" [(ngModel)]="selectedReservation.session_mentorat_id" name="edit_session_mentorat_id" required>
+        </div>
+        <div>
+          <button type="submit">Enregistrer</button>
+          <button type="button" (click)="cancelEdit()">Annuler</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
