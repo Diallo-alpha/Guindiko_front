@@ -1,11 +1,10 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { apiUrl } from './apiUrl';
 import { CommentaireModel } from '../models/CommentaireModel';
 import { ReservationModel } from '../models/ReservationModel';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -14,7 +13,7 @@ export class MenteeService {
 
   private headers = new HttpHeaders({
     'Content-Type': 'application/json',
-    'Authorization': `Bearer ${localStorage.getItem('Token')}`
+    'Authorization': `Bearer ${localStorage.getItem('Token')}` // Add the token to requests
   });
 
   // Envoyer une demande de mentorat
@@ -35,8 +34,7 @@ export class MenteeService {
     return this.http.post<CommentaireModel>(`${apiUrl}/commentaires`, commentData, { headers: this.headers })
       .pipe(catchError(this.handleError));
   }
-
-  // --- GESTION DES RÉSERVATIONS ---
+// --- GESTION DES RÉSERVATIONS ---
 
   // Récupérer toutes les réservations
   getReservations(): Observable<ReservationModel[]> {
@@ -51,8 +49,8 @@ export class MenteeService {
   }
 
   // Créer une réservation
-  createReservation(data: { session_mentorat_id: number; statut: string }): Observable<any> {
-    return this.http.post<any>(`${apiUrl}/reservations`, data, { headers: this.headers })
+  createReservation(reservationData: any): Observable<ReservationModel> {
+    return this.http.post<ReservationModel>(`${apiUrl}/reservations`, reservationData, { headers: this.headers })
       .pipe(catchError(this.handleError));
   }
 
@@ -68,16 +66,15 @@ export class MenteeService {
       .pipe(catchError(this.handleError));
   }
 
-  // Devenir mentor
+  //devenir mentor
   devenirMentor(mentorId: number, demandeData: any): Observable<any> {
     console.log('En-têtes:', this.headers);
     return this.http.post(`${apiUrl}/mentorats/devenir`, { mentorId, ...demandeData }, { headers: this.headers })
       .pipe(catchError(this.handleError));
   }
-
   // Gérer les erreurs API
   private handleError(error: any): Observable<never> {
     console.error('An error occurred:', error);
-    return throwError(() => new Error(error.message || 'An error occurred'));
+    throw error;
   }
 }

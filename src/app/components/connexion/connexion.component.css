@@ -1,14 +1,12 @@
-.container {
-  max-width: 546px;
-  margin-top: 80px;
-  text-align: center;
-  align-items: flex-start;
-  gap: 15px;
-
+.page{
+  background-color: #fffff0;
+  min-height: 100vh;
 }
-
-.logo {
-  margin-bottom: 20px;
+.container {
+  max-width: 450px; /* Reduce the max-width */
+  margin: auto;
+  padding: 20px; /* Add some padding */
+  border-radius: 8px; /* Add some border radius */
 }
 
 .logo img {
@@ -16,47 +14,39 @@
 }
 
 .form-control {
-  margin-bottom: 20px;
-  border-radius: 8px; /* Add border radius to inputs */
+  border-radius: 6px; /* Slightly reduce the border radius */
+  padding: 10px 15px; /* Reduce padding inside inputs */
+  font-size: 14px; /* Make text a bit smaller */
 }
 
 .btn-custom {
   background-color: #4b004b;
+  color: white;
+  font-weight: 600;
+  border-radius: 6px; /* Reduce the border radius */
+  height: 45px; /* Reduce the height */
   width: 100%;
-  height: 59px;
-  border-radius: 8px; /* Add border radius to button */
-  color: #fff; /* Ensure button text is white */
-  font-weight: 600; /* Make button text bold */
+  font-size: 14px; /* Reduce button text size */
+}
+
+h2 {
+  font-size: 24px; /* Reduce heading size */
 }
 
 .form-label {
-  text-align: left;
-  display: block;
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 14px; /* Reduce label text size */
+  font-weight: 500; /* Make the label slightly lighter */
 }
 
-input[type="email"], input[type="password"] {
-  width: 100%; /* Make input fields responsive */
-  height: 50px;
-  padding: 14px 27px;
-  border-radius: 8px; /* Add border radius to input fields */
-}
-
-input[type="submit"] {
-  flex-shrink: 0;
-  border-radius: 8px;
-  background: #5C0C69;
-}
-
-.mt-3 {
-  margin-top: 1rem;
+.form-control{
+  background-color: #fffff0;
 }
 
 .text-decoration-none {
   text-decoration: none;
+  font-size: 14px; /* Reduce the link text size */
 }
 
 .text-decoration-none:hover {
-  text-decoration: underline; /* Underline link on hover */
+  text-decoration: underline;
 }

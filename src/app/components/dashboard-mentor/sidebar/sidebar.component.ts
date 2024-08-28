@@ -22,6 +22,7 @@ interface Notification {
 @Component({
   selector: 'app-sidebar',
   standalone: true,
+
   imports: [CommonModule, RouterModule],
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css'],
