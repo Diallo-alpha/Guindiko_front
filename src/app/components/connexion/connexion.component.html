@@ -1,34 +1,24 @@
-<div class="container">
-  <div class="logo">
-    <img alt="Guindiko logo" height="100" src="assets/images/logo.svg" width="200"/>
+<div class="page">
+<div class="container pt-5">
+  <div class="logo text-center mb-4">
+    <img src="assets/images/logo.svg" alt="Guindiko logo" height="100" width="200">
   </div>
-  <h2 class="mb-4">Bienvenue chez Guindiko</h2>
+  <h2 class="mb-4 text-center">Bienvenue chez Guindiko</h2>
 
-  <form (ngSubmit)="connexion()"> <!-- Bind form submit to connexion method -->
-    <div class="mb-3 text-start">
-      <label class="form-label" for="email">Email</label>
-      <input
-        class="form-control"
-        id="email"
-        placeholder="alpha.diallo@exemple.com"
-        type="email"
-        [(ngModel)]="userobject.email"
-        name="email"> <!-- Bind input to userobject.email -->
+  <form (ngSubmit)="connexion()">
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" class="form-control" id="email" placeholder="alpha.diallo@exemple.com" [(ngModel)]="userobject.email" name="email" required>
     </div>
-    <div class="mb-3 text-start">
-      <label class="form-label" for="password">Mot de passe</label>
-      <input
-        class="form-control"
-        id="password"
-        placeholder="****"
-        type="password"
-        [(ngModel)]="userobject.password"
-        name="password"> <!-- Bind input to userobject.password -->
+    <div class="mb-3">
+      <label for="password" class="form-label">Mot de passe</label>
+      <input type="password" class="form-control" id="password" placeholder="****" [(ngModel)]="userobject.password" name="password" required>
     </div>
-    <button class="btn btn-custom" type="submit">Connexion</button>
+    <button type="submit" class="btn btn-custom btn-block">Connexion</button>
   </form>
 
-  <div class="mt-3">
-    <p>Vous n'avez pas de compte? <a [routerLink]="['/inscription']" routerLinkActive="router-link-active" class="text-decoration-none">S'inscrire</a></p> <!-- Link to signup page -->
+  <div class="mt-3 text-center">
+    <p>Vous n'avez pas de compte? <a [routerLink]="['/inscription']" class="text-decoration-none">S'inscrire</a></p>
   </div>
+</div>
 </div>
