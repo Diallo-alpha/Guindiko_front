@@ -1,5 +1,5 @@
 <div class="sidebar">
-  <h1>Guindiko <span>nature</span></h1>
+  <h1>Guindiko <span>mentor</span></h1>
   <ul>
     <li><a routerLink="/dashboard-mentor" routerLinkActive="active"><i class="fas fa-home"></i> Dashboard</a></li>
     <li><a routerLink="/session-mentor" routerLinkActive="active"><i class="fas fa-calendar-alt"></i> Sessions</a></li>
@@ -13,7 +13,6 @@
   <div class="user-info">
     <span>{{ userName }}</span>
     <i class="fas fa-bell" (click)="toggleNotifications()"></i>
-    <!-- Affichage du nombre de notifications non lues -->
     <span *ngIf="notifications.length > 0" class="notification-count">
       {{ notifications.length }}
     </span>
@@ -22,11 +21,10 @@
 
   <div *ngIf="showNotifications" class="notifications-dropdown">
     <ul>
-      <li *ngFor="let notification of notifications">
-        {{ notification.data.message || 'Notification reçue' }}
-        <i class="fas fa-trash-alt"></i>
+      <li *ngFor="let notification of notifications" class="notification-item">
+        <span>{{ notification.data.message || 'Notification reçue' }}</span>
+        <!-- <i class="fas fa-trash-alt"></i> -->
       </li>
     </ul>
   </div>
 </div>
-

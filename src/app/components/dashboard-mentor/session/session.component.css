@@ -1,14 +1,20 @@
+.page {
+  background-color: #fffff0;
+}
+
 .content {
   margin-left: 250px;
   padding: 80px 40px 40px 40px;
   box-sizing: border-box;
 }
+
 .content h2 {
   font-size: 24px;
   margin-bottom: 20px;
 }
+
 .content .btn {
-  background-color: #5e2a84;
+  background-color: #3D1957;
   color: #fff;
   padding: 10px 20px;
   text-decoration: none;
@@ -16,51 +22,69 @@
   display: inline-block;
   margin-bottom: 20px;
 }
+
 .sessions {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
 }
+
 .session-card {
-  background-color: #fff;
+  background-color: #fffff0;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   padding: 20px;
   width: calc(33.333% - 20px);
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
+
 .session-card h3 {
-  font-size: 18px;
-  margin: 0 0 10px 0;
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #3D1957;
+  font-weight: bold;
 }
+
 .session-card p {
-  margin: 0;
+  margin: 5px 0;
   color: #666;
+  font-size: 16px;
 }
+
 .session-card .resources {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  margin-top: 10px;
+  margin-top: 20px;
 }
+
 .session-card .resources i {
-  margin-right: 1vh;
+  margin-right: 8px;
+  font-size: 16px;
 }
+
 .session-card .resources .btn {
-  background-color: #5e2a84;
-  color: #fff;
-  padding: 5px 5px;
+  background-color: #3D1957;
+  color: #fffff0;
+  padding: 5px 10px;
   text-decoration: none;
   border-radius: 5px;
   font-size: 14px;
 }
-.date{
-  margin-top: -1.5vh;
-  margin-left: 1.5vh !important;
-  font-weight: bolder;
+
+.date {
+  font-weight: bold;
+  color: #333;
+  font-size: 14px;
+  text-align: right;
 }
+
 /* Modal Styles */
 .modal {
-  display: block; /* Assurez-vous que le modal est visible lorsque showModal est vrai */
+  display: block;
   position: fixed;
   z-index: 1;
   left: 0;
@@ -73,10 +97,11 @@
 
 .modal-content {
   background-color: #fefefe;
-  margin: 15% auto;
+  margin: 10% auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 80%;
+  width: 60%;
+  border-radius: 10px;
 }
 
 .close {
@@ -92,4 +117,3 @@
   text-decoration: none;
   cursor: pointer;
 }
-

@@ -1,3 +1,6 @@
+.page{
+  background-color: #fffff0;
+}
 .main-content {
   margin-left: 250px;
   padding: 20px;
@@ -9,7 +12,7 @@
   margin-bottom: 20px;
 }
 .stats .stat {
-  background-color: white;
+  background-color: #fffff0;
   padding: 20px;
   border-radius: 10px;
   text-align: center;
@@ -18,15 +21,15 @@
 }
 .stats .stat h3 {
   margin: 0;
-  color: #4a154b;
+  color: #3D1957;
 }
 .stats .stat p {
   margin: 5px 0 0;
   font-size: 24px;
-  color: #4a154b;
+  color: #3D1957;
 }
 .sessions, .requests {
-  background-color: white;
+  background-color: #fffff0;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -60,8 +63,8 @@
   align-items: center;
 }
 .session-item .actions a {
-  background-color: #4a154b;
-  color: white;
+  background-color: #3D1957;
+  color: #fffff0;
   padding: 5px 10px;
   border-radius: 5px;
   text-decoration: none;
@@ -88,3 +91,8 @@
 .requests td i.fa-times {
   color: red;
 }
+table thead tr th{
+  background-color: #3D1957;
+  color: #fffff0;
+}
+

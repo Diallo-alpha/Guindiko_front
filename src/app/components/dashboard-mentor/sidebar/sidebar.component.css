@@ -1,10 +1,12 @@
+/* General Body Styling */
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Open Sans', sans-serif; /* Updated font family */
   margin: 0;
   padding: 0;
   background-color: #f8f4eb;
 }
 
+/* Sidebar Styling */
 .sidebar {
   width: 250px;
   background-color: #f8f4eb;
@@ -16,16 +18,18 @@ body {
 }
 
 .sidebar h1 {
+  font-family: 'Montserrat', sans-serif; /* Updated font family */
   font-size: 24px;
   margin: 0;
   margin-bottom: 20px;
-  color: #333;
+  color: #3D1957; /* Changed text color to match theme */
+  font-weight: bold;
 }
 
 .sidebar h1 span {
   display: block;
   font-size: 14px;
-  color: #666;
+  color: #a3a3a3; /* Subdued color for the subtitle */
 }
 
 .sidebar ul {
@@ -40,7 +44,7 @@ body {
 
 .sidebar ul li a {
   text-decoration: none;
-  color: #333;
+  color: #3D1957; /* Changed text color to match theme */
   font-size: 18px;
   display: flex;
   align-items: center;
@@ -51,7 +55,7 @@ body {
 
 .sidebar ul li a:hover,
 .sidebar ul li a.active {
-  background-color: #5e2a84;
+  background-color: #3d1957; /* Darker shade of the primary color */
   color: #fff;
 }
 
@@ -59,8 +63,9 @@ body {
   margin-right: 15px;
 }
 
+/* Header Styling */
 .header {
-  background-color: #5e2a84;
+  background-color: #3D1957; /* Primary color */
   color: #fff;
   padding: 20px;
   text-align: right;
@@ -80,6 +85,7 @@ body {
 }
 
 .header .user-info span {
+  font-family: 'Montserrat', sans-serif; /* Updated font family */
   margin-right: 20px;
 }
 
@@ -87,21 +93,22 @@ body {
   margin-left: 20px;
   font-size: 20px;
 }
-/*
-notifications
-*/
+
+/* Notifications Dropdown */
 .notifications-dropdown {
   position: absolute;
   top: 50px;
   right: 20px;
-  background-color:#fff;
-  color: #5e2a84;
+  background-color: #fff; /* Background color */
+  color: #3D1957; /* Text color */
   border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 20px;
-  width: 45vh;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  font-size: 16px; /* Adjusted font size for readability */
+  width: 300px; /* Width adjusted for better fit */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Enhanced shadow for depth */
   z-index: 1000;
+  overflow: hidden;
+  padding: 10px 0;
 }
 
 .notifications-dropdown ul {
@@ -111,15 +118,38 @@ notifications
 }
 
 .notifications-dropdown li {
-  padding: 10px;
-  border-bottom: 1px solid #eee;
+  font-family: 'Open Sans', sans-serif; /* Updated font family */
+  padding: 15px;
+  background-color: #f8f4eb; /* Background color for each notification card */
+  border-radius: 8px; /* Rounded corners for the card */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08); /* Light shadow for the card effect */
+  margin: 10px 15px; /* Margin to separate the cards */
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
 }
 
-.notifications-dropdown li:last-child { 
-  border-bottom: none;
+.notifications-dropdown li:hover {
+  background-color: #e8e4d9; /* Slight background change on hover */
 }
+
+.notifications-dropdown li:last-child {
+  margin-bottom: 0;
+}
+
+.notifications-dropdown li i {
+  margin-left: auto;
+  color: #ff5c5c; /* Trash icon color */
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.notifications-dropdown li i:hover {
+  color: #e60000; /* Darker red on hover */
+}
+
 .notification-count {
-  background-color: red;
+  background-color: #ff0000; /* Bright red for visibility */
   color: white;
   font-weight: bold;
   border-radius: 50%;
