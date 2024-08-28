@@ -13,7 +13,7 @@ export class MenteeService {
 
   private headers = new HttpHeaders({
     'Content-Type': 'application/json',
-    'Authorization': `Bearer ${localStorage.getItem('Token')}` // Add the token to requests
+    'Authorization': `Bearer ${localStorage.getItem('Token')}` 
   });
 
   // Envoyer une demande de mentorat
