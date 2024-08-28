@@ -9,7 +9,7 @@
         <span class="author">{{ article.user_id }}</span> |
         <span class="category">{{ article.formation_id }}</span>
       </div>
-      <img [src]="article.image" alt="{{ article.titre }}" class="article-image"/>
+      <img src="assets/images/logo.svg" alt="{{ article.titre }}" class="article-image"/>
 
       <div class="article-text">{{ article.description | slice:0:100 }}...</div>
       <button class="edit-button" (click)="editArticle(article.id)">Modifier l'article</button>

@@ -10,7 +10,7 @@ import { AuthService } from '../../services/auth-service.service';
 @Component({
   selector: 'app-formation',
   standalone: true,
-  imports: [NavbarComponent, FooterComponent, CommonModule],
+  imports: [NavbarComponent, FooterComponent, CommonModule, FooterComponent],
   templateUrl: './formation.component.html',
   styleUrls: ['./formation.component.css']
 })
