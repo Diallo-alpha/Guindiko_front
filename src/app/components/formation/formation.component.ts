@@ -5,11 +5,12 @@ import { CommonModule } from '@angular/common';
 import { DonneePublicService } from '../../services/donnee-public.service';
 import { DomainModel } from '../../models/DomainModel';
 import { FormationModel } from '../../models/FormationModel';
-
+import { MenteeService } from '../../services/mentee.service';
+import { AuthService } from '../../services/auth-service.service';
 @Component({
   selector: 'app-formation',
   standalone: true,
-  imports: [NavbarComponent, FooterComponent, CommonModule],
+  imports: [NavbarComponent, FooterComponent, CommonModule, FooterComponent],
   templateUrl: './formation.component.html',
   styleUrls: ['./formation.component.css']
 })
@@ -18,13 +19,28 @@ export class FormationComponent implements OnInit {
   formations: FormationModel[] = [];
   selectedDomainId: number = 1;
   startIndex: number = 0;
-  hasFormations: boolean = true; // Nouveau booléen pour suivre s'il y a des formations
+  hasFormations: boolean = true;
+  mentorId: number = 1; // valeur par défaut
+  userData: any; // Déclaration de la propriété userData
 
-  constructor(private donneePublicService: DonneePublicService) {}
+  constructor(
+    private donneePublicService: DonneePublicService,
+    private menteeService: MenteeService,
+    private authService: AuthService // Ajoutez le service AuthService
+  ) {}
 
   ngOnInit(): void {
     this.loadDomains();
     this.loadFormations(this.selectedDomainId);
+    this.userData = {
+      parcours_academique: 'bac+3',
+      diplome: 'mon diplôme',
+      langue: 'français',
+      cv: 'cv.pdf',
+      experience: 'mon experience',
+      domaine: "domain j'exerce"
+
+    };
   }
 
   loadDomains(): void {
@@ -63,7 +79,7 @@ export class FormationComponent implements OnInit {
   }
 
   loadAllFormations(): void {
-    this.donneePublicService.getAllFormations().subscribe({
+    this.donneePublicService.getFormations().subscribe({
       next: (response: any) => {
         if (response && Array.isArray(response.data)) {
           this.formations = response.data;
@@ -76,6 +92,26 @@ export class FormationComponent implements OnInit {
       }
     });
   }
+
+  // Méthode pour obtenir l'ID de l'utilisateur à partir du service AuthService
+  getUserId(): number | null {
+    const userInfo = this.authService.getUserInfo();
+    console.log('Informations utilisateur récupérées:', userInfo);
+    return userInfo ? userInfo.id : null;
+}
+
+
+devenirMentor(mentorId: number): void {
+  this.menteeService.devenirMentor(mentorId, this.userData).subscribe(
+    response => {
+      console.log('Demande envoyée avec succès', response);
+    },
+    error => {
+      console.error('Erreur lors de l\'envoi de la demande', error);
+    }
+  );
+}
+
 
   onAllClick(): void {
     this.loadAllFormations();
