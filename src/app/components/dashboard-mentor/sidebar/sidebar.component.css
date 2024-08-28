@@ -9,7 +9,7 @@ body {
 /* Sidebar Styling */
 .sidebar {
   width: 250px;
-  background-color: #f8f4eb;
+  background-color: #fffff0;
   height: 100vh;
   position: fixed;
   padding: 20px;
@@ -56,7 +56,7 @@ body {
 .sidebar ul li a:hover,
 .sidebar ul li a.active {
   background-color: #3d1957; /* Darker shade of the primary color */
-  color: #fff;
+  color: #fffff0;
 }
 
 .sidebar ul li a i {
@@ -66,7 +66,7 @@ body {
 /* Header Styling */
 .header {
   background-color: #3D1957; /* Primary color */
-  color: #fff;
+  color: #fffff0;
   padding: 20px;
   text-align: right;
   padding-right: 40px;
@@ -150,7 +150,7 @@ body {
 
 .notification-count {
   background-color: #ff0000; /* Bright red for visibility */
-  color: white;
+  color: #fffff0;
   font-weight: bold;
   border-radius: 50%;
   padding: 0.2em 0.6em;
