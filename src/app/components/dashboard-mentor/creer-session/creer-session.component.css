@@ -1,48 +1,64 @@
 .content {
-  margin-top: 9vh;
-  margin-left: 30vh;
-  padding: 20px;
+  margin-left: 250px; /* Marge pour la barre latérale */
+  padding: 6em 2em;
+  background-color: #fffff0;
+  min-height: 100vh; /* Assurer que le contenu prend toute la hauteur de la vue */
 }
+
 .content h2 {
-  font-size: 24px;
+  font-size: 28px;
+  margin-bottom: 20px;
   color: #333;
 }
-.form-container {
+
+.form-row {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
 }
+
 .form-group {
+  margin-bottom: 20px;
   flex: 1;
-  min-width: 350px;
 }
+
 .form-group label {
   display: block;
-  font-size: 18px;
-  color: #333;
-  margin-bottom: 5px;
-}
-.form-group input {
-  width: 100%;
-  padding: 15px;
   font-size: 16px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+  margin-bottom: 8px;
+  color: #555;
 }
-.form-group button {
-  background-color: #5b0a6f;
-  color: #fff;
-  padding: 10px 20px;
-  font-size: 18px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-.form-row {
-  display: flex;
-  gap: 20px;
+
+.form-group input, .form-group select {
   width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fffff0;
 }
-button{
-  margin-top: 3vh;
+
+.btn-submit {
+  background-color: #3D1957; /* Couleur du bouton */
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-submit:hover {
+  background-color: #2a0d43; /* Couleur de survol du bouton */
+  transform: scale(1.05);
+}
+
+.text-danger {
+  color: #dc3545;
+  font-size: 14px;
+}
+
+.form-group.half-width {
+  flex: 1 1 48%; /* Flex-grow, flex-shrink, flex-basis for responsive layout */
 }

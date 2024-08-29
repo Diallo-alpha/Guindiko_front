@@ -1,50 +1,60 @@
 <app-sidebar></app-sidebar>
+
 <div class="content">
   <h2>Créer une nouvelle session</h2>
-  <div class="form-container">
+
+  <form (ngSubmit)="creerSession()">
     <div class="form-row">
-      <div class="form-group">
+      <div class="form-group half-width">
         <label for="formation">Formation</label>
-        <select id="formation" [(ngModel)]="sessionModel.formation_id" name="formation_id" required>
+        <select id="formation" [(ngModel)]="sessionModel.formation_id" name="formation_id" class="form-control" required>
           <option *ngFor="let formation of formations" [value]="formation.id">
             {{ formation.nom }}
           </option>
         </select>
+        <div *ngIf="!sessionModel.formation_id" class="text-danger">
+          La formation est requise.
+        </div>
       </div>
     </div>
 
-    <!-- Champ pour choisir la date de la session -->
     <div class="form-row">
-      <div class="form-group">
+      <div class="form-group half-width">
         <label for="date">Date</label>
-        <input id="date" type="datetime-local" [(ngModel)]="sessionModel.date" name="date" required/>
+        <input id="date" type="datetime-local" [(ngModel)]="sessionModel.date" name="date" class="form-control" required/>
+        <div *ngIf="!sessionModel.date" class="text-danger">
+          La date est requise.
+        </div>
       </div>
     </div>
 
-    <!-- Champ pour choisir le statut de la session -->
     <div class="form-row">
-      <div class="form-group">
+      <div class="form-group half-width">
         <label for="statut">Statut</label>
-        <select id="statut" [(ngModel)]="sessionModel.statut" name="statut" required>
+        <select id="statut" [(ngModel)]="sessionModel.statut" name="statut" class="form-control" required>
           <option value="en attente">En attente</option>
-          <option value="confirmée">En cours</option>
+          <option value="confirmée">Confirmée</option>
           <option value="terminée">Terminée</option>
-          <option value="annulée">Annuler</option>
+          <option value="annulée">Annulée</option>
         </select>
+        <div *ngIf="!sessionModel.statut" class="text-danger">
+          Le statut est requis.
+        </div>
       </div>
     </div>
 
-    <!-- Champ pour saisir la durée de la session -->
     <div class="form-row">
-      <div class="form-group">
+      <div class="form-group half-width">
         <label for="duree">Durée (en heures)</label>
-        <input id="duree" type="number" [(ngModel)]="sessionModel.duree" name="duree" placeholder="Durée en heures" min="1" required/>
+        <input id="duree" type="number" [(ngModel)]="sessionModel.duree" name="duree" class="form-control" placeholder="Durée en heures" min="1" required/>
+        <div *ngIf="!sessionModel.duree" class="text-danger">
+          La durée est requise.
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- Bouton pour publier la session -->
-  <div class="form-group">
-    <button (click)="creerSession()">Publier</button>
-  </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-submit">Publier</button>
+    </div>
+  </form>
 </div>
