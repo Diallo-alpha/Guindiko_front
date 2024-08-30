@@ -189,3 +189,36 @@ table td {
 .action-icons i:hover {
   color: #333;
 }
+
+.action-icons button {
+  background-color: transparent; /* Suppression du fond par défaut */
+  border: none; /* Suppression de la bordure */
+  cursor: pointer; /* Curseur de pointeur pour indiquer que c'est cliquable */
+  margin: 0 5px; /* Espacement entre les boutons */
+  padding: 8px; /* Ajout de padding pour un espace cliquable confortable */
+  border-radius: 50%; /* Boutons circulaires */
+  transition: background-color 0.3s ease; /* Transition douce pour les changements de couleur */
+}
+
+.action-icons button i {
+  font-size: 1.5em; /* Taille des icônes */
+  color: #444; /* Couleur par défaut des icônes */
+}
+
+/* Style pour le bouton "Valider" */
+.action-icons button[title="Valider"] i {
+  color: #28a745; /* Couleur verte pour valider */
+}
+
+.action-icons button[title="Valider"]:hover {
+  background-color: #e6f9ed; /* Fond vert clair au survol */
+}
+
+/* Style pour le bouton "Rejeter" */
+.action-icons button[title="Rejeter"] i {
+  color: #dc3545; /* Couleur rouge pour rejeter */
+}
+
+.action-icons button[title="Rejeter"]:hover {
+  background-color: #fce7e9; /* Fond rouge clair au survol */
+}
