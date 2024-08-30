@@ -5,10 +5,11 @@
   </div>
   <nav>
         <ul>
-          <li><a href="#" id="tableau_de_bord"><i class="fas fa-tachometer-alt"></i> Tableau de bord</a></li>
+          <li><a routerLink="/admin-dashboard" id="tableau_de_bord"><i class="fas fa-tachometer-alt"></i> Tableau de bord</a></li>
           <!-- <li><a href="#"><i class="fas fa-layer-group"></i> Domaines</a></li> -->
           <li><a routerLink="/admin-formation"><i class="fas fa-chalkboard-teacher"></i> Formations</a></li>
           <li><a routerLink="/roles"><i class="fas fa-user-shield"></i> Rôles et permissions</a></li>
+          <li (click)="logout()"><a routerLink="/logout" routerLinkActive="active"><i class="fas fa-sign-out-alt"></i> Déconnexion</a></li>
       </ul>
   </nav>
 </div>
