@@ -1,32 +1,52 @@
-<div class="sidebar">
+<body>
+  <div class="sidebar">
     <div class="logo">
-      <img src="../../../assets/logo.png" alt="Logo">
+      <img src="./assets/logo.png" alt="Logo">
     </div>
     <nav>
       <ul>
-        <li><a href="#"> <img src="../../../assets/uil_dashboard1.svg" alt=""> Tableau de bord</a></li>
-        <li><a href="#" id="domaine"><img src="../../../assets/dashicons_category1.svg" alt=""> Domaines</a></li>
-        <li><a href="#"><img src="../../../assets/healthicons_i-training-class.svg" alt=""> Formations</a></li>
-        <li><a href="#"><img src="../../../assets/eos-icons_role-binding.svg" alt=""> Rôles et permissions</a></li>
+        <li><a routerLink="/admin-dashboard" ><i class="fas fa-tachometer-alt"></i> Tableau de bord</a></li>
+        <!-- <li><a href="#"><i class="fas fa-layer-group"></i> Domaines</a></li> -->
+        <li><a routerLink="/admin-formation" id="formation"><i class="fas fa-chalkboard-teacher"></i> Formations</a></li>
+        <li><a routerLink="/roles"><i class="fas fa-user-shield"></i> Rôles et permissions</a></li>
+        <li (click)="logout()"><a routerLink="/logout" routerLinkActive="active"><i class="fas fa-sign-out-alt"></i> Déconnexion</a></li>
       </ul>
     </nav>
   </div>
-  
+
+  <div class="header">
+    <div class="user-info">
+      <span>{{ userName }}</span>
+      <i class="fas fa-bell" (click)="toggleNotifications()"></i>
+      <span *ngIf="notifications.length > 0" class="notification-count">{{ notifications.length }}</span>
+      <a routerLink="/modifier/profile-mentor"><i class="fas fa-user-circle"></i></a>
+    </div>
+
+    <div *ngIf="showNotifications" class="notifications-dropdown">
+      <ul>
+        <li *ngFor="let notification of notifications" class="notification-item">
+          <span>{{ notification.data.message || 'Notification reçue' }}</span>
+          <!-- <i class="fas fa-trash-alt"></i> -->
+        </li>
+      </ul>
+    </div>
+  </div>
+
   <div class="main-content">
     <div class="header1">
       <h1 *ngIf="!selectedFormation">Ajouter une Formation</h1>
       <h1 *ngIf="selectedFormation">Modifier la Formation</h1>
     </div>
-  
+
     <!-- Formulaire d'ajout de formation -->
     <form *ngIf="!selectedFormation" (ngSubmit)="ajouterFormation()">
       <div class="infos">
-        <div class="row">
-          <div class="libelle">
+        <div class="flexible">
+          <div class="formulaire">
             <label for="libelle">Libellé:</label>
             <input type="text" id="libelle" [(ngModel)]="newFormation.nom" name="libelle" placeholder="Libellé de la formation" required>
           </div>
-          <div class="domaine">
+          <div class="formulaire">
             <label for="domaine">Domaine:</label>
             <select name="domaine" id="domaine1" [(ngModel)]="newFormation.domaine_id" required>
               <option *ngFor="let domaine of domains" [value]="domaine.id">{{ domaine.nom }}</option>
@@ -36,9 +56,9 @@
         <label for="description">Description:</label>
         <textarea name="description" id="description" [(ngModel)]="newFormation.description" cols="30" rows="5" placeholder="Description de la formation" required></textarea>
       </div>
-      <button type="submit">Ajouter</button>
+      <a type="submit" class="boutton">Ajouter</a>
     </form>
-  
+
     <!-- Formulaire d'édition de formation -->
     <form *ngIf="selectedFormation" (ngSubmit)="saveFormation()">
       <div class="infos">
@@ -60,22 +80,22 @@
       <button type="submit">Sauvegarder</button>
       <button type="button" (click)="cancelEdit()">Annuler</button>
     </form>
-  
+
     <!-- Affichage des Formations -->
-   <!-- Updated Formation List -->
-  <!--nos formation -->
-  <div class="container mt-5">
-    <h1 class="title text-start">Nos Formations</h1>
-  
-    <div class="d-flex justify-content-between align-items-center mt-4">
-      <!-- Bouton Précédent -->
-      <button class="btn btn-outline-primary" (click)="prev()">Précédent</button>
-  
-      <!-- Boucle pour afficher chaque domaine (max 5 à la fois) -->
-      <div class="d-flex justify-content-center align-items-center">
-        <button *ngFor="let domain of domains.slice(startIndex, startIndex + 5)"
-                class="btn btn-outline-custom mx-2"
-                (click)="onDomainClick(domain.id!)">
+    <!-- Updated Formation List -->
+    <!--nos formation -->
+    <div class="container mt-5">
+      <h1 class="title text-start">Nos Formations</h1>
+
+      <div class="d-flex justify-content-between align-items-center mt-4">
+        <!-- Bouton Précédent -->
+        <button class="btn btn-outline-primary" (click)="prev()">Précédent</button>
+
+        <!-- Boucle pour afficher chaque domaine (max 5 à la fois) -->
+        <div class="d-flex justify-content-center align-items-center">
+          <button *ngFor="let domain of domains.slice(startIndex, startIndex + 5)"
+          class="btn btn-outline-custom mx-2"
+          (click)="onDomainClick(domain.id!)">
           {{ domain.nom }}
         </button>
       </div>
@@ -83,7 +103,7 @@
       <button class="btn btn-outline-primary" (click)="next()">Suivant</button>
     </div>
   </div>
-  
+
   <div class="container py-5">
     <div class="row row-cols-1 row-cols-md-4 g-4">
       <div class="col" *ngFor="let formation of formations">
@@ -101,4 +121,6 @@
       </div>
     </div>
   </div>
-  
+</div>
+
+</body>

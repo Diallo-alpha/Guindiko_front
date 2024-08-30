@@ -5,7 +5,24 @@ import { DonneePublicService } from '../../../services/donnee-public.service';
 import { AdminService } from '../../../services/admin.service';
 import { DomainModel } from '../../../models/DomainModel';
 import { FormationModel } from '../../../models/FormationModel';
+import { Router, RouterModule } from '@angular/router';
 import Swal from 'sweetalert2';
+import { AuthService } from '../../../services/auth-service.service';
+import { MentorService } from '../../../services/mentor.service';
+
+interface Notification {
+  id: string;
+  type: string;
+  notifiable_type: string;
+  notifiable_id: number;
+  data: {
+    message?: string;
+    [key: string]: any; // Allow for other dynamic properties
+  };
+  read_at: string | null;
+  created_at: string;
+  updated_at: string;
+}
 
 @Component({
   selector: 'app-formation',
@@ -21,15 +38,23 @@ export class FormationAdminComponent implements OnInit {
   startIndex: number = 0;
   selectedFormation: FormationModel | null = null;
   newFormation: FormationModel = { nom: '', domaine_id: 0, description: '' };
+  userName: string = 'Utilisateur'; // Declare with a default value
+  notifications: Notification[] = []; // Declare an empty array
+  showNotifications: boolean = false; // Declare with a default value
 
   constructor(
     private donneePublicService: DonneePublicService,
-    private adminService: AdminService
+    private adminService: AdminService,
+    private authService: AuthService,
+    private mentorService: MentorService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     this.loadDomains();
     this.loadFormations(this.selectedDomainId);
+    this.getUserInfo();
+    this.getNotifications();
   }
 
   loadDomains(): void {
@@ -172,5 +197,41 @@ export class FormationAdminComponent implements OnInit {
     if (this.startIndex + 5 < this.domains.length) {
       this.startIndex += 5;
     }
+  }
+
+  navigateTo(path: string): void {
+    this.router.navigate([path]);
+  }
+
+  getUserInfo(): void {
+    const storedUser = localStorage.getItem('User');
+    if (storedUser) {
+      const user = JSON.parse(storedUser);
+      this.userName = user.name || 'Utilisateur';
+    }
+  }
+
+  getNotifications(): void {
+    const storedUser = localStorage.getItem('User');
+    if (storedUser) {
+      const user = JSON.parse(storedUser);
+      this.mentorService.getMentorNotifications(user.id).subscribe(
+        (data: Notification[]) => {
+          this.notifications = data.filter((notification: Notification) => !notification.read_at);
+          console.log('Notifications:', this.notifications);
+        },
+        (error) => {
+          console.error('Erreur lors de la récupération des notifications', error);
+        }
+      );
+    }
+  }
+
+  toggleNotifications(): void {
+    this.showNotifications = !this.showNotifications;
+  }
+  logout(): void {
+    this.authService.logout();
+    this.router.navigate(['/accueil']);
   }
 }
