@@ -27,7 +27,7 @@ body {
 }
 
 .logo img {
-  width: 180px;
+  width: 150px;
 }
 
 .sidebar nav ul {
@@ -40,7 +40,7 @@ body {
 }
 
 .sidebar nav ul li a {
-  color: #3D1957;
+  color: #110012;
   text-decoration: none;
   font-size: 15px;
   display: flex;
@@ -229,7 +229,7 @@ body {
   font-size: #5C0C69;
 }
 .btn-custom {
-  font-family: 'Arial', sans-serif;
+  font-family: 'open sans', sans-serif;
   font-size: 1rem;
   font-weight: bold;
   color: #fffff0;
@@ -240,7 +240,7 @@ body {
   margin: 0 10px;
 }
 .btn-outline-custom {
-  font-family: 'Arial', sans-serif;
+  font-family: 'open sans', sans-serif;
   font-size: 1rem;
   font-weight: bold;
   color: #6a1b9a;

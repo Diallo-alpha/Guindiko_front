@@ -27,7 +27,7 @@ interface Notification {
 @Component({
   selector: 'app-formation',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './formation.component.html',
   styleUrls: ['./formation.component.css']
 })
