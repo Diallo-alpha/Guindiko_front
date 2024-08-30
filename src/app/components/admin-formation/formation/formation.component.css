@@ -1,5 +1,5 @@
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   margin: 0;
   padding: 0;
   background-color: #FFFFF0;
@@ -46,15 +46,21 @@ body {
   display: flex;
   align-items: center;
   padding: 10px;
+  font-family: "Montserrat", sans-serif;
   transition: background-color 0.3s ease;
   border-radius: 8px;
 }
 
-.sidebar nav ul li a img {
+.sidebar nav ul li a i {
   margin-right: 10px;
 }
 
-.sidebar nav ul li a:hover, #formation {
+#active{
+  background-color: #3D1957;
+  color: #FFFFF0;
+}
+
+.sidebar nav ul li a:hover {
   background-color: #3D1957;
   color: #FFFFF0;
 }
@@ -280,7 +286,8 @@ background-color: #fffff0;
 .header1 h1 {
   margin-bottom: 30px;
   font-size: 24px;
-  color: #5A2961;
+  color: #3D1957;
+  font-family: "Montserrat", sans-serif;
   font-weight: bold;
 }
 form{

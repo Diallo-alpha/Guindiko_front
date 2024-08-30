@@ -1,18 +1,39 @@
-<div class="sidebar">
+<body>
+  <div class="sidebar">
     <div class="logo">
-        <img src="../../../assets/logo.png" alt="Logo">
+        <img src="./assets/logo.png" alt="Logo">
     </div>
     <nav>
-        <ul>
-            <li><a href="#"><img src="../../../assets/uil_dashboard1.svg" alt=""> Tableau de bord</a></li>
-            <li><a href="#"><img src="../../../assets/dashicons_category.svg" alt=""> Domaines</a></li>
-            <li><a href="#"><img src="../../../assets/healthicons_i-training-class.svg" alt=""> Formations</a></li>
-            <li><a href="#" id="roles"><img src="../../../assets/eos-icons_role-binding1.svg" alt=""> Rôles et permissions</a></li>
+          <ul>
+            <li><a routerLink="/admin-dashboard" ><i class="fas fa-tachometer-alt"></i> Tableau de bord</a></li>
+            <!-- <li><a href="#"><i class="fas fa-layer-group"></i> Domaines</a></li> -->
+            <li><a routerLink="/admin-formation"><i class="fas fa-chalkboard-teacher"></i> Formations</a></li>
+            <li><a routerLink="/roles" id="active"><i class="fas fa-user-shield" ></i> Rôles et permissions</a></li>
+            <li (click)="logout()"><a routerLink="/logout" routerLinkActive="active"><i class="fas fa-sign-out-alt"></i> Déconnexion</a></li>
         </ul>
     </nav>
-</div>
+  </div>
+
+  <div class="header">
+    <div class="user-info">
+      <span>{{ userName }}</span>
+      <i class="fas fa-bell" (click)="toggleNotifications()"></i>
+      <span *ngIf="notifications.length > 0" class="notification-count">{{ notifications.length }}</span>
+      <a routerLink="/modifier/profile-mentor"><i class="fas fa-user-circle"></i></a>
+    </div>
+
+    <div *ngIf="showNotifications" class="notifications-dropdown">
+      <ul>
+        <li *ngFor="let notification of notifications" class="notification-item">
+          <span>{{ notification.data.message || 'Notification reçue' }}</span>
+          <!-- <i class="fas fa-trash-alt"></i> -->
+        </li>
+      </ul>
+    </div>
+  </div>
+
 <div class="main-content">
-    <div class="header">
+    <div class="header1">
         <h1>Rôles et Permissions</h1>
         <div class="buttons">
             <button class="roles">Rôles</button>
@@ -39,43 +60,7 @@
                         <option value="">Mentee</option>
                         <option value="">Administrateur</option>
                     </select>
-                </td>                  
-            </tr>
-            <tr>
-                <td>Adama Gueye Tall</td>
-                <td>talladamero&#64;gmail.com</td>
-                <td>+221 77 234 56 78</td>
-                <td>
-                    <select name="" id="">
-                        <option value="">Mentee</option>
-                        <option value="">Mentor</option>
-                        <option value="">Administrateur</option>
-                    </select>
-                </td>                  
-            </tr>
-            <tr>
-                <td>Adama Gueye Tall</td>
-                <td>talladamero&#64;gmail.com</td>
-                <td>+221 77 234 56 78</td>
-                <td>
-                    <select name="" id="">
-                        <option value="">Administrateur</option>
-                        <option value="">Mentor</option>
-                        <option value="">Mentee</option>
-                    </select>
-                </td>                  
-            </tr>
-            <tr>
-                <td>Adama Gueye Tall</td>
-                <td>talladamero&#64;gmail.com</td>
-                <td>+221 77 234 56 78</td>
-                <td>
-                    <select name="" id="">
-                        <option value="">Mentor</option>
-                        <option value="">Mentee</option>
-                        <option value="">Administrateur</option>
-                    </select>
-                </td>                  
+                </td>
             </tr>
             <tr>
                 <td>Adama Gueye Tall</td>
@@ -88,7 +73,6 @@
                         <option value="">Administrateur</option>
                     </select>
                 </td>
-              
             </tr>
             <tr>
                 <td>Adama Gueye Tall</td>
@@ -100,7 +84,7 @@
                         <option value="">Mentor</option>
                         <option value="">Mentee</option>
                     </select>
-                </td>                  
+                </td>
             </tr>
             <tr>
                 <td>Adama Gueye Tall</td>
@@ -112,7 +96,7 @@
                         <option value="">Mentee</option>
                         <option value="">Administrateur</option>
                     </select>
-                </td>                  
+                </td>
             </tr>
             <tr>
                 <td>Adama Gueye Tall</td>
@@ -124,7 +108,8 @@
                         <option value="">Mentor</option>
                         <option value="">Administrateur</option>
                     </select>
-                </td>                  
+                </td>
+
             </tr>
             <tr>
                 <td>Adama Gueye Tall</td>
@@ -136,7 +121,7 @@
                         <option value="">Mentor</option>
                         <option value="">Mentee</option>
                     </select>
-                </td>                  
+                </td>
             </tr>
             <tr>
                 <td>Adama Gueye Tall</td>
@@ -148,7 +133,7 @@
                         <option value="">Mentee</option>
                         <option value="">Administrateur</option>
                     </select>
-                </td>                  
+                </td>
             </tr>
             <tr>
                 <td>Adama Gueye Tall</td>
@@ -160,7 +145,7 @@
                         <option value="">Mentor</option>
                         <option value="">Administrateur</option>
                     </select>
-                </td>                  
+                </td>
             </tr>
             <tr>
                 <td>Adama Gueye Tall</td>
@@ -172,7 +157,43 @@
                         <option value="">Mentor</option>
                         <option value="">Mentee</option>
                     </select>
-                </td>                  
+                </td>
+            </tr>
+            <tr>
+                <td>Adama Gueye Tall</td>
+                <td>talladamero&#64;gmail.com</td>
+                <td>+221 77 234 56 78</td>
+                <td>
+                    <select name="" id="">
+                        <option value="">Mentor</option>
+                        <option value="">Mentee</option>
+                        <option value="">Administrateur</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Adama Gueye Tall</td>
+                <td>talladamero&#64;gmail.com</td>
+                <td>+221 77 234 56 78</td>
+                <td>
+                    <select name="" id="">
+                        <option value="">Mentee</option>
+                        <option value="">Mentor</option>
+                        <option value="">Administrateur</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Adama Gueye Tall</td>
+                <td>talladamero&#64;gmail.com</td>
+                <td>+221 77 234 56 78</td>
+                <td>
+                    <select name="" id="">
+                        <option value="">Administrateur</option>
+                        <option value="">Mentor</option>
+                        <option value="">Mentee</option>
+                    </select>
+                </td>
             </tr>
         </tbody>
     </table>

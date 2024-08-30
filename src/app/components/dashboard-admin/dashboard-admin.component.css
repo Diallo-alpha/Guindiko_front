@@ -1,11 +1,11 @@
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   margin: 0;
   padding: 0;
   background-color: #FFFFF0;
   color: #333;
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .sidebar {
@@ -45,16 +45,22 @@ body {
   font-size: 15px;
   display: flex;
   align-items: center;
+  font-family: "Montserrat", sans-serif;
   padding: 10px;
   transition: background-color 0.3s ease;
   border-radius: 8px;
 }
 
-.sidebar nav ul li a img {
+.sidebar nav ul li a i {
   margin-right: 10px;
 }
 
-.sidebar nav ul li a:hover, #tableau_de_bord {
+#active{
+  background-color: #3D1957;
+  color: #FFFFF0;
+}
+
+.sidebar nav ul li a:hover {
   background-color: #3D1957;
   color: #FFFFF0;
 }
@@ -135,7 +141,6 @@ body {
 .notifications-dropdown li:hover {
   background-color: #e8e4d9;
 }
-
 .main-content {
   margin-left: 220px;
   margin-top: 80px;
@@ -154,6 +159,9 @@ body {
 .table-container h2 {
   margin-bottom: 20px;
   color: #3D1957;
+  font-size: 24px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
 }
 
 table {
